@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item
+    	android:id="@+id/listjobmenu_type"
+        android:orderInCategory="100"
+        android:showAsAction="always"
+        android:title="@string/listjobmenu_type"
+        android:icon="@drawable/ic_launcher" />
+    
+    <item
+        android:id="@+id/listjobmenu_search"
+        android:orderInCategory="100"
+        android:showAsAction="always"
+        android:title="@string/listjobmenu_search"
+        android:icon="@android:drawable/ic_search_category_default" />
+
+</menu>

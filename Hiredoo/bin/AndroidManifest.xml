@@ -32,6 +32,11 @@
             android:theme="@android:style/Theme.NoTitleBar" ></activity>
         
         <activity android:name="com.projet.hiredoo.Profil_activity" android:label="@string/app_name" ></activity>
+        <activity android:name="com.projet.hiredoo.Detail_job" android:label="@string/app_name" ></activity>
+        <activity android:name="com.projet.hiredoo.Listjob_activity" android:label="@string/app_name" ></activity>
+        <activity android:name="com.projet.hiredoo.Postulerjob_activity" android:label="@string/app_name" ></activity>
+        <activity android:name="com.projet.hiredoo.Rechercherjob_activity" android:label="@string/app_name" ></activity>
+        <activity android:name="com.projet.hiredoo.Rechercherprofil_activity" android:label="@string/app_name" ></activity>
         
     </application>
 

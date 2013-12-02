@@ -57,12 +57,13 @@ public class MainActivity extends Activity implements OnClickListener {
 			login_ok.setOnClickListener(this);
 			login_recruter.setOnClickListener(this);
 			login_candidate.setOnClickListener(this);
-			
 			return;
 		}
 		
 		// Sinon
-		setContentView(R.layout.profilcandidate_view);
+		// finish();
+		// Appel AsyncTask pour avoir les données de listjob
+		setContentView(R.layout.liste_job_view);
 	}
 
 	@Override
@@ -98,9 +99,9 @@ public class MainActivity extends Activity implements OnClickListener {
 		// Login View
 		case R.id.login_btnOk:
 			// This will go to the AsyncTask and call WS
-			Intent profil_intent = new Intent(this, Profil_activity.class);
+			Intent listjob_intent = new Intent(this, Listjob_activity.class);
 			try {
-				startActivity(profil_intent);
+				startActivity(listjob_intent);
 			}
 			catch(ActivityNotFoundException ex) {
 				Toast.makeText(this, "Activity introuvable.\n" + ex.getMessage(), Toast.LENGTH_LONG).show();

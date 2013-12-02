@@ -4,35 +4,29 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import android.app.Activity;
-import android.app.AlertDialog;
+import android.content.ActivityNotFoundException;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.Toast;
 
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 
-public class Profil_activity extends Activity implements OnItemClickListener {
+public class Listjob_activity extends Activity implements OnItemClickListener {
 	
 	private SlidingMenu slidingMenu;
-	private ListView menu_listview;
+	private ListView job_listview, menu_listview;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.profilcandidate_view);
-		
-		/*VideoView vv = (VideoView)findViewById(R.id.profil_video);
-		MediaController mc = new MediaController(this);
-		mc.setAnchorView(vv);
-		Uri video = Uri.parse("http://stagemt.orgfree.com/assets/a.mp4");
-		vv.setVideoURI(video);
-		vv.setMediaController(mc);
-		vv.requestFocus();
-		vv.start();*/
+		setContentView(R.layout.liste_job_view);
 		
 		// Ajout du Sliding Menu
         slidingMenu = new SlidingMenu(this);
@@ -52,50 +46,20 @@ public class Profil_activity extends Activity implements OnItemClickListener {
         
         // Ajout des elements à la liste
     	hash_map = new HashMap<String, String>();
-    	hash_map.put("titre", "Add CV");
-    	hash_map.put("description", "Click to Add a CV");
+    	hash_map.put("titre", "My Profile");
+    	hash_map.put("description", "Click to edit profile");
     	hash_map.put("img", String.valueOf(R.drawable.ic_launcher));
         listItem.add(hash_map);
         
         hash_map = new HashMap<String, String>();
-    	hash_map.put("titre", "Add LM");
-    	hash_map.put("description", "Click to add a motivation letter");
+    	hash_map.put("titre", "Search jobs");
+    	hash_map.put("description", "Click search jobs");
     	hash_map.put("img", String.valueOf(R.drawable.ic_launcher));
         listItem.add(hash_map);
         
         hash_map = new HashMap<String, String>();
-    	hash_map.put("titre", "Add video");
-    	hash_map.put("description", "Click to add video");
-    	hash_map.put("img", String.valueOf(R.drawable.ic_launcher));
-        listItem.add(hash_map);
-        
-        hash_map = new HashMap<String, String>();
-    	hash_map.put("titre", "My experiences");
-    	hash_map.put("description", "Click to add experience");
-    	hash_map.put("img", String.valueOf(R.drawable.ic_launcher));
-        listItem.add(hash_map);
-        
-        hash_map = new HashMap<String, String>();
-    	hash_map.put("titre", "My education");
-    	hash_map.put("description", "Click to add education");
-    	hash_map.put("img", String.valueOf(R.drawable.ic_launcher));
-        listItem.add(hash_map);
-        
-        hash_map = new HashMap<String, String>();
-    	hash_map.put("titre", "My languages");
-    	hash_map.put("description", "Click to add a language");
-    	hash_map.put("img", String.valueOf(R.drawable.ic_launcher));
-        listItem.add(hash_map);
-        
-        hash_map = new HashMap<String, String>();
-    	hash_map.put("titre", "My contacts");
-    	hash_map.put("description", "Click to add contact");
-    	hash_map.put("img", String.valueOf(R.drawable.ic_launcher));
-        listItem.add(hash_map);
-        
-        hash_map = new HashMap<String, String>();
-    	hash_map.put("titre", "My password");
-    	hash_map.put("description", "Click to change password");
+    	hash_map.put("titre", "Search Profile");
+    	hash_map.put("description", "Search profile or enterprise");
     	hash_map.put("img", String.valueOf(R.drawable.ic_launcher));
         listItem.add(hash_map);
         
@@ -111,12 +75,26 @@ public class Profil_activity extends Activity implements OnItemClickListener {
         menu_listview.setAdapter(mSchedule);
         menu_listview.setOnItemClickListener(this);
 	}
-
+	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.main, menu);
+		getMenuInflater().inflate(R.menu.listjob_menu, menu);
 		return true;
+	}
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+	    
+	    switch (item.getItemId()) {
+	        case R.id.listjobmenu_type:
+	            return true;
+	            
+	        case R.id.listjobmenu_search:
+	        	return true;
+	        	
+	        default:
+	            return super.onOptionsItemSelected(item);
+	    }
 	}
 	
 	@Override
@@ -128,13 +106,56 @@ public class Profil_activity extends Activity implements OnItemClickListener {
             finish();
         }
     }
-
+	
 	@Override
 	public void onItemClick(AdapterView<?> adapter, View v, int position, long id) {
-		AlertDialog.Builder builder = new AlertDialog.Builder(this);
-		builder.setMessage("En cours de dev.");
-		builder.create().show();
-		slidingMenu.toggle();
+		switch(position) {
+		case 0: // mon profil
+			Intent profil_intent = new Intent(this, Profil_activity.class);
+			try {
+				startActivity(profil_intent);
+			}
+			catch(ActivityNotFoundException ex) {
+				Toast.makeText(this, "Activity introuvable.\n" + ex.getMessage(), Toast.LENGTH_LONG).show();
+			}
+			slidingMenu.toggle();
+			break;
+			
+		case 1: // rechercher job
+			Intent job_intent = new Intent(this, Rechercherjob_activity.class);
+			try {
+				startActivity(job_intent);
+			}
+			catch(ActivityNotFoundException ex) {
+				Toast.makeText(this, "Activity introuvable.\n" + ex.getMessage(), Toast.LENGTH_LONG).show();
+			}
+			slidingMenu.toggle();
+			break;
+			
+		case 2: // rechercher profl
+			Intent rechprofil_intent = new Intent(this, Rechercherprofil_activity.class);
+			try {
+				startActivity(rechprofil_intent);
+			}
+			catch(ActivityNotFoundException ex) {
+				Toast.makeText(this, "Activity introuvable.\n" + ex.getMessage(), Toast.LENGTH_LONG).show();
+			}
+			slidingMenu.toggle();
+			break;
+			
+		case 3: // Deconnexion
+			Intent login_intent = new Intent(this, MainActivity.class);
+			try {
+				Constante.createINIFile(this); // Pour initialiser le fichier
+				startActivity(login_intent);
+				finish(); // Pour terminer cette activité
+			}
+			catch(ActivityNotFoundException ex) {
+				Toast.makeText(this, "Activity introuvable.\n" + ex.getMessage(), Toast.LENGTH_LONG).show();
+			}
+			slidingMenu.toggle();
+			break;
+		}
 	}
-
+	
 }
