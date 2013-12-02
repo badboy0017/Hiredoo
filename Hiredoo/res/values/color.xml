@@ -4,5 +4,6 @@
     <color name="bleu_ciel">#24B2EB</color>
     <color name="blanc">#FFFFFF</color>
     <color name="gris_background">#DCDCDC</color>
+    <color name="noir">#000000</color>
     
 </resources>

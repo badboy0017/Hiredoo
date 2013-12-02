@@ -3,7 +3,6 @@ package com.projet.hiredoo;
 import java.io.File;
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.os.Bundle;
@@ -98,11 +97,15 @@ public class MainActivity extends Activity implements OnClickListener {
 			
 		// Login View
 		case R.id.login_btnOk:
-			AlertDialog.Builder builder = new AlertDialog.Builder(this);
-			builder.setTitle("Login Button clicked");
-			builder.setMessage("This will go to the AsyncTask and call WS");
-			builder.setPositiveButton("Ok", null);
-			builder.create().show();
+			// This will go to the AsyncTask and call WS
+			Intent profil_intent = new Intent(this, Profil_activity.class);
+			try {
+				startActivity(profil_intent);
+			}
+			catch(ActivityNotFoundException ex) {
+				Toast.makeText(this, "Activity introuvable.\n" + ex.getMessage(), Toast.LENGTH_LONG).show();
+			}
+			finish();
 			break;
 			
 		case R.id.login_register_recruter:

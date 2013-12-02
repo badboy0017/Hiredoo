@@ -34,4 +34,9 @@
     <string name="recruterregister_retypepassword">Retype password</string>
     <string name="recruterregister_ok">OK</string>
     
+    <string name="profilcandidate_experience">Experiences</string>
+    <string name="profilcandidate_education">Education</string>
+    <string name="profilcandidate_language">Languages</string>
+    <string name="profilcandidate_contact">Contact</string>
+    
 </resources>
