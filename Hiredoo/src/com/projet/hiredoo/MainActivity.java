@@ -3,6 +3,8 @@ package com.projet.hiredoo;
 import java.io.File;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Html;
@@ -10,65 +12,58 @@ import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class MainActivity extends Activity {
+public class MainActivity extends Activity implements OnClickListener {
+	
+	ImageView presentation_close;
+	ImageView presentation_go;
+	
+	ImageView login_ok;
+	TextView login_recruter;
+	TextView login_candidate;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		/*
-		 * programmation des bouttons
-		 * */
-		//Boutton Close qui permet de fermer la fenetre
-		ImageButton bouttonClose = (ImageButton) findViewById(R.id.btnClose);
-		bouttonClose.setOnClickListener(new OnClickListener() {
-				
-				@Override
-				public void onClick(View v) {
-					finish();
-				}
-			});
-	
-
-
-		//Boutton go now
-		ImageButton bouttonGo = (ImageButton) findViewById(R.id.btnGoNow);
-		bouttonGo.setOnClickListener(new OnClickListener() {
-				
-				@Override
-				public void onClick(View v) {
-					Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-					startActivity(intent);
-
-				}
-			});
-		
-
 		
 		// Test du 1er lancement de l'application
 		File ini = new File(getFileStreamPath(Constante.file_ini).toString());
 		if(!ini.exists()) {
-			setContentView(R.layout.activity_main);
-			Constante.createINIFile(this);
+			setContentView(R.layout.presentation_view);
 			
 			String summary = "<html><font color=\"#000000\" style=\"italique\"><p align="+ "\"" +"left" + "\""+ ">" +  "You are Looking for a job ? <br /> You are hiring a condidate ? <br /> Good you are using the best way !! <br /> HireGo is a mobile application that you allow to post a cv , a video that you describe. it is also a way that allow employee <br /> to finds a good condidate. <br /> with HireDo you will'nt use jornal to search a job , Get Ready for the Hiring !!!" +"</p>"+"</font></html>";
-			TextView t = (TextView) findViewById(R.id.paragraph);
+			TextView t = (TextView) findViewById(R.id.presentation_paragraph);
 			t.setText(Html.fromHtml(summary));
+			
+			presentation_close = (ImageView)findViewById(R.id.presentation_btnClose);
+			presentation_go    = (ImageView)findViewById(R.id.presentation_btnGoNow);
+			
+			presentation_close.setOnClickListener(this);
+			presentation_go.setOnClickListener(this);
 			
 			return;
 		}
 		
-		// Test si le user doit entrer son login et son password
+		// Test si le user n'est pas connecté
 		if(Constante.getINIvalue(this, Constante.ini_remember).equals("false")) {
-			setContentView(R.layout.login);
+			setContentView(R.layout.login_view);
+			
+			login_ok = (ImageView)findViewById(R.id.login_btnOk);
+			login_recruter  = (TextView)findViewById(R.id.login_register_recruter);
+			login_candidate = (TextView)findViewById(R.id.login_register_candidate);
+			
+			login_ok.setOnClickListener(this);
+			login_recruter.setOnClickListener(this);
+			login_candidate.setOnClickListener(this);
+			
 			return;
 		}
 		
 		// Sinon
-		setContentView(R.layout.main);
+		setContentView(R.layout.profilcandidate_view);
 	}
 
 	@Override
@@ -87,5 +82,49 @@ public class MainActivity extends Activity {
         }
         return super.onKeyDown(keyCode, event);
     }
+
+	@Override
+	public void onClick(View v) {
+		switch(v.getId()) {
+		// Presentation View
+		case R.id.presentation_btnClose:
+			finish();
+			break;
+			
+		case R.id.presentation_btnGoNow:
+			Constante.createINIFile(this);
+			recreate();
+			break;
+			
+		// Login View
+		case R.id.login_btnOk:
+			AlertDialog.Builder builder = new AlertDialog.Builder(this);
+			builder.setTitle("Login Button clicked");
+			builder.setMessage("This will go to the AsyncTask and call WS");
+			builder.setPositiveButton("Ok", null);
+			builder.create().show();
+			break;
+			
+		case R.id.login_register_recruter:
+			Intent recruter_intent = new Intent(this, RegisterRecruiterActivity.class);
+			try {
+				startActivity(recruter_intent);
+			}
+			catch(ActivityNotFoundException ex) {
+				Toast.makeText(this, "Activity introuvable.\n" + ex.getMessage(), Toast.LENGTH_LONG).show();
+			}
+			break;
+			
+		case R.id.login_register_candidate:
+			Intent candidate_intent = new Intent(this, RegisterJobSeeckerActivity.class);
+			try {
+				startActivity(candidate_intent);
+			}
+			catch(ActivityNotFoundException ex) {
+				Toast.makeText(this, "Activity introuvable.\n" + ex.getMessage(), Toast.LENGTH_LONG).show();
+			}
+			break;
+		}
+	}
 
 }

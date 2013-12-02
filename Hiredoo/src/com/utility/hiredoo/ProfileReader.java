@@ -1,4 +1,4 @@
-package com.projet.hiredoo;
+package com.utility.hiredoo;
 
 import java.io.BufferedReader;
 import java.io.InputStream;

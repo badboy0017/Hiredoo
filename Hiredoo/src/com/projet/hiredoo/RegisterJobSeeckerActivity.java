@@ -7,9 +7,8 @@ public class RegisterJobSeeckerActivity extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_registerjobseeker);
+		setContentView(R.layout.registerjobseeker_view);
 	}
 	
 

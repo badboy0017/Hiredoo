@@ -1,9 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>    
-    <string name="app_name">Hiredoo</string>
+    <string name="app_name">Hiredo</string>
     <string name="action_settings">Settings</string>
-    <string name="hello">Hello world!</string>
-    <color name="blue">#4ccbff</color>
     
-
+    <string name="logo_description">Logo</string>
+    <string name="banniere_description">Banniere</string>
+    <string name="image_description">Image</string>
+    
+    <string name="login_Authentication">Authentication</string>
+    <string name="login_username">Username</string>
+    <string name="login_password">Password</string>
+    <string name="login_ok_description">OK_button</string>
+    <string name="login_register_recruter">Register as a recruiter -></string>
+    <string name="login_register_candidate">Register as a job Seeker -></string>
+    
+    <string name="presentation_text">You are Looking for a job ? You are hiring a condidate ? Good you are using the best way !! HireGo is a mobile application that you allow to post a cv , a video that you describe. it is also a way that allow employeeto finds a good condidate. With HireDo you will not use jornal to search a job , Get Ready for the Hiring !!!</string>
+    <string name="presentation_closebutton_description">Close</string>
+    <string name="presentation_gobutton_description">Go Now</string>
+    
+    <string name="jobseekerregister_title">Registration Jobseeker</string>
+    <string name="jobseekerregister_name">Name</string>
+    <string name="jobseekerregister_firstname">First Name</string>
+    <string name="jobseekerregister_email">Email</string>
+    <string name="jobseekerregister_password">Password</string>
+    <string name="jobseekerregister_retypepassword">Retype Password</string>
+    <string name="jobseekerregister_ok">OK</string>
+    
+    <string name="recruterregister_title">Registration Recruiter</string>
+    <string name="recruterregister_name">Enterprise Name</string>
+    <string name="recruterregister_activitysector">Activity Sector</string>
+    <string name="recruterregister_email">Email</string>
+    <string name="recruterregister_password">Password</string>
+    <string name="recruterregister_retypepassword">Retype password</string>
+    <string name="recruterregister_ok">OK</string>
+    
 </resources>

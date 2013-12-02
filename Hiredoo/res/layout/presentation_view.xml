@@ -26,7 +26,8 @@
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
               android:layout_marginLeft="10dip"
-              android:src="@drawable/logo" />
+              android:src="@drawable/logo"
+              android:contentDescription="@string/logo_description" />
           <!-- Logo Ends -->
       </LinearLayout>
       <!-- Header Ends -->
@@ -37,7 +38,8 @@
           android:layout_height="wrap_content"
           android:layout_alignParentLeft="true"
           android:layout_below="@+id/header"
-          android:src="@drawable/look" />
+          android:src="@drawable/look"
+          android:contentDescription="@string/banniere_description" />
 
       <RelativeLayout
           android:layout_width="wrap_content"
@@ -50,45 +52,46 @@
               android:id="@+id/imageView2"
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
-              android:src="@drawable/gauche" />
+              android:src="@drawable/gauche"
+              android:contentDescription="@string/image_description" />
 
           <TextView
-              android:id="@+id/paragraph"
+              android:id="@+id/presentation_paragraph"
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
               android:layout_alignParentRight="true"
               android:layout_alignParentTop="true"
               android:layout_toRightOf="@+id/imageView2"
-              android:text="You are Looking for a job ? 
-You are hiring a condidate ? 
-Good you are using the best way !! 
-HireGo is a mobile application that you allow to post a cv , a video that you describe. it is also a way that allow employee 
-to finds a good condidate. 
-with HireDo you will'nt use jornal to search a job , Get Ready for the Hiring !!!"
+              android:text="@string/presentation_text"
+              android:layout_marginTop="10dp"
+              android:layout_marginLeft="10dp"
+              android:layout_marginRight="10dp"
               android:textAppearance="?android:attr/textAppearanceSmall" />
 
           <LinearLayout
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
-              android:layout_alignLeft="@+id/paragraph"
+              android:layout_alignLeft="@+id/presentation_paragraph"
               android:layout_alignParentRight="true"
-              android:layout_below="@+id/paragraph"
+              android:layout_below="@+id/presentation_paragraph"
               android:layout_marginTop="33dp"
               android:gravity="center_horizontal" >
 
               <ImageButton
-                  android:id="@+id/btnClose"
+                  android:id="@+id/presentation_btnClose"
                   android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
                   android:background="@null"
-                  android:src="@drawable/btnclose" />
+                  android:src="@drawable/btnclose"
+                  android:contentDescription="@string/presentation_closebutton_description" />
 
               <ImageButton
-                  android:id="@+id/btnGoNow"
+                  android:id="@+id/presentation_btnGoNow"
                   android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
                   android:background="@null"
-                  android:src="@drawable/btngonow" />
+                  android:src="@drawable/btngonow"
+                  android:contentDescription="@string/presentation_gobutton_description" />
           </LinearLayout>
 
       </RelativeLayout>

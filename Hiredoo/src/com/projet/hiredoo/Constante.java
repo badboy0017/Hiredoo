@@ -7,6 +7,9 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 
+import com.utility.hiredoo.ProfileReader;
+import com.utility.hiredoo.SimpleCrypto;
+
 import android.content.Context;
 import android.widget.Toast;
 
@@ -17,7 +20,7 @@ public class Constante {
 	public static final String ini_login = "login";
 	public static final String ini_password = "password";
 	public static final String ini_remember = "remember_me";
-	//public static final String secret_key = "azerty";
+	public static final String secret_key = "azerty";
 	
 	/* Format fichier INI:
 	[application]
@@ -144,7 +147,7 @@ public class Constante {
 		}
 	}
 		
-	/*public static String encrypt(Context context, String clearText) {
+	public static String encrypt(Context context, String clearText) {
 		try {
 			return SimpleCrypto.encrypt(Constante.secret_key, clearText);
 		}
@@ -162,6 +165,6 @@ public class Constante {
 			Toast.makeText(context, "Decrypt Exception\n" + ex.getMessage(), Toast.LENGTH_LONG).show();
 			return null;
 		}
-	}*/
+	}
 
 }

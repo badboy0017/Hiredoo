@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_gravity="center_vertical|center_horizontal|center"
+    android:fillViewport="true" >
+
+  <RelativeLayout
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content"
+      android:background="#ffffff" >
+
+      <!-- Header  Starts -->
+
+      <LinearLayout
+          android:id="@+id/header"
+          android:layout_width="fill_parent"
+          android:layout_height="wrap_content"
+          android:background="@layout/header"
+          android:paddingBottom="5dip"
+          android:paddingTop="5dip" >
+
+          <!-- Logo Start -->
+
+          <ImageView
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_marginLeft="10dip"
+              android:src="@drawable/logo"
+              android:contentDescription="@string/logo_description" />
+          <!-- Logo Ends -->
+      </LinearLayout>
+      <!-- Header Ends -->
+
+      <ImageView
+          android:id="@+id/imageView1"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_alignParentLeft="true"
+          android:layout_below="@+id/header"
+          android:src="@drawable/look"
+          android:contentDescription="@string/banniere_description" />
+
+      <RelativeLayout
+          android:id="@+id/relativeLayout1"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_alignParentLeft="true"
+          android:layout_alignParentRight="true"
+          android:layout_below="@+id/imageView1"
+          android:background="#dcdcdc" >
+
+          <ImageView
+              android:id="@+id/imageView2"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:src="@drawable/gauche"
+              android:contentDescription="@string/image_description" />
+
+          <LinearLayout
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_alignParentRight="true"
+              android:layout_alignParentTop="true"
+              android:layout_toRightOf="@+id/imageView2"
+              android:orientation="vertical" >
+
+              <LinearLayout
+                  android:layout_width="wrap_content"
+                  android:layout_height="match_parent" >
+
+                  <TextView
+                      android:id="@+id/registerjobseeker_title"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:text="@string/jobseekerregister_title"
+                      android:textAppearance="?android:attr/textAppearanceMedium"
+                      android:textColor="#24b2eb" />
+              </LinearLayout>
+
+              <LinearLayout
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content" >
+
+                  <TextView
+                      android:id="@+id/registerjobseeker_name"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_weight="0.20"
+                      android:text="@string/jobseekerregister_name"
+                      android:textAppearance="?android:attr/textAppearanceSmall" />
+
+                  <EditText
+                      android:id="@+id/registerjobseeker_nameedit"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_weight="0.65"
+                      android:textColor="@color/bleu"
+                      android:inputType="text" >
+                  </EditText>
+              </LinearLayout>
+
+              <LinearLayout
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content" >
+
+                  <TextView
+                      android:id="@+id/registerjobseeker_firstname"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:text="@string/jobseekerregister_firstname"
+                      android:textAppearance="?android:attr/textAppearanceSmall" />
+
+                  <EditText
+                      android:id="@+id/registerjobseeker_firstnameedit"
+                      android:layout_width="0dp"
+                      android:layout_height="wrap_content"
+                      android:layout_weight="0.65"
+                      android:inputType="text" />
+              </LinearLayout>
+
+              <LinearLayout
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:gravity="right" >
+
+                  <TextView
+                      android:id="@+id/registerjobseeker_email"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_weight="0.07"
+                      android:text="@string/jobseekerregister_email" />
+
+                  <EditText
+                      android:id="@+id/registerjobseeker_emailedit"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_weight="0.18"
+                      android:inputType="textEmailAddress" />
+
+              </LinearLayout>
+
+              <LinearLayout
+                  android:layout_width="match_parent"
+                  android:layout_height="52dp" >
+
+                  <TextView
+                      android:id="@+id/registerjobseeker_password"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_weight="0.10"
+                      android:text="@string/jobseekerregister_password" />
+
+                  <EditText
+                      android:id="@+id/registerjobseeker_passwordedit"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_weight="0.81"
+                      android:inputType="textPassword" />
+
+              </LinearLayout>
+
+              <LinearLayout
+                  android:layout_width="match_parent"
+                  android:layout_height="31dp"
+                  android:gravity="bottom" >
+
+                  <TextView
+                      android:id="@+id/registerjobseeker_retypepassword"
+                      android:layout_width="wrap_content"
+                      android:layout_height="match_parent"
+                      android:text="@string/jobseekerregister_retypepassword" />
+
+              </LinearLayout>
+
+              <LinearLayout
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content" >
+
+                  <EditText
+                      android:id="@+id/registerjobseeker_retypepasswordedit"
+                      android:layout_width="0dp"
+                      android:layout_height="wrap_content"
+                      android:layout_weight="0.56"
+                      android:inputType="textPassword" />
+
+              </LinearLayout>
+
+              <LinearLayout
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:gravity="center_horizontal" >
+
+                  <ImageButton
+                      android:id="@+id/registerjobseeker_ok"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:background="@null"
+                      android:src="@drawable/btnok"
+                      android:contentDescription="@string/jobseekerregister_ok" />
+
+              </LinearLayout>
+
+          </LinearLayout>
+
+      </RelativeLayout>
+  </RelativeLayout>
+
+</ScrollView>
