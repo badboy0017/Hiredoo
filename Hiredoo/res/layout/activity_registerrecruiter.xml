@@ -37,7 +37,7 @@
           android:layout_height="wrap_content"
           android:layout_alignParentLeft="true"
           android:layout_below="@+id/header"
-          android:src="@drawable/look" />
+          android:src="@drawable/recruteur" />
 
       <RelativeLayout
           android:id="@+id/relativeLayout1"
@@ -51,15 +51,14 @@
           <ImageView
               android:id="@+id/imageView2"
               android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:src="@drawable/gauche" />
+              android:layout_height="fill_parent"
+              android:src="@drawable/recruiter" />
 
           <LinearLayout
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
               android:layout_alignParentRight="true"
               android:layout_alignParentTop="true"
-              android:layout_marginTop="83dp"
               android:layout_toRightOf="@+id/imageView2"
               android:orientation="vertical" >
 
@@ -68,10 +67,10 @@
                   android:layout_height="match_parent" >
 
                   <TextView
-                      android:id="@+id/txtEmailJobS"
+                      android:id="@+id/txtrecReg"
                       android:layout_width="wrap_content"
                       android:layout_height="wrap_content"
-                      android:text="Authentication :"
+                      android:text="Registration Recruiter :"
                       android:textAppearance="?android:attr/textAppearanceMedium"
                       android:textColor="#24b2eb" />
               </LinearLayout>
@@ -84,16 +83,16 @@
                       android:id="@+id/txtName"
                       android:layout_width="wrap_content"
                       android:layout_height="wrap_content"
-                      android:text="Username :"
+                      android:layout_weight="0.20"
+                      android:text="Name :"
                       android:textAppearance="?android:attr/textAppearanceSmall" />
 
                   <EditText
                       android:id="@+id/edtTxtName"
                       android:layout_width="wrap_content"
                       android:layout_height="wrap_content"
-                      android:layout_weight="1"
+                      android:layout_weight="0.65"
                       android:textColor="@color/blue" >
-
                       <requestFocus />
                   </EditText>
               </LinearLayout>
@@ -106,15 +105,14 @@
                       android:id="@+id/textView3"
                       android:layout_width="wrap_content"
                       android:layout_height="wrap_content"
-                      android:text="Password :"
+                      android:text="First Name :"
                       android:textAppearance="?android:attr/textAppearanceSmall" />
 
                   <EditText
                       android:id="@+id/edtFirstName"
                       android:layout_width="wrap_content"
                       android:layout_height="wrap_content"
-                      android:layout_weight="1"
-                      android:inputType="textPassword" />
+                      android:layout_weight="0.65" />
               </LinearLayout>
 
               <LinearLayout
@@ -122,40 +120,79 @@
                   android:layout_height="wrap_content"
                   android:gravity="right" >
 
+                  <TextView
+                      android:id="@+id/txtEmailJobS"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_weight="0.07"
+                      android:text="Email" />
+
+                  <EditText
+                      android:id="@+id/edtTxtEmailJobS"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_weight="0.18"
+                      android:inputType="textEmailAddress" />
+
+              </LinearLayout>
+
+              <LinearLayout
+                  android:layout_width="match_parent"
+                  android:layout_height="52dp" >
+
+                  <TextView
+                      android:id="@+id/txtPassword"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_weight="0.10"
+                      android:text="Password :" />
+
+                  <EditText
+                      android:id="@+id/edtPasswordJobS"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_weight="0.81"
+                      android:inputType="textPassword" />
+
+              </LinearLayout>
+
+              <LinearLayout
+                  android:layout_width="match_parent"
+                  android:layout_height="31dp"
+                  android:gravity="bottom" >
+
+                  <TextView
+                      android:id="@+id/textView1"
+                      android:layout_width="wrap_content"
+                      android:layout_height="match_parent"
+                      android:text="Retype password :" />
+
+              </LinearLayout>
+
+              <LinearLayout
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content" >
+
+                  <EditText
+                      android:id="@+id/edtTxtRePasswordJobS"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_weight="0.56"
+                      android:inputType="textPassword" />
+
+              </LinearLayout>
+
+              <LinearLayout
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:gravity="center_horizontal" >
+
                   <ImageButton
-                      android:id="@+id/btnOkAuth"
+                      android:id="@+id/btnOkRegRecruiter"
                       android:layout_width="wrap_content"
                       android:layout_height="wrap_content"
                       android:background="@null"
                       android:src="@drawable/btnok" />
-
-              </LinearLayout>
-
-              <LinearLayout
-                  android:layout_width="match_parent"
-                  android:layout_height="wrap_content"
-                  android:gravity="center_horizontal|center" >
-
-                  <TextView
-                      android:id="@+id/lienRegisterRecruter"
-                      android:layout_width="match_parent"
-                      android:layout_height="wrap_content"
-                      android:text="Register as a recruiter->"
-                      android:textColor="#24b2eb" />
-
-              </LinearLayout>
-
-              <LinearLayout
-                  android:layout_width="match_parent"
-                  android:layout_height="wrap_content"
-                  android:gravity="center_horizontal|center" >
-
-                  <TextView
-                      android:id="@+id/lienRegisterJobS"
-                      android:layout_width="wrap_content"
-                      android:layout_height="wrap_content"
-                      android:text="register as a jobseeker->"
-                      android:textColor="#24b2eb" />
 
               </LinearLayout>
 
