@@ -3,10 +3,14 @@ package com.projet.hiredoo;
 import java.io.File;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.KeyEvent;
 import android.view.Menu;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -15,6 +19,34 @@ public class MainActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		/*
+		 * programmation des bouttons
+		 * */
+		//Boutton Close qui permet de fermer la fenetre
+		ImageButton bouttonClose = (ImageButton) findViewById(R.id.btnClose);
+		bouttonClose.setOnClickListener(new OnClickListener() {
+				
+				@Override
+				public void onClick(View v) {
+					finish();
+				}
+			});
+	
+
+
+		//Boutton go now
+		ImageButton bouttonGo = (ImageButton) findViewById(R.id.btnGoNow);
+		bouttonGo.setOnClickListener(new OnClickListener() {
+				
+				@Override
+				public void onClick(View v) {
+					Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+					startActivity(intent);
+
+				}
+			});
+		
+
 		
 		// Test du 1er lancement de l'application
 		File ini = new File(getFileStreamPath(Constante.file_ini).toString());
