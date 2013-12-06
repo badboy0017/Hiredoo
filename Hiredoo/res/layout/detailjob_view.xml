@@ -2,7 +2,103 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical"
+    android:background="@color/gris_background" >
+    
+    <LinearLayout 
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:background="@layout/header"
+	    android:orientation="vertical" >
+	    
+	    <ImageView 
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:src="@drawable/logo"
+	        android:scaleType="fitStart"
+	        android:layout_marginLeft="10sp"
+	        android:contentDescription="@string/logo_description" />
+	    
+    </LinearLayout>
+    
+    <LinearLayout 
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical" >
+	    
+        <TextView 
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:text="@string/detailjob_name"
+			android:textColor="@color/rouge_bordeau" />
+	        
+		<View 
+			android:layout_width="fill_parent"
+			android:layout_height="2dp"       
+			android:background="@color/noir" />
+		
+		<TextView
+			android:id="@+id/detailjob_name"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_margin="5sp"
+			android:textColor="@color/bleu_ciel"
+			android:text="Stage PFE Android" />
+		
+		<TextView 
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:text="@string/detailjob_description"
+			android:textColor="@color/rouge_bordeau" />
+	        
+		<View 
+			android:layout_width="fill_parent"
+			android:layout_height="2dp"       
+			android:background="@color/noir" />
+		
+		<TextView
+			android:id="@+id/detailjob_description"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_margin="5sp"
+			android:textColor="@color/bleu_ciel"
+			android:text="Developpeur Android Bac+5" />
+		
+		<TextView 
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:text="@string/detailjob_Information"
+			android:textColor="@color/rouge_bordeau" />
+	        
+		<View 
+			android:layout_width="fill_parent"
+			android:layout_height="2dp"       
+			android:background="@color/noir" />
+		
+		<TextView
+			android:id="@+id/detailjob_type"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_margin="5sp"
+			android:textColor="@color/bleu_ciel"
+			android:text="@string/detailjob_type" />
+		
+		<TextView
+			android:id="@+id/detailjob_domaine"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_margin="5sp"
+			android:textColor="@color/bleu_ciel"
+			android:text="@string/detailjob_domaine" />
+		
+		<Button 
+		    android:id="@+id/detailjob_btnpostuler"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:text="Postuler"
+		    android:layout_gravity="right" />
+        
+    </LinearLayout>
     
 
 </LinearLayout>

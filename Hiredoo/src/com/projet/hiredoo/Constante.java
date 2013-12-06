@@ -7,11 +7,13 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.widget.Toast;
+
 import com.utility.hiredoo.ProfileReader;
 import com.utility.hiredoo.SimpleCrypto;
-
-import android.content.Context;
-import android.widget.Toast;
 
 public class Constante {
 	
@@ -20,13 +22,17 @@ public class Constante {
 	public static final String ini_login = "login";
 	public static final String ini_password = "password";
 	public static final String ini_remember = "remember_me";
-	public static final String secret_key = "azerty";
+	public static final String ini_type = "type";
+	public static final String ini_id = "id";
+	public static final String secret_key = "c3265jVeW69A49g";
 	
 	/* Format fichier INI:
 	[application]
 	login=the_login
 	password=the_password_encrypted
-	rememberme=true | false  
+	rememberme=true | false
+	type=recruter | jobseeker
+	id=1 (son ID dans la table de la BD)
 	*/
 		
 	//Fonctions
@@ -53,7 +59,7 @@ public class Constante {
         try {
         	fout = context.openFileOutput(Constante.file_ini, Context.MODE_PRIVATE);
             stream = new OutputStreamWriter(fout);
-            stream.write("[application]\n" + Constante.ini_login + "=empty\n" + Constante.ini_password + "=empty\n" + Constante.ini_remember + "=false");
+            stream.write("[application]\n" + Constante.ini_login + "=null\n" + Constante.ini_password + "=null\n" + Constante.ini_remember + "=false\n" + Constante.ini_type + "=null\n" + Constante.ini_id + "=null");
             stream.flush();
         }
         catch (Exception ex) {
@@ -80,7 +86,7 @@ public class Constante {
         try {
         	fout = context.openFileOutput(Constante.file_ini, Context.MODE_PRIVATE);
             stream = new OutputStreamWriter(fout);
-            stream.write("[application]\n" + Constante.ini_login + "=" + login + "\n" + Constante.ini_password + "=" + password + "\n" + Constante.ini_remember + "=true");
+            stream.write("[application]\n" + Constante.ini_login + "=" + login + "\n" + Constante.ini_password + "=" + password + "\n" + Constante.ini_remember + "=false\n" + Constante.ini_type + "=null\n" + Constante.ini_id + "=null");
             stream.flush();
         }
         catch (Exception ex) {
@@ -165,6 +171,30 @@ public class Constante {
 			Toast.makeText(context, "Decrypt Exception\n" + ex.getMessage(), Toast.LENGTH_LONG).show();
 			return null;
 		}
+	}
+	
+	// Test de la presence d'une connexion internet
+	public static boolean isInternetAvailable(Context context) {
+		
+		try {
+	        ConnectivityManager cm = (ConnectivityManager)context.getSystemService(Context.CONNECTIVITY_SERVICE);
+	        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+	        
+	        if(activeNetwork == null) {
+	        	return false;
+	        }
+	        else {
+	        	if(!(activeNetwork.isConnectedOrConnecting())) {
+	        		return false;
+	        	}
+	        }
+		}
+		catch(Exception ex) {
+			Toast.makeText(context, "isInternetAvailable method exception\n" + ex.getCause() + "\n" + ex.getMessage(), Toast.LENGTH_LONG).show();
+			return false;
+        }
+		
+		return true;
 	}
 
 }

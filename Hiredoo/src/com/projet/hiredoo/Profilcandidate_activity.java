@@ -5,34 +5,34 @@ import java.util.HashMap;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.ActivityNotFoundException;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.Toast;
 
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 
-public class Profil_activity extends Activity implements OnItemClickListener {
+public class Profilcandidate_activity extends Activity implements OnClickListener, OnItemClickListener {
 	
 	private SlidingMenu slidingMenu;
 	private ListView menu_listview;
+	private ImageView video_link;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.profilcandidate_view);
 		
-		/*VideoView vv = (VideoView)findViewById(R.id.profil_video);
-		MediaController mc = new MediaController(this);
-		mc.setAnchorView(vv);
-		Uri video = Uri.parse("http://stagemt.orgfree.com/assets/a.mp4");
-		vv.setVideoURI(video);
-		vv.setMediaController(mc);
-		vv.requestFocus();
-		vv.start();*/
+		video_link = (ImageView)findViewById(R.id.profil_videolink);
+		video_link.setOnClickListener(this);
 		
 		// Ajout du Sliding Menu
         slidingMenu = new SlidingMenu(this);
@@ -135,6 +135,23 @@ public class Profil_activity extends Activity implements OnItemClickListener {
 		builder.setMessage("En cours de dev.");
 		builder.create().show();
 		slidingMenu.toggle();
+	}
+
+	@Override
+	public void onClick(View v) {
+		// Test de la connexion internet
+		if(!Constante.isInternetAvailable(this)) {
+			Toast.makeText(this, "Pas de connexion Internet", Toast.LENGTH_LONG).show();
+			return;
+		}
+		
+		Intent video_intent = new Intent(this, Video_activity.class);
+		try {
+			startActivity(video_intent);
+		}
+		catch(ActivityNotFoundException ex) {
+			Toast.makeText(this, "Activity introuvable.\n" + ex.getMessage(), Toast.LENGTH_LONG).show();
+		}
 	}
 
 }

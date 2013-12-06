@@ -4,9 +4,9 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
     
-    <TextView 
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:text="This is the land layout for the view 'Register Jobseeker'"/>
+    <VideoView 
+		android:id="@+id/video_player"
+		android:layout_width="fill_parent"
+		android:layout_height="fill_parent" />
 
 </LinearLayout>

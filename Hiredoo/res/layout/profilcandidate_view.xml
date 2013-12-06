@@ -3,198 +3,158 @@
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	android:layout_width="fill_parent"
 	android:layout_height="fill_parent"
-	android:fillViewport="true">
+	android:scrollbars="none"
+	android:fillViewport="true" >
 	
-	<RelativeLayout
-		android:layout_width="fill_parent"
-		android:layout_height="wrap_content"
-		android:background="@color/blanc" >
-		
-		<!-- Header  Starts -->
-		<LinearLayout
-			android:id="@+id/header"
-			android:layout_width="fill_parent"
-			android:layout_height="wrap_content"
-			android:background="@layout/header"
-			android:paddingBottom="5dip"
-			android:paddingTop="5dip" >
-			
-			<!-- Logo Start -->
-			<ImageView
+	<LinearLayout 
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:orientation="vertical" >
+	
+	    <LinearLayout 
+		    android:layout_width="match_parent"
+		    android:layout_height="wrap_content"
+		    android:background="@layout/header"
+		    android:orientation="horizontal" >
+		    
+	        <ImageView 
+		        android:layout_width="50dp"
+		        android:layout_height="50dp"
+		        android:src="@drawable/less_than"
+		        android:scaleType="fitStart"
+		        android:layout_marginLeft="10sp"
+		        android:contentDescription="@string/logo_description" />
+	    
+		    <ImageView 
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:src="@drawable/logo"
+		        android:scaleType="fitStart"
+		        android:layout_marginLeft="10sp"
+		        android:contentDescription="@string/logo_description" />
+	    
+	    </LinearLayout>
+	    
+	    <LinearLayout 
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_margin="5sp"
+	        android:background="@color/gris_background"
+	        android:orientation="horizontal" >
+	    
+	        <ImageView 
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:src="@drawable/profileimage"
+	        android:layout_marginRight="5sp"
+	        android:contentDescription="@string/image_description" />
+	        
+	        <TextView 
+	            android:id="@+id/profil_name"
+	            android:layout_width="fill_parent"
+	            android:layout_height="wrap_content"
+	            android:textIsSelectable="true"
+	            android:text="\nTurki Hamza\nAndroid Developer" />
+	        
+	    </LinearLayout>
+	    
+	    <LinearLayout 
+	        android:layout_width="fill_parent"
+	        android:layout_height="80dp"
+	        android:orientation="vertical"
+	        android:gravity="center"
+	        android:layout_marginLeft="5dp"
+	        android:layout_marginRight="5dp"
+	        android:background="@color/noir" >
+	        
+	        <ImageView 
+		        android:id="@+id/profil_videolink"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-				android:layout_marginLeft="10dip"
-				android:src="@drawable/logo"
-				android:contentDescription="@string/logo_description" />
-			<!-- Logo Ends -->
-		</LinearLayout>
-		<!-- Header Ends -->
-		
-		<ImageView
-			android:id="@+id/imageView1"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:layout_alignParentLeft="true"
-			android:layout_below="@+id/header"
-			android:src="@drawable/look"
-			android:contentDescription="@string/banniere_description" />
-		
-		<RelativeLayout
-			android:layout_width="fill_parent"
-			android:layout_height="fill_parent"
-			android:layout_alignParentLeft="true"
-			android:layout_below="@+id/imageView1"
-			android:background="#dcdcdc" >
+				android:src="@drawable/play_icon"
+				android:contentDescription="@string/profilcandidate_video_description" />
+	        
+	    </LinearLayout>
+	    
+	    <LinearLayout 
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_margin="5sp"
+	        android:background="@color/gris_background"
+	        android:orientation="vertical" >
+	        
+	        <TextView 
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:text="@string/profilcandidate_experience"
+				android:textColor="@color/bleu_ciel" />
+	        
+			<View 
+				android:layout_width="fill_parent"
+				android:layout_height="2dp"       
+				android:background="@color/noir" />
 			
-			<RelativeLayout
-				android:id="@+id/relativeLayout1"
+			<TextView
+				android:id="@+id/profil_experience"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-				android:layout_alignParentLeft="true"
-				android:layout_alignParentRight="true"
-				android:layout_alignParentTop="true" >
-				
-				<ImageView
-					android:id="@+id/profil_img"
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					android:src="@drawable/profileimage"
-					android:contentDescription="@string/image_description" />
-				
-				<LinearLayout
-					android:id="@+id/linearLayout1"
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					android:layout_alignParentTop="true"
-					android:layout_toRightOf="@+id/profil_img"
-					android:orientation="vertical" >
-					
-					<LinearLayout
-						android:layout_width="match_parent"
-						android:layout_height="wrap_content" >
-						
-						<TextView
-							android:id="@+id/profil_name"
-							android:layout_width="fill_parent"
-							android:layout_height="wrap_content"
-							android:text="Kais Dkhili" />
-					</LinearLayout>
-					
-					<LinearLayout
-					    android:layout_width="match_parent"
-					    android:layout_height="wrap_content" >
-						
-						<TextView
-							android:id="@+id/profil_description"
-							android:layout_width="fill_parent"
-							android:layout_height="wrap_content"
-							android:text="Computer science Ingineer, Developper Android " />
-					</LinearLayout>
-				</LinearLayout>
-			</RelativeLayout>
+				android:layout_margin="5sp"
+				android:text="many experiences with many entreprise with many stages" />
 			
-			<LinearLayout
+			<TextView 
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:text="@string/profilcandidate_education"
+				android:textColor="@color/bleu_ciel" />
+					
+			<View 
+				android:layout_width="fill_parent"
+				android:layout_height="2dp"       
+				android:background="@color/noir" />
+			
+			<TextView
+				android:id="@+id/profil_education"
+				android:layout_width="238dp"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="5sp"
+				android:layout_marginBottom="5sp"
+				android:text="Engineer diplome , Baccalaureat diplome" />
+			
+			<TextView 
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:text="@string/profilcandidate_language"
+				android:textColor="@color/bleu_ciel" />
+			
+			<View 
+				android:layout_width="fill_parent"
+				android:layout_height="2dp"       
+				android:background="@color/noir" />
+			
+			<TextView
+				android:id="@+id/profil_langue"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-				android:orientation="vertical"
-				android:layout_below="@+id/relativeLayout1" >
-				<!-- 
-			    <VideoView 
-			        android:id="@+id/profil_video"
-			        android:layout_width="fill_parent"
-			        android:layout_height="100dp" />
-				 -->
-				<TextView 
-					android:layout_width="fill_parent"
-                 		android:layout_height="wrap_content"
-                 		android:text="@string/profilcandidate_experience"
-                 		android:textColor="@color/bleu_ciel" />
+				android:text="English , French , Arabic" />
+			
+			<TextView 
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:text="@string/profilcandidate_contact"
+				android:textColor="@color/bleu_ciel" />
+			
+			<View 
+				android:layout_width="fill_parent"
+				android:layout_height="2dp"       
+				android:background="@color/noir" />
 				
-				<View 
-					android:layout_width="fill_parent"
-           	  		android:layout_height="2dp"       
-             	  		android:background="@color/noir" />
-				
-				<LinearLayout
-					android:layout_width="match_parent"
-					android:layout_height="wrap_content" >
-					
-					<TextView
-						android:id="@+id/profil_experience"
-						android:layout_width="wrap_content"
-						android:layout_height="wrap_content"
-						android:text="many experiences with many entreprise with many stages" />
-				</LinearLayout>
-				
-				<TextView 
-                 		android:layout_width="fill_parent"
-                 		android:layout_height="wrap_content"
-                 		android:text="@string/profilcandidate_education"
-                 		android:textColor="@color/bleu_ciel" />
-				
-				<View 
-					android:layout_width="fill_parent"
-            	  	android:layout_height="2dp"       
-   	          	  	android:background="@color/noir" />
-				
-				<LinearLayout
-					android:layout_width="match_parent"
-					android:layout_height="wrap_content" >
-					
-					<TextView
-						android:id="@+id/profil_education"
-						android:layout_width="238dp"
-						android:layout_height="wrap_content"
-						android:text="Engineer diplome , Baccalaureat diplome" />
-				
-				</LinearLayout>
-				
-				<TextView 
-                  	android:layout_width="fill_parent"
-                  	android:layout_height="wrap_content"
-                  	android:text="@string/profilcandidate_language"
-                  	android:textColor="@color/bleu_ciel" />
-				
-				<View 
-					android:layout_width="fill_parent"
-            	  	android:layout_height="2dp"       
-              	  	android:background="@color/noir" />
-				
-				<LinearLayout
-					android:layout_width="match_parent"
-					android:layout_height="wrap_content" >
-					
-					<TextView
-						android:id="@+id/profil_langue"
-						android:layout_width="wrap_content"
-						android:layout_height="wrap_content"
-						android:text="English , French , Arabic" />
-				
-				</LinearLayout>
-				
-				<TextView 
-                  	android:layout_width="fill_parent"
-                  	android:layout_height="wrap_content"
-                  	android:text="@string/profilcandidate_contact"
-                  	android:textColor="@color/bleu_ciel" />
-				
-				<View 
-					android:layout_width="fill_parent"
-            	  	android:layout_height="2dp"       
-              	  	android:background="@color/noir" />
-				
-				<LinearLayout
-				    android:layout_width="match_parent"
-				    android:layout_height="wrap_content" >
-					
-					<TextView 
-					    android:id="@+id/profil_contact"
-					    android:layout_width="wrap_content"
-					    android:layout_height="wrap_content"
-					    android:text="..." />
-				
-				</LinearLayout>
-			</LinearLayout>
-		</RelativeLayout>
-	</RelativeLayout>
+			<TextView 
+				android:id="@+id/profil_contact"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="..." />
+	        
+	    </LinearLayout>
+	    
+	</LinearLayout>
 </ScrollView>

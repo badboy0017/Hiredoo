@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class Detail_job extends Activity {
+public class Detailjob_activity extends Activity {
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

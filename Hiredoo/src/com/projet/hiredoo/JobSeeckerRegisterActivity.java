@@ -3,12 +3,13 @@ package com.projet.hiredoo;
 import android.app.Activity;
 import android.os.Bundle;
 
-public class RegisterRecruiterActivity extends Activity {
+public class JobSeeckerRegisterActivity extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.registerrecruiter_view);
+		setContentView(R.layout.jobseekerregister_view);
 	}
+	
 
 }

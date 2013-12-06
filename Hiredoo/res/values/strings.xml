@@ -14,23 +14,23 @@
     <string name="login_register_recruter">Register as a recruiter -></string>
     <string name="login_register_candidate">Register as a job Seeker -></string>
     
-    <string name="presentation_text">You are Looking for a job ? You are hiring a condidate ? Good you are using the best way !! HireGo is a mobile application that you allow to post a cv , a video that you describe. it is also a way that allow employeeto finds a good condidate. With HireDo you will not use jornal to search a job , Get Ready for the Hiring !!!</string>
+    <string name="presentation_text">You are Looking for a job ?\nYou are hiring a condidate ?\nGood you are using the best way !!\n\nHireGo is a mobile application that you allow to post a CV , a video that describes you.\nIt is also a way that allow employee to finds a good condidate.\n\nWith HireDo you will not use jornal to search a job , Get Ready for the Hiring !!!</string>
     <string name="presentation_closebutton_description">Close</string>
     <string name="presentation_gobutton_description">Go Now</string>
     
     <string name="jobseekerregister_title">Registration Jobseeker</string>
-    <string name="jobseekerregister_name">Name</string>
-    <string name="jobseekerregister_firstname">First Name</string>
-    <string name="jobseekerregister_email">Email</string>
-    <string name="jobseekerregister_password">Password</string>
+    <string name="jobseekerregister_name">Your name</string>
+    <string name="jobseekerregister_firstname">Your first name</string>
+    <string name="jobseekerregister_email">Your email address</string>
+    <string name="jobseekerregister_password">Enter Password</string>
     <string name="jobseekerregister_retypepassword">Retype Password</string>
     <string name="jobseekerregister_ok">OK</string>
     
     <string name="recruterregister_title">Registration Recruiter</string>
-    <string name="recruterregister_name">Enterprise Name</string>
+    <string name="recruterregister_enterprisename">The Enterprise Name</string>
     <string name="recruterregister_activitysector">Activity Sector</string>
-    <string name="recruterregister_email">Email</string>
-    <string name="recruterregister_password">Password</string>
+    <string name="recruterregister_email">Your Email</string>
+    <string name="recruterregister_password">Enter Password</string>
     <string name="recruterregister_retypepassword">Retype password</string>
     <string name="recruterregister_ok">OK</string>
     
@@ -38,6 +38,17 @@
     <string name="profilcandidate_education">Education</string>
     <string name="profilcandidate_language">Languages</string>
     <string name="profilcandidate_contact">Contact</string>
+    <string name="profilcandidate_video_description">Video</string>
+    
+    <string name="detailjob_name">Name</string>
+    <string name="detailjob_description">Description</string>
+    <string name="detailjob_Information">Informations</string>
+    <string name="detailjob_type">Type: </string>
+    <string name="detailjob_domaine">Domaine: </string>
+    
+    <string name="postulerjob_cv">Choose a CV</string>
+    <string name="postulerjob_lm">Choose a Motivation Letter</string>
+    <string name="postulerjob_video">Choose a Video</string>
     
     <string name="listjobmenu_type">Select Domain</string>
     <string name="listjobmenu_search">Search</string>
