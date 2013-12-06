@@ -56,6 +56,14 @@
             android:label="@string/app_name"
             android:theme="@android:style/Theme.Light.NoTitleBar" ></activity>
         
+        <activity android:name="com.projet.hiredoo.Listcandidate_activity"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Light.NoTitleBar" ></activity>
+        
+        <activity android:name="com.projet.hiredoo.Listenterprise_activity"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Light.NoTitleBar" ></activity>
+        
         <activity android:name="com.projet.hiredoo.Video_activity"
             android:label="@string/app_name"
             android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen"

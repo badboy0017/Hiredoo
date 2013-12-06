@@ -8,7 +8,6 @@ import android.app.AlertDialog;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
@@ -112,13 +111,6 @@ public class Profilcandidate_activity extends Activity implements OnClickListene
         menu_listview.setOnItemClickListener(this);
 	}
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.main, menu);
-		return true;
-	}
-	
 	@Override
     public void onBackPressed() {
         if(slidingMenu.isMenuShowing()) {

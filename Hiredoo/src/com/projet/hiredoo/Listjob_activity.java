@@ -28,7 +28,7 @@ public class Listjob_activity extends Activity implements OnItemClickListener {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.liste_job_view);
+		setContentView(R.layout.listjob_view);
 		
 		//Liste des jobs
 		job_listview = (ListView)findViewById(R.id.list_job);

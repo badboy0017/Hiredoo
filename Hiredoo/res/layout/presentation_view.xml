@@ -24,6 +24,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:src="@drawable/look"
+        android:background="@color/noir"
         android:contentDescription="@string/banniere_description" />
     
     <LinearLayout 
@@ -50,7 +51,7 @@
                 android:layout_weight="1"
                 android:layout_margin="5sp"
                 android:text="@string/presentation_text"
-                android:textColor="#0055FF"
+                android:textColor="@color/rouge_bordeau"
                 android:textSize="15sp" />
             
             <LinearLayout 

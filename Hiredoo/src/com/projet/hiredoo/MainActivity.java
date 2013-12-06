@@ -61,13 +61,36 @@ public class MainActivity extends Activity implements OnClickListener {
 		
 		// Sinon
 		// Appel AsyncTask pour avoir les données de listjob
-		Intent listjob_intent = new Intent(this, Listjob_activity.class);
-		try {
-			startActivity(listjob_intent);
+		String type = Constante.getINIvalue(this, Constante.ini_type);
+		if(type.equals("jobseeker")) {
+			Intent listjob_intent = new Intent(this, Listjob_activity.class);
+			try {
+				startActivity(listjob_intent);
+			}
+			catch(ActivityNotFoundException ex) {
+				Toast.makeText(this, "Activity introuvable.\n" + ex.getMessage(), Toast.LENGTH_LONG).show();
+			}
 		}
-		catch(ActivityNotFoundException ex) {
-			Toast.makeText(this, "Activity introuvable.\n" + ex.getMessage(), Toast.LENGTH_LONG).show();
+		else if(type.equals("recruter")) {
+			/*Intent profilEnterprise_intent = new Intent(this, *.class);
+			try {
+				startActivity(profilEnterprise_intent);
+			}
+			catch(ActivityNotFoundException ex) {
+				Toast.makeText(this, "Activity introuvable.\n" + ex.getMessage(), Toast.LENGTH_LONG).show();
+			}*/
 		}
+		else {
+			//Toast.makeText(this, "Erreur Type de connexion !!", Toast.LENGTH_LONG).show();
+			Intent listjob_intent = new Intent(this, Listjob_activity.class);
+			try {
+				startActivity(listjob_intent);
+			}
+			catch(ActivityNotFoundException ex) {
+				Toast.makeText(this, "Activity introuvable.\n" + ex.getMessage(), Toast.LENGTH_LONG).show();
+			}
+		}
+		
 		finish();
 	}
 	
