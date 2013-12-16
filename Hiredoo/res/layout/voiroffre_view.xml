@@ -22,7 +22,7 @@
     </LinearLayout>
     
     <ListView 
-        android:id="@+id/list_job"
+        android:id="@+id/voirprofil_list"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:divider="@color/rouge_bordeau"

@@ -14,7 +14,8 @@
     <string name="login_register_recruter">Register as a recruiter -></string>
     <string name="login_register_candidate">Register as a job Seeker -></string>
     
-    <string name="presentation_text">You are Looking for a job ?\nYou are hiring a condidate ?\nGood you are using the best way !!\n\nHireGo is a mobile application that you allow to post a CV , a video that describes you.\nIt is also a way that allow employee to finds a good condidate.\n\nWith HireDo you will not use jornal to search a job , Get Ready for the Hiring !!!</string>
+    <string name="presentation_text">You are looking for a job ?\nYou are hiring a condidate ?\nGood, you are using the best way !!\n\nHireDo is a mobile application that allow you to post a CV and a video that describes you.\nIt is also a way that allows employees to find a good candidate.\n\nWith HireDo, you will save time on looking for job, Get Ready for Hiring !!!</string>
+    <string name="presentation_text_land">You are looking for a job ? You are hiring a condidate ? Good, you are using the best way !!\n\nHireDo is a mobile application that allow you to post a CV and a video that describes you. It is also a way that allows employees to find a good candidate.\n\nWith HireDo, you will save time on looking for job, Get Ready for Hiring !!!</string>
     <string name="presentation_closebutton_description">Close</string>
     <string name="presentation_gobutton_description">Go Now</string>
     
@@ -39,6 +40,9 @@
     <string name="profilcandidate_language">Languages</string>
     <string name="profilcandidate_contact">Contact</string>
     <string name="profilcandidate_video_description">Video</string>
+    
+    <string name="profilenterprise_contact">Contact</string>
+    <string name="profilenterprise_telephone">Phones</string>
     
     <string name="detailjob_name">Name</string>
     <string name="detailjob_description">Description</string>

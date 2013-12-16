@@ -4,7 +4,7 @@
     android:versionCode="1"
     android:versionName="1.0" >
 
-    <uses-sdk android:minSdkVersion="11" android:targetSdkVersion="18" />
+    <uses-sdk android:minSdkVersion="11" android:targetSdkVersion="19" />
     
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -36,6 +36,10 @@
             android:label="@string/app_name"
             android:theme="@android:style/Theme.Light.NoTitleBar" ></activity>
         
+        <activity android:name="com.projet.hiredoo.Profilenterprise_activity"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Light.NoTitleBar" ></activity>
+        
         <activity android:name="com.projet.hiredoo.Detailjob_activity"
             android:label="@string/app_name"
             android:theme="@android:style/Theme.Light.NoTitleBar" ></activity>
@@ -48,7 +52,7 @@
             android:label="@string/app_name"
             android:theme="@android:style/Theme.Light.NoTitleBar" ></activity>
         
-        <activity android:name="com.projet.hiredoo.Rechercherjob_activity"
+        <activity android:name="com.projet.hiredoo.Rechercher_activity"
             android:label="@string/app_name"
             android:theme="@android:style/Theme.Light.NoTitleBar" ></activity>
         
@@ -61,6 +65,22 @@
             android:theme="@android:style/Theme.Light.NoTitleBar" ></activity>
         
         <activity android:name="com.projet.hiredoo.Listenterprise_activity"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Light.NoTitleBar" ></activity>
+        
+        <activity android:name="com.projet.hiredoo.Ajouteroffre_activity"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Light.NoTitleBar" ></activity>
+        
+        <activity android:name="com.projet.hiredoo.Modifierprofil_activity"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Light.NoTitleBar" ></activity>
+        
+        <activity android:name="com.projet.hiredoo.Voiroffres_activity"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Light.NoTitleBar" ></activity>
+        
+        <activity android:name="com.projet.hiredoo.Detailoffre_activity"
             android:label="@string/app_name"
             android:theme="@android:style/Theme.Light.NoTitleBar" ></activity>
         

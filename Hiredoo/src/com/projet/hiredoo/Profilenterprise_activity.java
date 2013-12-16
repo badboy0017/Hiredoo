@@ -5,33 +5,25 @@ import java.util.HashMap;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.ActivityNotFoundException;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
-import android.widget.Toast;
 
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 
-public class Profilcandidate_activity extends Activity implements OnClickListener, OnItemClickListener {
+public class Profilenterprise_activity extends Activity implements OnClickListener, OnItemClickListener {
 	
 	private SlidingMenu slidingMenu;
 	private ListView menu_listview;
-	private ImageView video_link;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.profilcandidate_view);
-		
-		video_link = (ImageView)findViewById(R.id.profil_videolink);
-		video_link.setOnClickListener(this);
+		setContentView(R.layout.profilenterprise_view);
 		
 		// Ajout du Sliding Menu
         slidingMenu = new SlidingMenu(this);
@@ -50,51 +42,27 @@ public class Profilcandidate_activity extends Activity implements OnClickListene
         HashMap<String, String> hash_map;
         
         // Ajout des elements à la liste
-    	hash_map = new HashMap<String, String>();
-    	hash_map.put("titre", "Add CV");
-    	hash_map.put("description", "Click to Add a CV");
+        hash_map = new HashMap<String, String>();
+    	hash_map.put("titre", "Search");
+    	hash_map.put("description", "Click to search candidate or enterprise");
     	hash_map.put("img", String.valueOf(R.drawable.ic_launcher));
         listItem.add(hash_map);
         
         hash_map = new HashMap<String, String>();
-    	hash_map.put("titre", "Add LM");
-    	hash_map.put("description", "Click to add a motivation letter");
+    	hash_map.put("titre", "Modify profile");
+    	hash_map.put("description", "Click to modify the profile");
     	hash_map.put("img", String.valueOf(R.drawable.ic_launcher));
         listItem.add(hash_map);
         
         hash_map = new HashMap<String, String>();
-    	hash_map.put("titre", "Add video");
-    	hash_map.put("description", "Click to add video");
+    	hash_map.put("titre", "My jobs");
+    	hash_map.put("description", "Click to see your jobs");
     	hash_map.put("img", String.valueOf(R.drawable.ic_launcher));
         listItem.add(hash_map);
         
         hash_map = new HashMap<String, String>();
-    	hash_map.put("titre", "My experiences");
-    	hash_map.put("description", "Click to add experience");
-    	hash_map.put("img", String.valueOf(R.drawable.ic_launcher));
-        listItem.add(hash_map);
-        
-        hash_map = new HashMap<String, String>();
-    	hash_map.put("titre", "My education");
-    	hash_map.put("description", "Click to add education");
-    	hash_map.put("img", String.valueOf(R.drawable.ic_launcher));
-        listItem.add(hash_map);
-        
-        hash_map = new HashMap<String, String>();
-    	hash_map.put("titre", "My languages");
-    	hash_map.put("description", "Click to add a language");
-    	hash_map.put("img", String.valueOf(R.drawable.ic_launcher));
-        listItem.add(hash_map);
-        
-        hash_map = new HashMap<String, String>();
-    	hash_map.put("titre", "My contacts");
-    	hash_map.put("description", "Click to add contact");
-    	hash_map.put("img", String.valueOf(R.drawable.ic_launcher));
-        listItem.add(hash_map);
-        
-        hash_map = new HashMap<String, String>();
-    	hash_map.put("titre", "My password");
-    	hash_map.put("description", "Click to change password");
+    	hash_map.put("titre", "Add a job");
+    	hash_map.put("description", "Click to add a job");
     	hash_map.put("img", String.valueOf(R.drawable.ic_launcher));
         listItem.add(hash_map);
         
@@ -110,7 +78,7 @@ public class Profilcandidate_activity extends Activity implements OnClickListene
         menu_listview.setAdapter(mSchedule);
         menu_listview.setOnItemClickListener(this);
 	}
-
+	
 	@Override
     public void onBackPressed() {
         if(slidingMenu.isMenuShowing()) {
@@ -131,19 +99,7 @@ public class Profilcandidate_activity extends Activity implements OnClickListene
 
 	@Override
 	public void onClick(View v) {
-		// Test de la connexion internet
-		if(!Constante.isInternetAvailable(this)) {
-			Toast.makeText(this, "Pas de connexion Internet", Toast.LENGTH_LONG).show();
-			return;
-		}
 		
-		Intent video_intent = new Intent(this, Video_activity.class);
-		try {
-			startActivity(video_intent);
-		}
-		catch(ActivityNotFoundException ex) {
-			Toast.makeText(this, "Activity introuvable.\n" + ex.getMessage(), Toast.LENGTH_LONG).show();
-		}
 	}
-
+	
 }

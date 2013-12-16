@@ -7,7 +7,7 @@
     android:background="@android:color/darker_gray" >
     
     <TextView 
-        android:id="@+id/listjob_slidingmenu_titre"
+        android:id="@+id/slidingmenu_titre"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="@string/slidingmenu_titre"

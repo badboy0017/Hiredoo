@@ -18,6 +18,11 @@
 	        android:layout_marginLeft="10sp"
 	        android:contentDescription="@string/logo_description" />
 	    
+	    <View 
+			android:layout_width="fill_parent"
+			android:layout_height="2dp"       
+			android:background="@color/noir" />
+	    
     </LinearLayout>
     
     <LinearLayout 
@@ -43,8 +48,8 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:layout_margin="5sp"
-                android:text="@string/presentation_text"
-                android:textColor="#0055FF"
+                android:text="@string/presentation_text_land"
+                android:textColor="@color/rouge_bordeau"
                 android:textSize="15sp" />
             
             <LinearLayout 

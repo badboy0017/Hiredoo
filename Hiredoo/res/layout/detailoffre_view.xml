@@ -29,7 +29,7 @@
         <TextView 
 			android:layout_width="fill_parent"
 			android:layout_height="wrap_content"
-			android:text="@string/detailjob_name"
+			android:text="Name"
 			android:textColor="@color/rouge_bordeau" />
 	        
 		<View 
@@ -38,7 +38,7 @@
 			android:background="@color/noir" />
 		
 		<TextView
-			android:id="@+id/detailjob_name"
+			android:id="@+id/detailoffre_name"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:layout_margin="5sp"
@@ -48,7 +48,7 @@
 		<TextView 
 			android:layout_width="fill_parent"
 			android:layout_height="wrap_content"
-			android:text="@string/detailjob_description"
+			android:text="Type"
 			android:textColor="@color/rouge_bordeau" />
 	        
 		<View 
@@ -57,17 +57,17 @@
 			android:background="@color/noir" />
 		
 		<TextView
-			android:id="@+id/detailjob_description"
+			android:id="@+id/detailoffre_type"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:layout_margin="5sp"
 			android:textColor="@color/bleu_ciel"
-			android:text="Developpeur Android Bac+5" />
+			android:text="Stage" />
 		
 		<TextView 
 			android:layout_width="fill_parent"
 			android:layout_height="wrap_content"
-			android:text="@string/detailjob_Information"
+			android:text="Description"
 			android:textColor="@color/rouge_bordeau" />
 	        
 		<View 
@@ -76,27 +76,32 @@
 			android:background="@color/noir" />
 		
 		<TextView
-			android:id="@+id/detailjob_type"
+			android:id="@+id/detailoffre_description"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:layout_margin="5sp"
 			android:textColor="@color/bleu_ciel"
-			android:text="@string/detailjob_type" />
+			android:text="description" />
+		
+		<TextView 
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:text="Postule"
+			android:textColor="@color/rouge_bordeau" />
+	        
+		<View 
+			android:layout_width="fill_parent"
+			android:layout_height="2dp"       
+			android:background="@color/noir" />
 		
 		<TextView
-			android:id="@+id/detailjob_domaine"
+			android:id="@+id/detailoffre_postule"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:layout_margin="5sp"
 			android:textColor="@color/bleu_ciel"
-			android:text="@string/detailjob_domaine" />
-		
-		<Button 
-		    android:id="@+id/detailjob_btnpostuler"
-		    android:layout_width="wrap_content"
-		    android:layout_height="wrap_content"
-		    android:text="Postuler"
-		    android:layout_gravity="right" />
+			android:clickable="true"
+			android:text="13 candidates have postulate on this job" />
         
     </LinearLayout>
     

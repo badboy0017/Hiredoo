@@ -136,7 +136,7 @@ public class Listjob_activity extends Activity implements OnItemClickListener {
 	            return true;
 	            
 	        case R.id.listjobmenu_search:
-	        	Intent rechercher_intent = new Intent(this, Rechercherjob_activity.class);
+	        	Intent rechercher_intent = new Intent(this, Rechercher_activity.class);
 	        	try {
 	        		startActivity(rechercher_intent);
 	        	}
@@ -214,7 +214,7 @@ public class Listjob_activity extends Activity implements OnItemClickListener {
 			break;
 			
 		case 1: // rechercher job
-			Intent job_intent = new Intent(this, Rechercherjob_activity.class);
+			Intent job_intent = new Intent(this, Rechercher_activity.class);
 			try {
 				startActivity(job_intent);
 			}
@@ -225,9 +225,9 @@ public class Listjob_activity extends Activity implements OnItemClickListener {
 			break;
 			
 		case 2: // rechercher profil
-			Intent rechprofil_intent = new Intent(this, Rechercherprofil_activity.class);
+			Intent rech_intent = new Intent(this, Rechercher_activity.class);
 			try {
-				startActivity(rechprofil_intent);
+				startActivity(rech_intent);
 			}
 			catch(ActivityNotFoundException ex) {
 				Toast.makeText(this, "Activity introuvable.\n" + ex.getMessage(), Toast.LENGTH_LONG).show();

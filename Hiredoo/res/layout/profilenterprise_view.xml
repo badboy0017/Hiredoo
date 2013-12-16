@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	android:scrollbars="none"
+	android:fillViewport="true" >
+	
+    <LinearLayout 
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:orientation="vertical" >
+	    
+        <LinearLayout 
+		    android:layout_width="match_parent"
+		    android:layout_height="wrap_content"
+		    android:background="@layout/header"
+		    android:orientation="horizontal" >
+		    
+	        <ImageView 
+		        android:layout_width="50dp"
+		        android:layout_height="50dp"
+		        android:src="@drawable/less_than"
+		        android:scaleType="fitStart"
+		        android:layout_marginLeft="10sp"
+		        android:contentDescription="@string/logo_description" />
+	    
+		    <ImageView 
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:src="@drawable/logo"
+		        android:scaleType="fitStart"
+		        android:layout_marginLeft="10sp"
+		        android:contentDescription="@string/logo_description" />
+	    
+	    </LinearLayout>
+	    
+        <LinearLayout 
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_margin="5sp"
+  			android:background="@color/gris_background"
+	        android:orientation="vertical" >
+		    
+            <LinearLayout 
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:orientation="horizontal" >
+	    
+	        <ImageView 
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:src="@drawable/profileimage"
+		        android:layout_marginRight="5sp"
+		        android:contentDescription="@string/image_description" />
+	        
+	        <TextView 
+	            android:id="@+id/profilenterprise_name"
+	            android:layout_width="fill_parent"
+	            android:layout_height="wrap_content"
+	            android:textIsSelectable="true"
+	            android:text="\nEnterprise Name\nActivity sector" />
+	        
+	    	</LinearLayout>
+	    	
+            <TextView 
+                android:id="@+id/profilenterprise_resume"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Resume" />
+            
+            <TextView 
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:text="@string/profilenterprise_contact"
+				android:textColor="@color/bleu_ciel" />
+	        
+			<View 
+				android:layout_width="fill_parent"
+				android:layout_height="2dp"       
+				android:background="@color/noir" />
+			
+			<TextView
+				android:id="@+id/profilenterprise_address"
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:layout_margin="5sp"
+				android:text="address" />
+			
+			<TextView
+				android:id="@+id/profilenterprise_siteweb"
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:layout_margin="5sp"
+				android:text="Site Web" />
+			
+			<TextView
+				android:id="@+id/profilenterprise_email"
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:layout_margin="5sp"
+				android:text="email" />
+			
+			<TextView 
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:text="@string/profilenterprise_telephone"
+				android:textColor="@color/bleu_ciel" />
+	        
+			<View 
+				android:layout_width="fill_parent"
+				android:layout_height="2dp"       
+				android:background="@color/noir" />
+			
+			<TextView
+				android:id="@+id/profilenterprise_telephone"
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:layout_margin="5sp"
+				android:text="Telephone" />
+	    
+		</LinearLayout>
+	    
+	</LinearLayout>
+    
+    
+</ScrollView>
