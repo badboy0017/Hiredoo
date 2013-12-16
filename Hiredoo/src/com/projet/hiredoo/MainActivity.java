@@ -121,14 +121,21 @@ public class MainActivity extends Activity implements OnClickListener {
 		// Login View
 		case R.id.login_btnOk:
 			// This will go to the AsyncTask and call WS
-			Intent listjob_intent = new Intent(this, Listjob_activity.class);
+			
+			
+			// Appel du web service
+			Async_post ap = new Async_post(this);
+			ap.execute(new String[] { "http://10.0.2.2:8080/hello/helloworld", "hamza just test" });
+			
+			
+			/*Intent listjob_intent = new Intent(this, Listjob_activity.class);
 			try {
 				startActivity(listjob_intent);
 			}
 			catch(ActivityNotFoundException ex) {
 				Toast.makeText(this, "Activity introuvable.\n" + ex.getMessage(), Toast.LENGTH_LONG).show();
 			}
-			finish();
+			finish();*/
 			break;
 			
 		case R.id.login_register_recruter:
