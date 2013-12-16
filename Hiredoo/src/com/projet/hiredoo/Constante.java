@@ -24,6 +24,8 @@ public class Constante {
 	public static final String ini_remember = "remember_me";
 	public static final String ini_type = "type";
 	public static final String ini_id = "id";
+	public static final String ini_type_recruter = "recruter";
+	public static final String ini_type_jobseeker = "jobseeker";
 	public static final String secret_key = "c3265jVeW69A49g";
 	
 	/* Format fichier INI:

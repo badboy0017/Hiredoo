@@ -63,11 +63,12 @@
         
         <ImageView 
             android:id="@+id/login_btnOk"
-            android:layout_width="wrap_content"
+            android:layout_width="110dp"
             android:layout_height="wrap_content"
             android:src="@drawable/btnok"
-            android:layout_gravity="end"
-            android:layout_marginLeft="5dp"
+            android:layout_gravity="right"
+            android:scaleX="2"
+            android:scaleY="1.1"
             android:contentDescription="@string/login_ok_description" />
         
         <TextView
@@ -78,6 +79,7 @@
 	        android:textColor="@color/rouge_bordeau"
 	        android:textSize="20sp"
 	        android:layout_gravity="center"
+	        android:layout_marginTop="20dp"
 	        android:clickable="true" />
         
 		<TextView

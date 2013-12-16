@@ -13,9 +13,10 @@
     <string name="login_ok_description">OK_button</string>
     <string name="login_register_recruter">Register as a recruiter -></string>
     <string name="login_register_candidate">Register as a job Seeker -></string>
+    <string name="login_space">\t\t</string>
     
-    <string name="presentation_text">You are looking for a job ?\nYou are hiring a condidate ?\nGood, you are using the best way !!\n\nHireDo is a mobile application that allow you to post a CV and a video that describes you.\nIt is also a way that allows employees to find a good candidate.\n\nWith HireDo, you will save time on looking for job, Get Ready for Hiring !!!</string>
-    <string name="presentation_text_land">You are looking for a job ? You are hiring a condidate ? Good, you are using the best way !!\n\nHireDo is a mobile application that allow you to post a CV and a video that describes you. It is also a way that allows employees to find a good candidate.\n\nWith HireDo, you will save time on looking for job, Get Ready for Hiring !!!</string>
+    <string name="presentation_text">You are looking for a job ?\nYou are hiring a condidate ?\nGood, you are using the best way.\n\nHireDo is a mobile application that allow you to post a CV and a video that describes you.\nIt is also a way that allows employees to find a good candidates.\n\nWith HireDo, you will save time on looking for job, Get Ready for Hiring !!!</string>
+    <string name="presentation_text_land">You are looking for a job ? You are hiring a condidate ? Good, you are using the best way.\n\nHireDo is a mobile application that allow you to post a CV and a video that describes you. It is also a way that allows employees to find a good candidates.\n\nWith HireDo, you will save time on looking for job, Get Ready for Hiring !!!</string>
     <string name="presentation_closebutton_description">Close</string>
     <string name="presentation_gobutton_description">Go Now</string>
     

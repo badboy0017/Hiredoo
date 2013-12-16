@@ -62,7 +62,7 @@ public class MainActivity extends Activity implements OnClickListener {
 		// Sinon
 		// Appel AsyncTask pour avoir les données de listjob
 		String type = Constante.getINIvalue(this, Constante.ini_type);
-		if(type.equals("jobseeker")) {
+		if(type.equals(Constante.ini_type_jobseeker)) {
 			Intent listjob_intent = new Intent(this, Listjob_activity.class);
 			try {
 				startActivity(listjob_intent);
@@ -71,7 +71,7 @@ public class MainActivity extends Activity implements OnClickListener {
 				Toast.makeText(this, "Activity introuvable.\n" + ex.getMessage(), Toast.LENGTH_LONG).show();
 			}
 		}
-		else if(type.equals("recruter")) {
+		else if(type.equals(Constante.ini_type_recruter)) {
 			/*Intent profilEnterprise_intent = new Intent(this, *.class);
 			try {
 				startActivity(profilEnterprise_intent);

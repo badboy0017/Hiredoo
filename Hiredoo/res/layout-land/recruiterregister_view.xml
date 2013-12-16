@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/gris_background" >
+    
+    <LinearLayout 
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:background="@layout/header"
+	    android:orientation="vertical" >
+	    
+	    <ImageView 
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:src="@drawable/logo"
+	        android:scaleType="fitStart"
+	        android:layout_marginLeft="10sp"
+	        android:contentDescription="@string/logo_description" />
+	    
+	    <View 
+			android:layout_width="fill_parent"
+			android:layout_height="2dp"       
+			android:background="@color/noir" />
+	    
+    </LinearLayout>
+    
+    <LinearLayout 
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+	    
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="@string/recruterregister_title"
+			android:textAppearance="?android:attr/textAppearanceMedium"
+			android:textColor="@color/rouge_bordeau"
+			android:layout_margin="10dp"
+			android:layout_gravity="center" />
+		
+		<LinearLayout 
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+            
+		    <EditText 
+	            android:id="@+id/rectuterregister_enterprisename"
+	            android:layout_width="fill_parent"
+	            android:layout_height="40dp"
+	            android:layout_weight="1"
+	            android:inputType="textPersonName"
+	            android:background="@color/blanc"
+	            android:layout_margin="5dp"
+	            android:hint="@string/recruterregister_enterprisename" />
+			
+			<EditText 
+	            android:id="@+id/rectuterregister_activitysector"
+	            android:layout_width="fill_parent"
+	            android:layout_height="40dp"
+	            android:layout_weight="1"
+	            android:inputType="textPersonName"
+	            android:background="@color/blanc"
+	            android:layout_margin="5dp"
+	            android:hint="@string/recruterregister_activitysector" />
+            
+        </LinearLayout>
+		
+		<EditText 
+            android:id="@+id/rectuterregister_email"
+            android:layout_width="fill_parent"
+            android:layout_height="40dp"
+            android:inputType="textEmailAddress"
+            android:background="@color/blanc"
+            android:layout_margin="5dp"
+            android:hint="@string/recruterregister_email" />
+		
+		<LinearLayout 
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+			
+		    <EditText 
+	            android:id="@+id/rectuterregister_password"
+	            android:layout_width="fill_parent"
+	            android:layout_height="40dp"
+	            android:layout_weight="1"
+	            android:inputType="textPassword"
+	            android:background="@color/blanc"
+	            android:layout_margin="5dp"
+	            android:hint="@string/recruterregister_password" />
+			
+			<EditText 
+	            android:id="@+id/rectuterregister_retypepassword"
+	            android:layout_width="fill_parent"
+	            android:layout_height="40dp"
+	            android:layout_weight="1"
+	            android:inputType="textPassword"
+	            android:background="@color/blanc"
+	            android:layout_margin="5dp"
+	            android:hint="@string/recruterregister_retypepassword" />
+            
+        </LinearLayout>
+		
+		<ImageView 
+            android:id="@+id/rectuterregister_btnOk"
+            android:layout_width="110dp"
+	            android:layout_height="wrap_content"
+	            android:src="@drawable/btnok"
+	            android:layout_gravity="right"
+	            android:scaleX="1.9"
+	            android:scaleY="1.1"
+            android:contentDescription="@string/recruterregister_ok" />
+        
+    </LinearLayout>
+    
+
+</LinearLayout>
