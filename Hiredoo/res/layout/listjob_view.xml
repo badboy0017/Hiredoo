@@ -16,7 +16,7 @@
 	        android:layout_height="wrap_content"
 	        android:src="@drawable/logo"
 	        android:scaleType="fitStart"
-	        android:layout_marginLeft="10sp"
+	        android:layout_marginLeft="@dimen/margin_medium"
 	        android:contentDescription="@string/logo_description" />
 	    
     </LinearLayout>

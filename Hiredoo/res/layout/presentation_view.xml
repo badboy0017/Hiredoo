@@ -15,7 +15,7 @@
 	        android:layout_height="wrap_content"
 	        android:src="@drawable/logo"
 	        android:scaleType="fitStart"
-	        android:layout_marginLeft="10sp"
+	        android:layout_marginLeft="@dimen/margin_medium"
 	        android:contentDescription="@string/logo_description" />
 	    
     </LinearLayout>
@@ -49,7 +49,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:layout_margin="5sp"
+                android:layout_margin="@dimen/margin_small"
                 android:text="@string/presentation_text"
                 android:textColor="@color/rouge_bordeau"
                 android:textSize="15sp" />
@@ -58,7 +58,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:gravity="right"
-                android:layout_margin="5sp"
+                android:layout_margin="@dimen/margin_small"
                 android:orientation="horizontal" >
                 
                 <ImageView 

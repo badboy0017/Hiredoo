@@ -123,9 +123,13 @@ public class MainActivity extends Activity implements OnClickListener {
 			// This will go to the AsyncTask and call WS
 			
 			
-			// Appel du web service
-			Async_post ap = new Async_post(this);
-			ap.execute(new String[] { "http://10.0.2.2:8080/hello/helloworld", "hamza just test" });
+			// Appel du web service POST
+			//Async_post ap = new Async_post(this);
+			//ap.execute(new String[] { Constante.url, "hamza_just_test" });
+			
+			// Appel du web service GET
+			Async_get ag = new Async_get(this);
+			ag.execute(new String[] { Constante.url });
 			
 			
 			/*Intent listjob_intent = new Intent(this, Listjob_activity.class);

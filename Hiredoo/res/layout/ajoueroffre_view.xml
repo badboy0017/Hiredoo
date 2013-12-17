@@ -24,41 +24,36 @@
     <LinearLayout 
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal" >
+        android:orientation="vertical" >
 	    
         <LinearLayout 
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="horizontal" >
             
             <TextView 
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Title:"/>
-            
-            <TextView 
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Type:"/>
-            
-            <TextView 
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Description:"/>
-            
-        </LinearLayout>
-        
-        <LinearLayout 
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" >
+                android:text="Title:" />
             
             <EditText 
                 android:id="@+id/ajoueroffre_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:inputType="text"
-                android:hint="title"/>
+                android:hint="title" />
+            
+        </LinearLayout>
+        
+        <LinearLayout 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+            
+            <TextView 
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Type:" />
             
             <Spinner 
 	            android:id="@+id/ajouteroffre_type"
@@ -66,13 +61,24 @@
 	            android:layout_height="wrap_content"
 	            android:background="@color/blanc" />
             
+        </LinearLayout>
+        
+        <LinearLayout 
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+            
+            <TextView 
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Description:" />
+            
             <EditText 
                 android:id="@+id/ajouteroffre_description"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:inputType="text"
-                android:hint="Description"/>
-            
+                android:hint="Description" />
         </LinearLayout>
         
     </LinearLayout>

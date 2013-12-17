@@ -16,7 +16,7 @@
 	        android:layout_height="wrap_content"
 	        android:src="@drawable/logo"
 	        android:scaleType="fitStart"
-	        android:layout_marginLeft="10sp"
+	        android:layout_marginLeft="@dimen/margin_medium"
 	        android:contentDescription="@string/logo_description" />
 	    
     </LinearLayout>
@@ -39,7 +39,7 @@
 			android:text="@string/recruterregister_title"
 			android:textAppearance="?android:attr/textAppearanceMedium"
 			android:textColor="@color/rouge_bordeau"
-			android:layout_margin="10dp"
+			android:layout_margin="@dimen/margin_medium"
 			android:layout_gravity="center" />
 		
 		<EditText 
@@ -48,7 +48,7 @@
             android:layout_height="40dp"
             android:inputType="textPersonName"
             android:background="@color/blanc"
-            android:layout_margin="5dp"
+            android:layout_margin="@dimen/margin_small"
             android:hint="@string/recruterregister_enterprisename" />
 		
 		<EditText 
@@ -57,7 +57,7 @@
             android:layout_height="40dp"
             android:inputType="textPersonName"
             android:background="@color/blanc"
-            android:layout_margin="5dp"
+            android:layout_margin="@dimen/margin_small"
             android:hint="@string/recruterregister_activitysector" />
 		
 		<EditText 
@@ -66,7 +66,7 @@
             android:layout_height="40dp"
             android:inputType="textEmailAddress"
             android:background="@color/blanc"
-            android:layout_margin="5dp"
+            android:layout_margin="@dimen/margin_small"
             android:hint="@string/recruterregister_email" />
 		
 		<EditText 
@@ -75,7 +75,7 @@
             android:layout_height="40dp"
             android:inputType="textPassword"
             android:background="@color/blanc"
-            android:layout_margin="5dp"
+            android:layout_margin="@dimen/margin_small"
             android:hint="@string/recruterregister_password" />
 		
 		<EditText 
@@ -84,7 +84,7 @@
             android:layout_height="40dp"
             android:inputType="textPassword"
             android:background="@color/blanc"
-            android:layout_margin="5dp"
+            android:layout_margin="@dimen/margin_small"
             android:hint="@string/recruterregister_retypepassword" />
 		
 		<ImageView 

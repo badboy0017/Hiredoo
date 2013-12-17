@@ -27,6 +27,8 @@ public class Constante {
 	public static final String ini_type_recruter = "recruter";
 	public static final String ini_type_jobseeker = "jobseeker";
 	public static final String secret_key = "c3265jVeW69A49g";
+	//public static final String url = "http://10.0.2.2:8080/hello/helloworld";
+	public static final String url = "http://192.168.1.2:8080/hello/helloworld";
 	
 	/* Format fichier INI:
 	[application]

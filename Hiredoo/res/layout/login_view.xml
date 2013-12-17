@@ -15,7 +15,7 @@
 	        android:layout_height="wrap_content"
 	        android:src="@drawable/logo"
 	        android:scaleType="fitStart"
-	        android:layout_marginLeft="10sp"
+	        android:layout_marginLeft="@dimen/margin_medium"
 	        android:contentDescription="@string/logo_description" />
 	    
     </LinearLayout>
@@ -41,7 +41,7 @@
 	        android:textSize="20sp"
 	        android:textColor="@color/rouge_bordeau"
 	        android:gravity="center"
-	        android:layout_margin="5dp" />
+	        android:layout_margin="@dimen/margin_small" />
         
         <EditText 
             android:id="@+id/login_username"
@@ -49,7 +49,7 @@
             android:layout_height="40dp"
             android:inputType="textEmailAddress"
             android:background="@color/blanc"
-            android:layout_margin="5dp"
+            android:layout_margin="@dimen/margin_small"
             android:hint="@string/login_username" />
         
         <EditText 
@@ -58,7 +58,7 @@
             android:layout_height="40dp"
             android:inputType="textPassword"
             android:background="@color/blanc"
-            android:layout_margin="5dp"
+            android:layout_margin="@dimen/margin_small"
             android:hint="@string/login_password" />
         
         <ImageView 
@@ -79,14 +79,14 @@
 	        android:textColor="@color/rouge_bordeau"
 	        android:textSize="20sp"
 	        android:layout_gravity="center"
-	        android:layout_marginTop="20dp"
+	        android:layout_marginTop="@dimen/margin_huge"
 	        android:clickable="true" />
         
 		<TextView
 			android:id="@+id/login_register_recruter"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:layout_marginTop="15dp"
+			android:layout_marginTop="@dimen/margin_big"
 			android:text="@string/login_register_recruter"
 			android:textColor="@color/rouge_bordeau"
 			android:textSize="20sp"

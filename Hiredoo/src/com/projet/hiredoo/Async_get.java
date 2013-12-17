@@ -94,6 +94,11 @@ public class Async_get extends AsyncTask<String, Void, String> {
 		else {
 			// Stop the dialog
 			this.stopDialog();
+			
+			AlertDialog.Builder builder = new AlertDialog.Builder(this.context);
+			builder.setTitle("Resultat requete");
+			builder.setMessage(result);
+			builder.create().show();
 		}
 	}
 	

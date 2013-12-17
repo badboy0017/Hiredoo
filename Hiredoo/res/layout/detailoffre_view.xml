@@ -16,77 +16,108 @@
 	        android:layout_height="wrap_content"
 	        android:src="@drawable/logo"
 	        android:scaleType="fitStart"
-	        android:layout_marginLeft="10sp"
+	        android:layout_marginLeft="@dimen/margin_medium"
 	        android:contentDescription="@string/logo_description" />
+	    
+	    <View 
+			android:layout_width="fill_parent"
+			android:layout_height="@dimen/separator"
+			android:background="@color/noir" />
 	    
     </LinearLayout>
     
     <LinearLayout 
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
+        android:layout_margin="@dimen/margin_small"
         android:orientation="vertical" >
 	    
         <TextView 
 			android:layout_width="fill_parent"
 			android:layout_height="wrap_content"
-			android:text="Name"
+			android:text="Offer Details"
+			android:textSize="@dimen/main_title"
+			android:layout_margin="@dimen/margin_medium"
+			android:gravity="center"
+			android:textColor="@color/rouge_bordeau" />
+	    
+        <TextView 
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:text="@string/detailjob_name"
+			android:textSize="@dimen/title"
 			android:textColor="@color/rouge_bordeau" />
 	        
 		<View 
 			android:layout_width="fill_parent"
-			android:layout_height="2dp"       
+			android:layout_height="@dimen/separator"
 			android:background="@color/noir" />
 		
 		<TextView
 			android:id="@+id/detailoffre_name"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:layout_margin="5sp"
+			android:layout_margin="@dimen/margin_small"
 			android:textColor="@color/bleu_ciel"
+			android:textSize="@dimen/content"
 			android:text="Stage PFE Android" />
 		
 		<TextView 
 			android:layout_width="fill_parent"
 			android:layout_height="wrap_content"
-			android:text="Type"
+			android:text="@string/detailjob_description"
+			android:textSize="@dimen/title"
 			android:textColor="@color/rouge_bordeau" />
 	        
 		<View 
 			android:layout_width="fill_parent"
-			android:layout_height="2dp"       
-			android:background="@color/noir" />
-		
-		<TextView
-			android:id="@+id/detailoffre_type"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:layout_margin="5sp"
-			android:textColor="@color/bleu_ciel"
-			android:text="Stage" />
-		
-		<TextView 
-			android:layout_width="fill_parent"
-			android:layout_height="wrap_content"
-			android:text="Description"
-			android:textColor="@color/rouge_bordeau" />
-	        
-		<View 
-			android:layout_width="fill_parent"
-			android:layout_height="2dp"       
+			android:layout_height="@dimen/separator"
 			android:background="@color/noir" />
 		
 		<TextView
 			android:id="@+id/detailoffre_description"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:layout_margin="5sp"
+			android:layout_margin="@dimen/margin_small"
 			android:textColor="@color/bleu_ciel"
-			android:text="description" />
+			android:textSize="@dimen/content"
+			android:text="Developpeur Android Bac+5" />
+		
+		<TextView 
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:text="@string/detailjob_Information"
+			android:textSize="@dimen/title"
+			android:textColor="@color/rouge_bordeau" />
+	        
+		<View 
+			android:layout_width="fill_parent"
+			android:layout_height="@dimen/separator"
+			android:background="@color/noir" />
+		
+		<TextView
+			android:id="@+id/detailoffre_type"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_margin="@dimen/margin_small"
+			android:textColor="@color/bleu_ciel"
+			android:textSize="@dimen/content"
+			android:text="@string/detailjob_type" />
+		
+		<TextView
+			android:id="@+id/detailoffre_domaine"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_margin="@dimen/margin_small"
+			android:textColor="@color/bleu_ciel"
+			android:textSize="@dimen/content"
+			android:text="@string/detailjob_domaine" />
 		
 		<TextView 
 			android:layout_width="fill_parent"
 			android:layout_height="wrap_content"
 			android:text="Postule"
+			android:textSize="@dimen/title"
 			android:textColor="@color/rouge_bordeau" />
 	        
 		<View 
@@ -101,7 +132,15 @@
 			android:layout_margin="5sp"
 			android:textColor="@color/bleu_ciel"
 			android:clickable="true"
-			android:text="13 candidates have postulate on this job" />
+			android:textSize="@dimen/content"
+			android:text="13 candidates have applied on this job" />
+		
+		<Button 
+		    android:id="@+id/detailoffre_btnsupp"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:text="Delete"
+		    android:layout_gravity="right" />
         
     </LinearLayout>
     

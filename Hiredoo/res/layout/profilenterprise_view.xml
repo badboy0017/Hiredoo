@@ -67,57 +67,65 @@
                 android:id="@+id/profilenterprise_resume"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:text="Resume" />
+                android:layout_margin="@dimen/margin_medium"
+                android:text="Resume"
+                android:textSize="@dimen/content" />
             
             <TextView 
 				android:layout_width="fill_parent"
 				android:layout_height="wrap_content"
 				android:text="@string/profilenterprise_contact"
+				android:textSize="@dimen/title"
 				android:textColor="@color/bleu_ciel" />
 	        
 			<View 
 				android:layout_width="fill_parent"
 				android:layout_height="2dp"       
-				android:background="@color/noir" />
+				android:background="@color/rouge_bordeau" />
 			
 			<TextView
 				android:id="@+id/profilenterprise_address"
 				android:layout_width="fill_parent"
 				android:layout_height="wrap_content"
-				android:layout_margin="5sp"
-				android:text="address" />
+				android:layout_margin="@dimen/margin_small"
+				android:text="address"
+				android:textSize="@dimen/content" />
 			
 			<TextView
 				android:id="@+id/profilenterprise_siteweb"
 				android:layout_width="fill_parent"
 				android:layout_height="wrap_content"
-				android:layout_margin="5sp"
-				android:text="Site Web" />
+				android:layout_margin="@dimen/margin_small"
+				android:text="Site Web"
+				android:textSize="@dimen/content" />
 			
 			<TextView
 				android:id="@+id/profilenterprise_email"
 				android:layout_width="fill_parent"
 				android:layout_height="wrap_content"
-				android:layout_margin="5sp"
-				android:text="email" />
+				android:layout_margin="@dimen/margin_small"
+				android:text="email"
+				android:textSize="@dimen/content" />
 			
 			<TextView 
 				android:layout_width="fill_parent"
 				android:layout_height="wrap_content"
 				android:text="@string/profilenterprise_telephone"
+				android:textSize="@dimen/title"
 				android:textColor="@color/bleu_ciel" />
 	        
 			<View 
 				android:layout_width="fill_parent"
 				android:layout_height="2dp"       
-				android:background="@color/noir" />
+				android:background="@color/rouge_bordeau" />
 			
 			<TextView
 				android:id="@+id/profilenterprise_telephone"
 				android:layout_width="fill_parent"
 				android:layout_height="wrap_content"
-				android:layout_margin="5sp"
-				android:text="Telephone" />
+				android:layout_margin="@dimen/margin_small"
+				android:text="Telephone"
+				android:textSize="@dimen/content" />
 	    
 		</LinearLayout>
 	    
