@@ -46,7 +46,7 @@
             android:orientation="horizontal" >
             
 		    <EditText 
-	            android:id="@+id/rectuterregister_enterprisename"
+	            android:id="@+id/recruiter_register_enterprise_name"
 	            android:layout_width="fill_parent"
 	            android:layout_height="40dp"
 	            android:layout_weight="1"
@@ -56,7 +56,7 @@
 	            android:hint="@string/recruterregister_enterprisename" />
 			
 			<EditText 
-	            android:id="@+id/rectuterregister_activitysector"
+	            android:id="@+id/recruiter_register_activity_sector"
 	            android:layout_width="fill_parent"
 	            android:layout_height="40dp"
 	            android:layout_weight="1"
@@ -68,7 +68,7 @@
         </LinearLayout>
 		
 		<EditText 
-            android:id="@+id/rectuterregister_email"
+            android:id="@+id/recruiter_register_email"
             android:layout_width="fill_parent"
             android:layout_height="40dp"
             android:inputType="textEmailAddress"
@@ -82,7 +82,7 @@
             android:orientation="horizontal" >
 			
 		    <EditText 
-	            android:id="@+id/rectuterregister_password"
+	            android:id="@+id/recruiter_register_password"
 	            android:layout_width="fill_parent"
 	            android:layout_height="40dp"
 	            android:layout_weight="1"
@@ -92,7 +92,7 @@
 	            android:hint="@string/recruterregister_password" />
 			
 			<EditText 
-	            android:id="@+id/rectuterregister_retypepassword"
+	            android:id="@+id/recruiter_register_retypepassword"
 	            android:layout_width="fill_parent"
 	            android:layout_height="40dp"
 	            android:layout_weight="1"
@@ -104,7 +104,7 @@
         </LinearLayout>
 		
 		<ImageView 
-            android:id="@+id/rectuterregister_btnOk"
+            android:id="@+id/recruiter_register_btnOk"
             android:layout_width="110dp"
 	            android:layout_height="wrap_content"
 	            android:src="@drawable/btnok"

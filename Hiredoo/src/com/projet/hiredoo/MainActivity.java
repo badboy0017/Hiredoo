@@ -2,35 +2,32 @@ package com.projet.hiredoo;
 
 import java.io.File;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
-import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends Activity implements OnClickListener {
 	
-	ImageView presentation_close;
-	ImageView presentation_go;
+	private ImageView presentation_close, presentation_go;
 	
-	ImageView login_ok;
-	TextView login_recruter;
-	TextView login_candidate;
+	private ImageView login_ok;
+	private TextView login_recruter, login_candidate;
+	private EditText email, password;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		
-		/*AlertDialog.Builder builder = new AlertDialog.Builder(this);
-		builder.setMessage(Constante.readINIFile(this));
-		builder.create().show();*/
 		
 		// Test du 1er lancement de l'application
 		File ini = new File(getFileStreamPath(Constante.file_ini).toString());
@@ -52,6 +49,8 @@ public class MainActivity extends Activity implements OnClickListener {
 			login_ok = (ImageView)findViewById(R.id.login_btnOk);
 			login_recruter  = (TextView)findViewById(R.id.login_register_recruter);
 			login_candidate = (TextView)findViewById(R.id.login_register_candidate);
+			email = (EditText)findViewById(R.id.login_username);
+			password = (EditText)findViewById(R.id.login_password);
 			
 			login_ok.setOnClickListener(this);
 			login_recruter.setOnClickListener(this);
@@ -59,39 +58,15 @@ public class MainActivity extends Activity implements OnClickListener {
 			return;
 		}
 		
-		// Sinon
-		// Appel AsyncTask pour avoir les données de listjob
-		String type = Constante.getINIvalue(this, Constante.ini_type);
-		if(type.equals(Constante.ini_type_jobseeker)) {
-			Intent listjob_intent = new Intent(this, Listjob_activity.class);
-			try {
-				startActivity(listjob_intent);
-			}
-			catch(ActivityNotFoundException ex) {
-				Toast.makeText(this, "Activity introuvable.\n" + ex.getMessage(), Toast.LENGTH_LONG).show();
-			}
+		// Sinon: user connecté
+		Intent listjob_intent = new Intent(this, Listjob_activity.class);
+		try {
+			startActivity(listjob_intent);
+			finish(); // Pour arreter cette activité quand on affiche la liste des jobs
 		}
-		else if(type.equals(Constante.ini_type_recruter)) {
-			/*Intent profilEnterprise_intent = new Intent(this, *.class);
-			try {
-				startActivity(profilEnterprise_intent);
-			}
-			catch(ActivityNotFoundException ex) {
-				Toast.makeText(this, "Activity introuvable.\n" + ex.getMessage(), Toast.LENGTH_LONG).show();
-			}*/
+		catch(ActivityNotFoundException ex) {
+			Toast.makeText(this, "Activity introuvable.\n" + ex.getMessage(), Toast.LENGTH_LONG).show();
 		}
-		else {
-			//Toast.makeText(this, "Erreur Type de connexion !!", Toast.LENGTH_LONG).show();
-			Intent listjob_intent = new Intent(this, Listjob_activity.class);
-			try {
-				startActivity(listjob_intent);
-			}
-			catch(ActivityNotFoundException ex) {
-				Toast.makeText(this, "Activity introuvable.\n" + ex.getMessage(), Toast.LENGTH_LONG).show();
-			}
-		}
-		
-		finish();
 	}
 	
 	// Just for test => a enlever apres!!
@@ -120,26 +95,19 @@ public class MainActivity extends Activity implements OnClickListener {
 			
 		// Login View
 		case R.id.login_btnOk:
-			// This will go to the AsyncTask and call WS
-			
-			
-			// Appel du web service POST
-			//Async_post ap = new Async_post(this);
-			//ap.execute(new String[] { Constante.url, "hamza_just_test" });
-			
-			// Appel du web service GET
-			Async_get ag = new Async_get(this);
-			ag.execute(new String[] { Constante.url });
-			
-			
-			/*Intent listjob_intent = new Intent(this, Listjob_activity.class);
+			// Préparation de l'objet JSON
+			JSONObject obj = new JSONObject();
 			try {
-				startActivity(listjob_intent);
+	            obj.put("email", this.email.getText().toString());
+	            obj.put("password", this.password.getText().toString());
 			}
-			catch(ActivityNotFoundException ex) {
-				Toast.makeText(this, "Activity introuvable.\n" + ex.getMessage(), Toast.LENGTH_LONG).show();
+			catch (JSONException ex) {
+				Toast.makeText(this, "Erreur JSON\n" + ex.getMessage(), Toast.LENGTH_LONG).show();
 			}
-			finish();*/
+            
+			// Appel du web service POST
+			Async_post ap = new Async_post(this, obj, null);
+			ap.execute(new String[] { Constante.url + Constante.user_login, Constante.url + Constante.enterprise_login });
 			break;
 			
 		case R.id.login_register_recruter:

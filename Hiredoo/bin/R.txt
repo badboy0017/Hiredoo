@@ -80,6 +80,7 @@ int id list_job 0x7f04001f
 int id listjobmenu_search 0x7f04004f
 int id listjobmenu_type 0x7f04004e
 int id login_btnOk 0x7f040022
+int id login_password 0x7f040021
 int id login_register_candidate 0x7f040023
 int id login_register_recruter 0x7f040024
 int id login_username 0x7f040020
@@ -93,7 +94,6 @@ int id modifierprofil_name 0x7f040025
 int id modifierprofil_resume 0x7f040027
 int id modifierprofil_telephone 0x7f04002b
 int id modifierprofil_website 0x7f040029
-int id password 0x7f040021
 int id postulerjob_btnpostuler 0x7f040031
 int id postulerjob_cv 0x7f04002e
 int id postulerjob_lm 0x7f04002f
@@ -116,12 +116,12 @@ int id rechercher_btnrechercher 0x7f040043
 int id rechercher_city 0x7f040041
 int id rechercher_nom 0x7f040040
 int id rechercher_type 0x7f040042
-int id rectuterregister_activitysector 0x7f040045
-int id rectuterregister_btnOk 0x7f040049
-int id rectuterregister_email 0x7f040046
-int id rectuterregister_enterprisename 0x7f040044
-int id rectuterregister_password 0x7f040047
-int id rectuterregister_retypepassword 0x7f040048
+int id recruiter_register_activity_sector 0x7f040045
+int id recruiter_register_btnOk 0x7f040049
+int id recruiter_register_email 0x7f040046
+int id recruiter_register_enterprise_name 0x7f040044
+int id recruiter_register_password 0x7f040047
+int id recruiter_register_retypepassword 0x7f040048
 int id right 0x7f040001
 int id selected_view 0x7f040004
 int id slidingmenu_list 0x7f04004b

@@ -19,20 +19,24 @@ public class Constante {
 	
 	// Variables
 	public static final String file_ini = "params.ini";
-	public static final String ini_login = "login";
+	public static final String ini_email = "email";
 	public static final String ini_password = "password";
 	public static final String ini_remember = "remember_me";
 	public static final String ini_type = "type";
 	public static final String ini_id = "id";
-	public static final String ini_type_recruter = "recruter";
+	public static final String ini_type_recruiter = "recruiter";
 	public static final String ini_type_jobseeker = "jobseeker";
 	public static final String secret_key = "c3265jVeW69A49g";
-	//public static final String url = "http://10.0.2.2:8080/hello/helloworld";
-	public static final String url = "http://192.168.1.2:8080/hello/helloworld";
+	
+	public static final String url = "http://192.168.1.2:8080/Hiredo/";
+	public static final String user = "user/";
+	public static final String user_login = "user/login/";
+	public static final String enterprise = "entreprise/";
+	public static final String enterprise_login = "entreprise/login/";
 	
 	/* Format fichier INI:
 	[application]
-	login=the_login
+	email=the_email
 	password=the_password_encrypted
 	rememberme=true | false
 	type=recruter | jobseeker
@@ -63,7 +67,7 @@ public class Constante {
         try {
         	fout = context.openFileOutput(Constante.file_ini, Context.MODE_PRIVATE);
             stream = new OutputStreamWriter(fout);
-            stream.write("[application]\n" + Constante.ini_login + "=null\n" + Constante.ini_password + "=null\n" + Constante.ini_remember + "=false\n" + Constante.ini_type + "=null\n" + Constante.ini_id + "=null");
+            stream.write("[application]\n" + Constante.ini_email + "=null\n" + Constante.ini_password + "=null\n" + Constante.ini_remember + "=false\n" + Constante.ini_type + "=null\n" + Constante.ini_id + "=null");
             stream.flush();
         }
         catch (Exception ex) {
@@ -82,7 +86,7 @@ public class Constante {
     	}
 	}
 	
-	public static void saveINIFile(Context context, String login, String password) {
+	public static void saveINIFile(Context context, String email, String password, boolean rememberme, String type, int id) {
 		
 		FileOutputStream fout = null;
         OutputStreamWriter stream = null;
@@ -90,7 +94,7 @@ public class Constante {
         try {
         	fout = context.openFileOutput(Constante.file_ini, Context.MODE_PRIVATE);
             stream = new OutputStreamWriter(fout);
-            stream.write("[application]\n" + Constante.ini_login + "=" + login + "\n" + Constante.ini_password + "=" + password + "\n" + Constante.ini_remember + "=false\n" + Constante.ini_type + "=null\n" + Constante.ini_id + "=null");
+            stream.write("[application]\n" + Constante.ini_email + "=" + email + "\n" + Constante.ini_password + "=" + password + "\n" + Constante.ini_remember + "=" + rememberme + "\n" + Constante.ini_type + "=" + type + "\n" + Constante.ini_id + "=" + id);
             stream.flush();
         }
         catch (Exception ex) {

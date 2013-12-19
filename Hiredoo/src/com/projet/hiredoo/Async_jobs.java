@@ -4,10 +4,8 @@ import java.io.IOException;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.entity.StringEntity;
+import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.params.HttpParams;
 import org.apache.http.util.EntityUtils;
 import org.json.JSONObject;
 
@@ -17,14 +15,15 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.widget.Toast;
 
-public class Async_get extends AsyncTask<String, Void, String> {
+public class Async_jobs extends AsyncTask<String, Void, String> {
 	
 	private Context context;
+	private JSONObject json;
 	private ProgressDialog pd;
 	private Boolean exception = false;
 	private String res;
 	
-	public Async_get(Context context) {
+	public Async_jobs(Context context) {
 		
 		this.context = context;
 		this.res = "";
@@ -47,11 +46,11 @@ public class Async_get extends AsyncTask<String, Void, String> {
 	protected String doInBackground(String... str) {
 		// Envoie de la demande du web service
 		HttpClient httpclient = null;
-		HttpGet httpget = null;
+		HttpPost httppost = null;
 		
 		try {
 			httpclient = new DefaultHttpClient();
-			httpget = new HttpGet(str[0]);
+			httppost = new HttpPost(str[0]);
 		}
 		catch(Exception ex) {
 			this.res = "";
@@ -62,18 +61,18 @@ public class Async_get extends AsyncTask<String, Void, String> {
 		}
         
         try {
-            HttpResponse response = httpclient.execute(httpget);
+            HttpResponse response = httpclient.execute(httppost);
             this.res = EntityUtils.toString(response.getEntity());
         }
         catch (IOException ex) {
         	this.res = "";
-        	this.res += "IOException:\n";
+        	this.res += "IOException: ";
         	this.res += ex.getMessage() + "\n" + ex.toString();
         	this.exception = true;
         }
         catch (Exception ex) {
         	this.res = "";
-        	this.res += "Exception 2:\n";
+        	this.res += "Exception 2";
         	this.res += ex.getMessage() + "\n" + ex.toString();
         	this.exception = true;
         }
@@ -97,11 +96,6 @@ public class Async_get extends AsyncTask<String, Void, String> {
 		else {
 			// Stop the dialog
 			this.stopDialog();
-			
-			AlertDialog.Builder builder = new AlertDialog.Builder(this.context);
-			builder.setTitle("Resultat requete");
-			builder.setMessage(result);
-			builder.create().show();
 		}
 	}
 	
@@ -117,5 +111,5 @@ public class Async_get extends AsyncTask<String, Void, String> {
 	private void stopDialog() {
 		this.pd.dismiss();
 	}
-
+	
 }

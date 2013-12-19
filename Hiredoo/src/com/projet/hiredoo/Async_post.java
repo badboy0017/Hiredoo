@@ -13,20 +13,28 @@ import org.json.JSONObject;
 
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.ActivityNotFoundException;
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.widget.Toast;
 
 public class Async_post extends AsyncTask<String, Void, String> {
 	
 	private Context context;
+	private Object next_activity;
+	private JSONObject jobj; //Object en entrée
+	private JSONObject json; //Objet renvoyé par le serveur
 	private ProgressDialog pd;
 	private Boolean exception = false;
 	private String res;
+	private String user_type = null;
 	
-	public Async_post(Context context) {
+	public Async_post(Context context, JSONObject jobj, Object next_activity) {
 		
 		this.context = context;
+		this.next_activity = next_activity;
+		this.jobj = jobj;
 		this.res = "";
 		this.pd = new ProgressDialog(this.context);
 	}
@@ -62,12 +70,11 @@ public class Async_post extends AsyncTask<String, Void, String> {
 		}
         
         try {
-        	JSONObject obj = new JSONObject();
-            obj.put("login", str[1]);
-            obj.put("name", "kaka");
+            if(this.jobj != null) {
+            	httppost.setEntity(new StringEntity(this.jobj.toString(), "UTF-8"));
+            }
             
             httppost.setHeader("content-type", "application/json; charset=UTF-8");
-            httppost.setEntity(new StringEntity(obj.toString(), "UTF-8"));
             HttpResponse response = httpclient.execute(httppost);
             this.res = EntityUtils.toString(response.getEntity());
         }
@@ -77,17 +84,16 @@ public class Async_post extends AsyncTask<String, Void, String> {
         	this.res += ex.getMessage() + "\n" + ex.toString();
         	this.exception = true;
         }
-        catch (JSONException ex) {
-        	this.res = "";
-        	this.res += "JSON Exception: ";
-        	this.res += ex.getMessage() + "\n" + ex.toString();
-        	this.exception = true;
-		}
         catch (Exception ex) {
         	this.res = "";
         	this.res += "Exception 2";
         	this.res += ex.getMessage() + "\n" + ex.toString();
         	this.exception = true;
+        }
+        
+        // Test de la classe appelante
+        if(this.context.getClass().equals(MainActivity.class)) {
+        	this.traitement_login(str[1]);
         }
         
         return this.res;
@@ -110,10 +116,54 @@ public class Async_post extends AsyncTask<String, Void, String> {
 			// Stop the dialog
 			this.stopDialog();
 			
-			AlertDialog.Builder builder = new AlertDialog.Builder(this.context);
-			builder.setTitle("Resultat de la requete");
-			builder.setMessage(result);
-			builder.create().show();
+			// Appel de l'activité suivante
+			if(this.context.getClass().equals(MainActivity.class)) {
+				// Test du resultat envoyé par le serveur
+				try {
+					this.json = new JSONObject(result);
+				}
+				catch(JSONException ex) {
+					AlertDialog.Builder builder = new AlertDialog.Builder(this.context);
+					builder.setTitle("JSON Exception");
+					builder.setMessage(ex.getCause() + "\n\n" + ex.getMessage());
+					builder.create().show();
+					return;
+				}
+				
+				try {
+					Constante.saveINIFile(this.context, this.json.getString("email"), this.json.getString("password"), true, this.user_type, this.json.getInt("id"));
+				}
+				catch (JSONException ex) {
+					AlertDialog.Builder builder = new AlertDialog.Builder(this.context);
+					builder.setTitle("JSON getting property Exception");
+					builder.setMessage(ex.getCause() + "\n\n" + ex.getMessage());
+					builder.create().show();
+					return;
+				}
+				
+				// Appel de l'activité suivante
+				Intent job_intent = new Intent(this.context, Listjob_activity.class);
+				try {
+					this.context.startActivity(job_intent);
+				}
+				catch(ActivityNotFoundException anfe) {
+					Toast.makeText(this.context, "Activity introuvable.\n" + anfe.getMessage(), Toast.LENGTH_LONG).show();
+					return;
+				}
+			}
+			else if(this.next_activity == null) { //Activité suivante null dans le cas d'inscription, on va nulle part
+				
+				if(result.equals("ok")) {
+					Toast.makeText(this.context, "Registration succeeded", Toast.LENGTH_LONG).show();
+				}
+				else {
+					AlertDialog.Builder builder = new AlertDialog.Builder(this.context);
+					builder.setTitle("Server Exception");
+					builder.setMessage(result);
+					builder.create().show();
+					return;
+				}
+			}
 		}
 	}
 	
@@ -128,6 +178,57 @@ public class Async_post extends AsyncTask<String, Void, String> {
 	// Dissmis the Progress Dialog
 	private void stopDialog() {
 		this.pd.dismiss();
+	}
+	
+	// Fonction de traitement spécifique à l'operation de login
+	private void traitement_login(String url) {
+		// Formatage du resultat
+		try {
+			new JSONObject(this.res);
+			this.user_type = Constante.ini_type_jobseeker;
+			return;
+		}
+		catch (JSONException je) {
+			HttpClient httpclient = null;
+			HttpPost httppost = null;
+			
+			try {
+				httpclient = new DefaultHttpClient();
+				httppost = new HttpPost(url);
+			}
+			catch(Exception ex) {
+				this.res = "";
+				this.res += "Exception HTTP: ";
+				this.res += ex.getMessage() + "\n" + ex.toString();
+	        	this.exception = true;
+	        	return;
+			}
+	        
+	        try {
+	            if(this.jobj != null) {
+	            	httppost.setEntity(new StringEntity(this.jobj.toString(), "UTF-8"));
+	            }
+	            
+	            httppost.setHeader("content-type", "application/json; charset=UTF-8");
+	            HttpResponse response = httpclient.execute(httppost);
+	            this.res = EntityUtils.toString(response.getEntity());
+	        }
+	        catch (IOException ex) {
+	        	this.res = "";
+	        	this.res += "IOException: ";
+	        	this.res += ex.getMessage() + "\n" + ex.toString();
+	        	this.exception = true;
+	        }
+	        catch (Exception ex) {
+	        	this.res = "";
+	        	this.res += "Exception 2";
+	        	this.res += ex.getMessage() + "\n" + ex.toString();
+	        	this.exception = true;
+	        }
+	        
+	        this.user_type = Constante.ini_type_recruiter;
+	        return;
+		}
 	}
 
 }

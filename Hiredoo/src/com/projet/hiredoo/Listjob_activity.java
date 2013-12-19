@@ -239,7 +239,7 @@ public class Listjob_activity extends Activity implements OnItemClickListener {
 			Intent login_intent = new Intent(this, MainActivity.class);
 			try {
 				slidingMenu.toggle();
-				Constante.saveINIFile(this, "login", "password"); // Pour mettre remember à false
+				Constante.saveINIFile(this, "null", "null", false, "null", 0); // Pour mettre remember à false
 				startActivity(login_intent);
 				finish(); // Pour terminer cette activité
 			}
