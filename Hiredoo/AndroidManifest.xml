@@ -40,7 +40,7 @@
             android:label="@string/app_name"
             android:theme="@android:style/Theme.Light.NoTitleBar" ></activity>
         
-        <activity android:name="com.projet.hiredoo.Detailjob_activity"
+        <activity android:name="com.projet.hiredoo.Applyjob_activity"
             android:label="@string/app_name"
             android:theme="@android:style/Theme.Light.NoTitleBar" ></activity>
         
@@ -72,7 +72,7 @@
             android:label="@string/app_name"
             android:theme="@android:style/Theme.Light.NoTitleBar" ></activity>
         
-        <activity android:name="com.projet.hiredoo.Modifierprofil_activity"
+        <activity android:name="com.projet.hiredoo.Modifierentreprise_activity"
             android:label="@string/app_name"
             android:theme="@android:style/Theme.Light.NoTitleBar" ></activity>
         

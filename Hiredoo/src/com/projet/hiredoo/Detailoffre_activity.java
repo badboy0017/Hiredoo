@@ -8,7 +8,7 @@ public class Detailoffre_activity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.detailjob_view);
+		setContentView(R.layout.detailoffre_view);
 		
 	}
 	

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/gris_background" >
+    
+    <LinearLayout 
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:background="@layout/header"
+	    android:orientation="vertical" >
+	
+	    <ImageView 
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:src="@drawable/logo"
+	        android:scaleType="fitStart"
+	        android:layout_marginLeft="10sp"
+	        android:contentDescription="@string/logo_description" />
+	    
+	    <View 
+			android:layout_width="fill_parent"
+			android:layout_height="@dimen/separator"
+			android:background="@color/noir" />
+    
+    </LinearLayout>
+    
+    <LinearLayout 
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+	    
+        <TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="@string/ajouteroffre_title"
+			android:textAppearance="?android:attr/textAppearanceMedium"
+			android:textColor="@color/rouge_bordeau"
+			android:layout_margin="@dimen/margin_medium"
+			android:layout_gravity="center" />
+        
+        <EditText 
+            android:id="@+id/ajouteroffre_titre"
+            android:layout_width="fill_parent"
+            android:layout_height="40dp"
+            android:inputType="text"
+            android:background="@color/blanc"
+            android:layout_margin="@dimen/margin_small"
+            android:hint="@string/ajouteroffre_job_title" />
+        
+		<Spinner   
+			android:id="@+id/ajouteroffre_type"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:layout_margin="@dimen/margin_small"
+			android:entries="@array/ajouteroffre_array_type" >
+		</Spinner>
+		<!-- android:prompt="lol" -->
+		
+		<Spinner   
+			android:id="@+id/ajouteroffre_domaine"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:layout_margin="@dimen/margin_small"
+			android:entries="@array/ajouteroffre_array_domaine" >
+		</Spinner>
+		
+		<EditText 
+            android:id="@+id/ajouteroffre_city"
+            android:layout_width="fill_parent"
+            android:layout_height="40dp"
+            android:inputType="text"
+            android:background="@color/blanc"
+            android:layout_margin="@dimen/margin_small"
+            android:hint="@string/ajouteroffre_job_city" />
+		
+		<EditText 
+            android:id="@+id/ajouteroffre_description"
+            android:layout_width="fill_parent"
+            android:layout_height="40dp"
+            android:inputType="textMultiLine"
+            android:lines="5"
+            android:background="@color/blanc"
+            android:layout_margin="@dimen/margin_small"
+            android:hint="@string/ajouteroffre_job_description" />
+
+    </LinearLayout>
+    
+    <Button 
+	    android:id="@+id/ajouteroffre_btnajouter"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_gravity="right"
+	    android:text="@string/ajouteroffre_btnajouter"/>
+   
+</LinearLayout>

@@ -3,9 +3,14 @@ package com.projet.hiredoo;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.ActivityNotFoundException;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -13,56 +18,42 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
 
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 
-public class Listjob_activity extends Activity implements OnItemClickListener {
+public class Listjob_activity extends Activity implements OnItemClickListener, OnClickListener {
 	
 	private SlidingMenu slidingMenu;
 	private ListView job_listview, menu_listview;
+	private Object next_activity;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.listjob_view);
 		
-		//Liste des jobs
-		job_listview = (ListView)findViewById(R.id.list_job);
-		ArrayList<HashMap<String, String>> jobItem = new ArrayList<HashMap<String, String>>();
-        HashMap<String, String> job_hashmap;
+		// Test de la connexion internet
+		if(!Constante.isInternetAvailable(this)) {
+			AlertDialog.Builder buider = new AlertDialog.Builder(this);
+			buider.setTitle("Warning");
+			buider.setMessage("Internet connection not available");
+			buider.setCancelable(false);
+			buider.setPositiveButton("Reload", this);
+			buider.setNegativeButton("Exit", this);
+			buider.create().show();
+			return;
+		}
 		
-        job_hashmap = new HashMap<String, String>();
-		job_hashmap.put("text1", "Job Application 1");
-        job_hashmap.put("text2", "Click to view");
-        jobItem.add(job_hashmap);
-        
-        job_hashmap = new HashMap<String, String>();
-		job_hashmap.put("text1", "Job Application 2");
-        job_hashmap.put("text2", "Click to view");
-        jobItem.add(job_hashmap);
-        
-        job_hashmap = new HashMap<String, String>();
-		job_hashmap.put("text1", "Job Application 3");
-        job_hashmap.put("text2", "Click to view");
-        jobItem.add(job_hashmap);
-        
-        job_hashmap = new HashMap<String, String>();
-		job_hashmap.put("text1", "Job Application 4");
-        job_hashmap.put("text2", "Click to view");
-        jobItem.add(job_hashmap);
-        
-        job_hashmap = new HashMap<String, String>();
-		job_hashmap.put("text1", "Job Application 5");
-        job_hashmap.put("text2", "Click to view");
-        jobItem.add(job_hashmap);
-        
-        ListAdapter adapter = new SimpleAdapter(this, jobItem, android.R.layout.simple_list_item_2, new String[] {"text1", "text2"}, new int[] {android.R.id.text1, android.R.id.text2 });
-	    job_listview.setAdapter(adapter);
+		// Liste des jobs
+		job_listview = (ListView)findViewById(R.id.list_job);
 	    job_listview.setOnItemClickListener(this);
+		
+		// Appel du web service
+		Async_jobs aj = new Async_jobs(this, Constante.http_get, this.job_listview, null);
+		aj.execute(new String[] { Constante.url + Constante.getAllJobs });
 		
 		// Ajout du Sliding Menu
         slidingMenu = new SlidingMenu(this);
@@ -123,15 +114,24 @@ public class Listjob_activity extends Activity implements OnItemClickListener {
 	    
 	    switch (item.getItemId()) {
 	        case R.id.listjobmenu_type:
-	        	final CharSequence[] items = {"Computer Science", "Mecanique", "Others"};
 	        	AlertDialog.Builder builder = new AlertDialog.Builder(this);
 	        	builder.setTitle("Select a job type");
-	        	builder.setItems(items, null);
-	        	/*builder.setItems(items, new DialogInterface.OnClickListener() {
+	        	builder.setItems(Constante.job_domaine, new DialogInterface.OnClickListener() {
 	        	    public void onClick(DialogInterface dialog, int item) {
-	        	        Toast.makeText(getApplicationContext(), items[item], Toast.LENGTH_SHORT).show();
+	        	    	// Preparation de l'objet JSON
+	        	    	JSONObject obj = new JSONObject();
+	        			try {
+	        	            obj.put("domaine", Constante.job_domaine[item]);
+	        			}
+	        			catch (JSONException ex) {
+	        				Toast.makeText(getApplicationContext(), "Erreur JSON\n" + ex.getMessage(), Toast.LENGTH_LONG).show();
+	        			}
+	        			
+	        			// Appel du web service
+	        			Async_jobs aj = new Async_jobs(Listjob_activity.this, Constante.http_post, job_listview, obj);
+	        			aj.execute(new String[] { Constante.url + Constante.getJobsByDomaine });
 	        	    }
-	        	});*/
+	        	});
 	        	builder.create().show();
 	            return true;
 	            
@@ -143,6 +143,10 @@ public class Listjob_activity extends Activity implements OnItemClickListener {
 	        	catch(ActivityNotFoundException ex) {
 	        		Toast.makeText(this, "Activity introuvable.\n" + ex.getMessage(), Toast.LENGTH_LONG).show();
 	        	}
+	        	return true;
+	        	
+	        case R.id.listjobmenu_showAll:
+	        	this.recreate();
 	        	return true;
 	        	
 	        default:
@@ -163,11 +167,6 @@ public class Listjob_activity extends Activity implements OnItemClickListener {
 	@Override
 	public void onItemClick(AdapterView<?> adapter, View v, int position, long id) {
 		
-		/*AlertDialog.Builder builder = new AlertDialog.Builder(this);
-    	builder.setTitle(v.getId() + " // " + R.id.slidingmenu_list);
-    	builder.setMessage(adapter.getId() + " // " + R.id.list_job);
-    	builder.create().show();*/
-    	
 		switch(adapter.getId()) {
 		case R.id.list_job:
 			this.traitement_joblist(position);
@@ -184,15 +183,25 @@ public class Listjob_activity extends Activity implements OnItemClickListener {
         	builder.create().show();
 			break;
 		}
-		
 	}
 	
 	// Fonction de traitement des clicks sur la liste des jobs
 	private void traitement_joblist(int position) {
-		Intent detail_intent = new Intent(this, Detailjob_activity.class);
+		Intent detail_intent = new Intent(this, Applyjob_activity.class);
 		try {
-			//detail_intent.putExtra("id", this.ja.getJSONObject(position).getString("id"));
+			detail_intent.putExtra("id", Constante.ja.getJSONObject(position).getString("id"));
+			detail_intent.putExtra("idEntreprise", Constante.ja.getJSONObject(position).getString("idEntreprise"));
+			detail_intent.putExtra("title", Constante.ja.getJSONObject(position).getString("title"));
+			detail_intent.putExtra("type", Constante.ja.getJSONObject(position).getString("type"));
+			detail_intent.putExtra("description", Constante.ja.getJSONObject(position).getString("description"));
+			detail_intent.putExtra("city", Constante.ja.getJSONObject(position).getString("city"));
+			detail_intent.putExtra("datecreation", Constante.ja.getJSONObject(position).getString("datecreation"));
+			detail_intent.putExtra("domaine", Constante.ja.getJSONObject(position).getString("domaine"));
+			
 			startActivity(detail_intent);
+		}
+		catch(JSONException ex) {
+			Toast.makeText(this, "JSONException\nCannot convert data: " + ex.getMessage(), Toast.LENGTH_LONG).show();
 		}
 		catch(ActivityNotFoundException ex) {
 			Toast.makeText(this, "Activity introuvable.\n" + ex.getMessage(), Toast.LENGTH_LONG).show();
@@ -203,13 +212,13 @@ public class Listjob_activity extends Activity implements OnItemClickListener {
 	private void traitement_slidingmenu_list(int position) {
 		switch(position) {
 		case 0: // mon profil
-			Intent profil_intent = new Intent(this, Profilcandidate_activity.class);
-			try {
-				startActivity(profil_intent);
-			}
-			catch(ActivityNotFoundException ex) {
-				Toast.makeText(this, "Activity introuvable.\n" + ex.getMessage(), Toast.LENGTH_LONG).show();
-			}
+			// Actualisation de this.next_activity
+			this.next_activity = Profilcandidate_activity.class;
+			
+			// Appel du web service
+			Async_get ag = new Async_get(this, this.next_activity);
+			ag.execute(new String[] { Constante.url + Constante.getUserProfile + Constante.getINIvalue(this, Constante.ini_id) });
+			
 			slidingMenu.toggle();
 			break;
 			
@@ -248,7 +257,16 @@ public class Listjob_activity extends Activity implements OnItemClickListener {
 			}
 			break;
 		}
-		
+	}
+
+	@Override
+	public void onClick(DialogInterface arg0, int arg1) {
+		if (arg1 == AlertDialog.BUTTON_POSITIVE) {
+			recreate();
+        }
+        else if (arg1 == AlertDialog.BUTTON_NEGATIVE) {
+        	finish();
+        }
 	}
 	
 }

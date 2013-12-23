@@ -5,28 +5,32 @@ import java.io.IOException;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
-import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.params.HttpParams;
 import org.apache.http.util.EntityUtils;
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.ActivityNotFoundException;
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.widget.Toast;
 
 public class Async_get extends AsyncTask<String, Void, String> {
 	
 	private Context context;
+	private Object next_activity;
 	private ProgressDialog pd;
 	private Boolean exception = false;
 	private String res;
 	
-	public Async_get(Context context) {
+	public Async_get(Context context, Object next_activity) {
 		
 		this.context = context;
+		this.next_activity = next_activity;
 		this.res = "";
 		this.pd = new ProgressDialog(this.context);
 	}
@@ -98,10 +102,32 @@ public class Async_get extends AsyncTask<String, Void, String> {
 			// Stop the dialog
 			this.stopDialog();
 			
-			AlertDialog.Builder builder = new AlertDialog.Builder(this.context);
-			builder.setTitle("Resultat requete");
-			builder.setMessage(result);
-			builder.create().show();
+			// Formatage du resultat
+			try {
+				new JSONObject(this.res);
+			}
+			catch (JSONException je) {
+				try {
+					new JSONArray(this.res);
+				}
+				catch(JSONException ex) {
+					AlertDialog.Builder builder = new AlertDialog.Builder(this.context);
+					builder.setTitle("Server Exception");
+					builder.setMessage("Impossible de formater les données");
+					builder.create().show();
+					return;
+				}
+			}
+			
+			// Envoie de données
+			Intent intent = new Intent(this.context, (Class<?>) this.next_activity);
+			try {
+				intent.putExtra("data", this.res);
+				this.context.startActivity(intent);
+			}
+			catch(ActivityNotFoundException ex1) {
+				Toast.makeText(this.context, "Activity introuvable.\n" + ex1.getMessage(), Toast.LENGTH_LONG).show();
+			}
 		}
 	}
 	

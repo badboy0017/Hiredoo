@@ -13,5 +13,12 @@
         android:showAsAction="always"
         android:title="@string/listjobmenu_search"
         android:icon="@android:drawable/ic_search_category_default" />
+    
+    <item
+        android:id="@+id/listjobmenu_showAll"
+        android:orderInCategory="100"
+        android:showAsAction="always"
+        android:title="@string/listjobmenu_showAll"
+        android:icon="@drawable/ic_launcher" />
 
 </menu>

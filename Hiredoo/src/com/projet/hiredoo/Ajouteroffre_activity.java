@@ -8,7 +8,7 @@ public class Ajouteroffre_activity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.detailjob_view);
+		setContentView(R.layout.ajouteroffre_view);
 		
 	}
 	

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>  
+<resources>
+	<string-array name="ajouteroffre_array_type">  
+		<item>CDD</item>
+		<item>CDI</item>
+		<item>Stage</item>
+	</string-array>
+	
+	<string-array name="ajouteroffre_array_domaine">  
+		<item>Computer Science</item>
+		<item>Mecanic</item>
+		<item>Other</item>
+	</string-array>
+</resources>

@@ -6,6 +6,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.os.Bundle;
@@ -95,6 +96,24 @@ public class MainActivity extends Activity implements OnClickListener {
 			
 		// Login View
 		case R.id.login_btnOk:
+			// Test si les champs sont vides
+			if(this.email.getText().toString().isEmpty() || this.password.getText().toString().isEmpty()) {
+				AlertDialog.Builder builder = new AlertDialog.Builder(this);
+				builder.setTitle("Warning");
+				builder.setMessage("Please fill all the fields");
+				builder.create().show();
+				return;
+			}
+			
+			// Verification des espaces
+			if(this.email.getText().toString().contains(" ") || this.password.getText().toString().contains(" ")) {
+				AlertDialog.Builder builder = new AlertDialog.Builder(this);
+				builder.setTitle("Warning");
+				builder.setMessage("Caracter space is not allowed");
+				builder.create().show();
+				return;
+			}
+			
 			// Préparation de l'objet JSON
 			JSONObject obj = new JSONObject();
 			try {

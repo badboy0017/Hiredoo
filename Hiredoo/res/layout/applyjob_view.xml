@@ -42,7 +42,7 @@
 	        <TextView 
 				android:layout_width="fill_parent"
 				android:layout_height="wrap_content"
-				android:text="@string/detailoffre_title"
+				android:text="@string/applyjob_title"
 				android:textSize="@dimen/main_title"
 				android:layout_margin="@dimen/margin_medium"
 				android:gravity="center"
@@ -51,7 +51,7 @@
 	        <TextView 
 				android:layout_width="fill_parent"
 				android:layout_height="wrap_content"
-				android:text="@string/detailoffre_offerTitle"
+				android:text="@string/applyjob_jobTitle"
 				android:textSize="@dimen/title"
 				android:textColor="@color/bleu_ciel" />
 		        
@@ -61,18 +61,17 @@
 				android:background="@color/bleu_ciel" />
 			
 			<TextView
-				android:id="@+id/detailoffre_name"
+				android:id="@+id/applyjob_name"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:layout_margin="@dimen/margin_small"
 				android:textColor="@color/noir"
-				android:textSize="@dimen/content"
-				android:text="Stage PFE Android" />
+				android:textSize="@dimen/content" />
 			
 			<TextView 
 				android:layout_width="fill_parent"
 				android:layout_height="wrap_content"
-				android:text="@string/detailoffre_offerInformation"
+				android:text="@string/applyjob_jobInformation"
 				android:textSize="@dimen/title"
 				android:textColor="@color/bleu_ciel" />
 		        
@@ -82,25 +81,34 @@
 				android:background="@color/bleu_ciel" />
 			
 			<TextView
-				android:id="@+id/detailoffre_type"
+				android:id="@+id/applyjob_date"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:layout_margin="@dimen/margin_small"
 				android:textColor="@color/noir"
 				android:textSize="@dimen/content"
-				android:text="@string/detailoffre_offerType" />
+				android:text="@string/applyjob_jobDate" />
 			
 			<TextView
-				android:id="@+id/detailoffre_domaine"
+				android:id="@+id/applyjob_type"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:layout_margin="@dimen/margin_small"
 				android:textColor="@color/noir"
 				android:textSize="@dimen/content"
-				android:text="@string/detailoffre_offerDomaine" />
+				android:text="@string/applyjob_jobType" />
 			
 			<TextView
-				android:id="@+id/detailoffer_city"
+				android:id="@+id/applyjob_domaine"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_margin="@dimen/margin_small"
+				android:textColor="@color/noir"
+				android:textSize="@dimen/content"
+				android:text="@string/applyjob_jobDomaine" />
+			
+			<TextView
+				android:id="@+id/applyjob_city"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:layout_margin="@dimen/margin_small"
@@ -111,7 +119,7 @@
 			<TextView 
 				android:layout_width="fill_parent"
 				android:layout_height="wrap_content"
-				android:text="@string/detailoffre_offerDescription"
+				android:text="@string/applyjob_jobDescription"
 				android:textSize="@dimen/title"
 				android:textColor="@color/bleu_ciel" />
 		        
@@ -121,45 +129,21 @@
 				android:background="@color/bleu_ciel" />
 			
 			<TextView
-				android:id="@+id/detailoffre_description"
+				android:id="@+id/applyjob_description"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:layout_margin="@dimen/margin_small"
 				android:textColor="@color/noir"
-				android:textSize="@dimen/content"
-				android:text="Developpeur Android Bac+5" />
-			
-			<TextView 
-				android:layout_width="fill_parent"
-				android:layout_height="wrap_content"
-				android:text="@string/detailoffre_offerPostule"
-				android:textSize="@dimen/title"
-				android:textColor="@color/bleu_ciel" />
-		        
-			<View 
-				android:layout_width="fill_parent"
-				android:layout_height="2dp"       
-				android:background="@color/bleu_ciel" />
-			
-			<TextView
-				android:id="@+id/detailoffre_postule"
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:layout_margin="5sp"
-				android:textColor="@color/noir"
-				android:clickable="true"
-				android:textSize="@dimen/content"
-				android:text="13 candidates have applied on this offer" />
+				android:textSize="@dimen/content" />
 			
 			<Button 
-			    android:id="@+id/detailoffre_btnsupp"
+			    android:id="@+id/applyjob_btnpostuler"
 			    android:layout_width="wrap_content"
 			    android:layout_height="wrap_content"
-			    android:text="@string/detailoffre_btnSupprimer"
+			    android:text="@string/applyjob_btnApply"
 			    android:layout_gravity="right" />
 	        
 	    </LinearLayout>
 	    
-	
 	</LinearLayout>
 </ScrollView>

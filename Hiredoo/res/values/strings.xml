@@ -45,11 +45,36 @@
     <string name="profilenterprise_contact">Contact</string>
     <string name="profilenterprise_telephone">Phones</string>
     
-    <string name="detailjob_name">Name</string>
-    <string name="detailjob_description">Description</string>
-    <string name="detailjob_Information">Informations</string>
-    <string name="detailjob_type">Type: </string>
-    <string name="detailjob_domaine">Domaine: </string>
+    <string name="modifierProfilEnterprise_title">Edit Profile</string>
+    <string name="modifierProfilEnterprise_name">New name</string>
+    <string name="modifierProfilEnterprise_activitySector">Activity Sector</string>
+    <string name="modifierProfilEnterprise_resume">New resume</string>
+    <string name="modifierProfilEnterprise_address">New address</string>
+    <string name="modifierProfilEnterprise_website">New website</string>
+    <string name="modifierProfilEnterprise_email">New email</string>
+    <string name="modifierProfilEnterprise_telephone">New phone number</string>
+    <string name="modifierProfilEnterprise_fax">New fax number</string>
+    <string name="modifierProfilEnterprise_btnModifier">Save</string>
+    
+    <string name="applyjob_title">Job Details</string>
+    <string name="applyjob_jobTitle">Title</string>
+    <string name="applyjob_jobDescription">Description</string>
+    <string name="applyjob_jobInformation">Informations</string>
+    <string name="applyjob_jobType">Type:</string>
+    <string name="applyjob_jobCity">City:</string>
+    <string name="applyjob_jobDomaine">Domain:</string>
+    <string name="applyjob_jobDate">Date:</string>
+    <string name="applyjob_btnApply">Apply</string>
+    
+    <string name="detailoffre_title">Offer Details</string>
+    <string name="detailoffre_offerTitle">Title</string>
+    <string name="detailoffre_offerDescription">Description</string>
+    <string name="detailoffre_offerInformation">Informations</string>
+    <string name="detailoffre_offerType">Type:</string>
+    <string name="detailoffre_offerCity">City:</string>
+    <string name="detailoffre_offerDomaine">Domain:</string>
+    <string name="detailoffre_offerPostule">Postule</string>
+    <string name="detailoffre_btnSupprimer">Delete</string>
     
     <string name="postulerjob_cv">Choose a CV</string>
     <string name="postulerjob_lm">Choose a Motivation Letter</string>
@@ -57,8 +82,15 @@
     
     <string name="listjobmenu_type">Select Domain</string>
     <string name="listjobmenu_search">Search</string>
+    <string name="listjobmenu_showAll">Show all</string>
     
     <string name="slidingmenu_titre">Options</string>
     <string name="slidingmenu_description">Image</string>
+    
+    <string name="ajouteroffre_title">Add a job</string>
+    <string name="ajouteroffre_job_title">Job title</string>
+    <string name="ajouteroffre_job_city">City</string>
+    <string name="ajouteroffre_job_description">Description</string>
+    <string name="ajouteroffre_btnajouter">Add</string>
     
 </resources>

@@ -3,6 +3,9 @@ package com.projet.hiredoo;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.ActivityNotFoundException;
@@ -15,23 +18,58 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 
 public class Profilcandidate_activity extends Activity implements OnClickListener, OnItemClickListener {
 	
+	private TextView profil_name, profil_experience, profil_education, profil_langage, profil_contact;
 	private SlidingMenu slidingMenu;
 	private ListView menu_listview;
 	private ImageView video_link;
+	private String json;
+	private JSONObject jo;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.profilcandidate_view);
 		
+		// Recuperation des views
+		profil_name       = (TextView)findViewById(R.id.profil_name);
+		profil_experience = (TextView)findViewById(R.id.profil_experience);
+		profil_education  = (TextView)findViewById(R.id.profil_education);
+		profil_langage    = (TextView)findViewById(R.id.profil_langue);
+		profil_contact    = (TextView)findViewById(R.id.profil_contact);
+		
 		video_link = (ImageView)findViewById(R.id.profil_videolink);
 		video_link.setOnClickListener(this);
+		
+		// Recuperation des donnees
+		this.json = getIntent().getExtras().getString("data");
+		
+		// Formatage du resultat
+		try {
+			this.jo = new JSONObject(this.json);
+		}
+		catch (JSONException je) {
+			Toast.makeText(this, "Impossible de formater les données", Toast.LENGTH_LONG).show();
+			return;
+		}
+		
+		// Affichage des données
+		try {
+			profil_name.setText(this.jo.getJSONObject("user").getString("name") + "\n" + this.jo.getJSONObject("user").getString("titleprofile"));
+			profil_experience.setText(this.jo.getJSONArray("experience").getJSONObject(0).getString("title"));
+		}
+		catch (JSONException ex) {
+			AlertDialog.Builder builder = new AlertDialog.Builder(this);
+			builder.setTitle("JSONException");
+			builder.setMessage("Cause: " + ex.getCause() + "\n\nMessage: " + ex.getMessage());
+			builder.create().show();
+		}
 		
 		// Ajout du Sliding Menu
         slidingMenu = new SlidingMenu(this);
@@ -44,7 +82,7 @@ public class Profilcandidate_activity extends Activity implements OnClickListene
         slidingMenu.attachToActivity(this, SlidingMenu.SLIDING_CONTENT);
         slidingMenu.setMenu(R.layout.slidingmenu);
         
-        // itemList
+        // itemList du Sliding Menu
         menu_listview = (ListView)findViewById(R.id.slidingmenu_list);
         ArrayList<HashMap<String, String>> listItem = new ArrayList<HashMap<String, String>>();
         HashMap<String, String> hash_map;

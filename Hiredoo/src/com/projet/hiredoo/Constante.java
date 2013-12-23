@@ -7,6 +7,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 
+import org.json.JSONArray;
+
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -17,7 +19,7 @@ import com.utility.hiredoo.SimpleCrypto;
 
 public class Constante {
 	
-	// Variables
+	// Constantes
 	public static final String file_ini = "params.ini";
 	public static final String ini_email = "email";
 	public static final String ini_password = "password";
@@ -33,6 +35,18 @@ public class Constante {
 	public static final String user_login = "user/login/";
 	public static final String enterprise = "entreprise/";
 	public static final String enterprise_login = "entreprise/login/";
+	public static final String getAllJobs = "job/findall";
+	public static final String getJobsByDomaine = "job/domaine";
+	public static final String getUserProfile = "user/profile/";
+	
+	public static final CharSequence[] job_domaine = {"Computer Science", "Mecanique", "Others"};
+	public static final CharSequence[] job_type = {"CDD", "CDI", "Stage"};
+	
+	public static final String http_get = "GET";
+	public static final String http_post = "POST";
+	
+	// Variables Globales
+	public static JSONArray ja = new JSONArray();
 	
 	/* Format fichier INI:
 	[application]
