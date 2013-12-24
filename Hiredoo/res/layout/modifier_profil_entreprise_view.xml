@@ -37,6 +37,7 @@
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:text="@string/modifierProfilEnterprise_title"
+			android:textSize="@dimen/main_title"
 			android:textAppearance="?android:attr/textAppearanceMedium"
 			android:textColor="@color/rouge_bordeau"
 			android:layout_margin="@dimen/margin_medium"
@@ -88,15 +89,6 @@
 			android:hint="@string/modifierProfilEnterprise_website" />
 	    
 	    <EditText 
-			android:id="@+id/modifierEntreprise_email"
-			android:layout_width="fill_parent"
-			android:layout_height="40dp"
-			android:inputType="textEmailAddress"
-			android:background="@color/blanc"
-			android:layout_margin="@dimen/margin_small"
-			android:hint="@string/modifierProfilEnterprise_email" />
-	    
-	    <EditText 
 			android:id="@+id/modifierEntreprise_telephone"
 			android:layout_width="fill_parent"
 			android:layout_height="40dp"
@@ -115,8 +107,8 @@
 			android:hint="@string/modifierProfilEnterprise_fax" />
 	    
 	    <Button 
-		    android:id="@+id/modifierprofil_btnmodifier"
-		    android:layout_width="wrap_content"
+		    android:id="@+id/modifierEntreprise_btnmodifier"
+		    android:layout_width="100dp"
 		    android:layout_height="wrap_content"
 		    android:layout_margin="@dimen/margin_small"
 		    android:layout_gravity="right"

@@ -6,6 +6,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
+import java.util.Calendar;
 
 import org.json.JSONArray;
 
@@ -31,22 +32,30 @@ public class Constante {
 	public static final String secret_key = "c3265jVeW69A49g";
 	
 	public static final String url = "http://192.168.1.2:8080/Hiredo/";
-	public static final String user = "user/";
-	public static final String user_login = "user/login/";
-	public static final String enterprise = "entreprise/";
-	public static final String enterprise_login = "entreprise/login/";
-	public static final String getAllJobs = "job/findall";
-	public static final String getJobsByDomaine = "job/domaine";
+	
+	public static final String user           = "user/";
+	public static final String user_login     = "user/login/";
 	public static final String getUserProfile = "user/profile/";
 	
-	public static final CharSequence[] job_domaine = {"Computer Science", "Mecanique", "Others"};
+	public static final String enterprise       = "entreprise/";
+	public static final String enterprise_login = "entreprise/login/";
+	
+	public static final String job              = "job/";
+	public static final String getAllJobs       = "job/findall/";
+	public static final String getJobsByDomaine = "job/domaine/";
+	public static final String getMyJobs        = "job/myjobs/";
+	
+	public static final CharSequence[] job_domaine = {"Computer Science", "Mechanic", "Electronic", "Telecom", "Transport", "Manufacturing", "Managment", "Aeronautics", "Finance", "Audiovisual", "Teaching", "Journalisme", "Marketing", "Medical", "Tourisme", "Others"};
 	public static final CharSequence[] job_type = {"CDD", "CDI", "Stage"};
 	
 	public static final String http_get = "GET";
 	public static final String http_post = "POST";
 	
+	public static final String path_static = "/mnt";
+	
 	// Variables Globales
 	public static JSONArray ja = new JSONArray();
+	public static String path = "/mnt";
 	
 	/* Format fichier INI:
 	[application]
@@ -217,6 +226,17 @@ public class Constante {
         }
 		
 		return true;
+	}
+	
+	// Retourne la date courante dans un format lisible par Mysql
+	public static String getCurrentDate() {
+		Calendar cal = Calendar.getInstance();
+		int year = cal.get(Calendar.YEAR);
+		int mois = cal.get(Calendar.MONTH) + 1;
+		int day  = cal.get(Calendar.DAY_OF_MONTH);
+		
+		String now = year + "-" + mois + "-" + day + "T00:00:00";
+		return now;
 	}
 
 }

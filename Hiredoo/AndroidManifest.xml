@@ -80,6 +80,34 @@
             android:label="@string/app_name"
             android:theme="@android:style/Theme.Light.NoTitleBar" ></activity>
         
+        <activity android:name="com.projet.hiredoo.Ajouter_experience_activity"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Light.NoTitleBar" ></activity>
+        
+        <activity android:name="com.projet.hiredoo.Ajouter_education_activity"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Light.NoTitleBar" ></activity>
+        
+        <activity android:name="com.projet.hiredoo.Ajouter_langage_activity"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Light.NoTitleBar" ></activity>
+        
+        <activity android:name="com.projet.hiredoo.Modifier_contact_jobseeker_activity"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Light.NoTitleBar" ></activity>
+        
+        <activity android:name="com.projet.hiredoo.Ajoutercv_activity"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Light.NoTitleBar" ></activity>
+        
+        <activity android:name="com.projet.hiredoo.Ajouterlm_activity"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Light.NoTitleBar" ></activity>
+        
+        <activity android:name="com.projet.hiredoo.Ajoutervideo_activity"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Light.NoTitleBar" ></activity>
+        
         <activity android:name="com.projet.hiredoo.Video_activity"
             android:label="@string/app_name"
             android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen"

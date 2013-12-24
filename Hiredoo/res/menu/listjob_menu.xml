@@ -19,6 +19,6 @@
         android:orderInCategory="100"
         android:showAsAction="always"
         android:title="@string/listjobmenu_showAll"
-        android:icon="@drawable/ic_launcher" />
+        android:icon="@drawable/show_all" />
 
 </menu>

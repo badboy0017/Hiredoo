@@ -17,14 +17,6 @@
 		    android:background="@layout/header"
 		    android:orientation="horizontal" >
 		    
-	        <ImageView 
-		        android:layout_width="50dp"
-		        android:layout_height="50dp"
-		        android:src="@drawable/less_than"
-		        android:scaleType="fitStart"
-		        android:layout_marginLeft="10sp"
-		        android:contentDescription="@string/logo_description" />
-	    
 		    <ImageView 
 		        android:layout_width="wrap_content"
 		        android:layout_height="wrap_content"
@@ -45,6 +37,7 @@
             <LinearLayout 
 		        android:layout_width="fill_parent"
 		        android:layout_height="wrap_content"
+		        android:layout_marginBottom="@dimen/margin_small"
 		        android:orientation="horizontal" >
 	    
 	        <ImageView 
@@ -58,18 +51,28 @@
 	            android:id="@+id/profilenterprise_name"
 	            android:layout_width="fill_parent"
 	            android:layout_height="wrap_content"
-	            android:textIsSelectable="true"
-	            android:text="\nEnterprise Name\nActivity sector" />
+	            android:textIsSelectable="true" />
 	        
 	    	</LinearLayout>
 	    	
             <TextView 
-                android:id="@+id/profilenterprise_resume"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/margin_medium"
-                android:text="Resume"
-                android:textSize="@dimen/content" />
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:text="@string/profilenterprise_about"
+				android:textSize="@dimen/title"
+				android:textColor="@color/bleu_ciel" />
+	        
+			<View 
+				android:layout_width="fill_parent"
+				android:layout_height="2dp"       
+				android:background="@color/bleu_ciel" />
+			
+			<TextView
+				android:id="@+id/profilenterprise_about"
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:layout_margin="@dimen/margin_small"
+				android:textSize="@dimen/content" />
             
             <TextView 
 				android:layout_width="fill_parent"
@@ -81,50 +84,13 @@
 			<View 
 				android:layout_width="fill_parent"
 				android:layout_height="2dp"       
-				android:background="@color/rouge_bordeau" />
+				android:background="@color/bleu_ciel" />
 			
 			<TextView
-				android:id="@+id/profilenterprise_address"
+				android:id="@+id/profilenterprise_contact"
 				android:layout_width="fill_parent"
 				android:layout_height="wrap_content"
 				android:layout_margin="@dimen/margin_small"
-				android:text="address"
-				android:textSize="@dimen/content" />
-			
-			<TextView
-				android:id="@+id/profilenterprise_siteweb"
-				android:layout_width="fill_parent"
-				android:layout_height="wrap_content"
-				android:layout_margin="@dimen/margin_small"
-				android:text="Site Web"
-				android:textSize="@dimen/content" />
-			
-			<TextView
-				android:id="@+id/profilenterprise_email"
-				android:layout_width="fill_parent"
-				android:layout_height="wrap_content"
-				android:layout_margin="@dimen/margin_small"
-				android:text="email"
-				android:textSize="@dimen/content" />
-			
-			<TextView 
-				android:layout_width="fill_parent"
-				android:layout_height="wrap_content"
-				android:text="@string/profilenterprise_telephone"
-				android:textSize="@dimen/title"
-				android:textColor="@color/bleu_ciel" />
-	        
-			<View 
-				android:layout_width="fill_parent"
-				android:layout_height="2dp"       
-				android:background="@color/rouge_bordeau" />
-			
-			<TextView
-				android:id="@+id/profilenterprise_telephone"
-				android:layout_width="fill_parent"
-				android:layout_height="wrap_content"
-				android:layout_margin="@dimen/margin_small"
-				android:text="Telephone"
 				android:textSize="@dimen/content" />
 	    
 		</LinearLayout>

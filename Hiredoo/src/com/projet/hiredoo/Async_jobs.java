@@ -97,6 +97,10 @@ public class Async_jobs extends AsyncTask<String, Void, String> {
 			}
 			catch (JSONException je) {
 				Toast.makeText(this.context, "Server Exception. No result returned", Toast.LENGTH_LONG).show();
+				AlertDialog.Builder builder = new AlertDialog.Builder(this.context);
+				builder.setTitle("Echec Operation");
+				builder.setMessage(result);
+				builder.create().show();
 				return;
 			}
 			
@@ -121,6 +125,11 @@ public class Async_jobs extends AsyncTask<String, Void, String> {
 			
 	        ListAdapter adapter = new SimpleAdapter(this.context, jobItem, android.R.layout.simple_list_item_2, new String[] {"text1", "text2"}, new int[] {android.R.id.text1, android.R.id.text2 });
 	        this.joblist.setAdapter(adapter);
+	        
+	        // Message d'avertissement si la liste est vide
+	        if(this.ja.length() == 0) {
+	        	Toast.makeText(this.context, "There is no job in this section", Toast.LENGTH_LONG).show();
+	        }
 	        
 	        // Passage du resultat (pour le rendre global)
 	        Constante.ja = this.ja;

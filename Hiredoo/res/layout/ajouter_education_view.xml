@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/gris_background" >
+    
+    <LinearLayout 
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:background="@layout/header"
+	    android:orientation="vertical" >
+	
+	    <ImageView 
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:src="@drawable/logo"
+	        android:scaleType="fitStart"
+	        android:layout_marginLeft="10sp"
+	        android:contentDescription="@string/logo_description" />
+	    
+	    <View 
+			android:layout_width="fill_parent"
+			android:layout_height="@dimen/separator"
+			android:background="@color/noir" />
+    
+    </LinearLayout>
+    
+    <LinearLayout 
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+	    
+        <TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="@string/ajoutereducation_main_title"
+			android:textSize="@dimen/main_title"
+			android:textAppearance="?android:attr/textAppearanceMedium"
+			android:textColor="@color/rouge_bordeau"
+			android:layout_margin="@dimen/margin_medium"
+			android:layout_gravity="center" />
+        
+        <EditText 
+            android:id="@+id/ajoutereducation_title"
+            android:layout_width="fill_parent"
+            android:layout_height="40dp"
+            android:inputType="text"
+            android:background="@color/blanc"
+            android:layout_margin="@dimen/margin_small"
+            android:hint="@string/ajoutereducation_title" />
+        
+        <EditText 
+            android:id="@+id/ajoutereducation_deploma"
+            android:layout_width="fill_parent"
+            android:layout_height="40dp"
+            android:inputType="text"
+            android:background="@color/blanc"
+            android:layout_margin="@dimen/margin_small"
+            android:hint="@string/ajoutereducation_deploma" />
+        
+        <EditText 
+            android:id="@+id/ajoutereducation_university"
+            android:layout_width="fill_parent"
+            android:layout_height="40dp"
+            android:inputType="text"
+            android:background="@color/blanc"
+            android:layout_margin="@dimen/margin_small"
+            android:hint="@string/ajoutereducation_university" />
+        
+        <EditText 
+            android:id="@+id/ajoutereducation_location"
+            android:layout_width="fill_parent"
+            android:layout_height="40dp"
+            android:inputType="text"
+            android:background="@color/blanc"
+            android:layout_margin="@dimen/margin_small"
+            android:hint="@string/ajoutereducation_location" />
+        
+    </LinearLayout>
+    
+    <Button 
+	    android:id="@+id/ajoutereducation_btnajouter"
+	    android:layout_width="100dp"
+	    android:layout_height="wrap_content"
+	    android:layout_gravity="right"
+	    android:layout_marginRight="@dimen/margin_small"
+	    android:text="@string/ajoutereducation_btnajouter"/>
+   
+</LinearLayout>

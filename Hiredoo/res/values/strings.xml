@@ -41,9 +41,11 @@
     <string name="profilcandidate_language">Languages</string>
     <string name="profilcandidate_contact">Contact</string>
     <string name="profilcandidate_video_description">Video</string>
+    <string name="profilcandidate_aboutme">About me</string>
     
     <string name="profilenterprise_contact">Contact</string>
     <string name="profilenterprise_telephone">Phones</string>
+    <string name="profilenterprise_about">About</string>
     
     <string name="modifierProfilEnterprise_title">Edit Profile</string>
     <string name="modifierProfilEnterprise_name">New name</string>
@@ -74,15 +76,17 @@
     <string name="detailoffre_offerCity">City:</string>
     <string name="detailoffre_offerDomaine">Domain:</string>
     <string name="detailoffre_offerPostule">Postule</string>
+    <string name="detailoffre_offerDate">Date:</string>
     <string name="detailoffre_btnSupprimer">Delete</string>
     
-    <string name="postulerjob_cv">Choose a CV</string>
-    <string name="postulerjob_lm">Choose a Motivation Letter</string>
-    <string name="postulerjob_video">Choose a Video</string>
+    <string name="postulerjob_title">Apply on this job</string>
+    <string name="postulerjob_apply">Apply</string>
     
     <string name="listjobmenu_type">Select Domain</string>
     <string name="listjobmenu_search">Search</string>
     <string name="listjobmenu_showAll">Show all</string>
+    
+    <string name="listjobmenu_recruiter_refresh">Refresh</string>
     
     <string name="slidingmenu_titre">Options</string>
     <string name="slidingmenu_description">Image</string>
@@ -92,5 +96,51 @@
     <string name="ajouteroffre_job_city">City</string>
     <string name="ajouteroffre_job_description">Description</string>
     <string name="ajouteroffre_btnajouter">Add</string>
+    
+    <string name="rechercher_title">Search</string>
+    <string name="rechercher_text">Text to search</string>
+    <string name="rechercher_city">City</string>
+    <string name="rechercher_btnsearch">Search</string>
+    
+    <string name="ajouter_experience_main_title">Add experience</string>
+    <string name="ajouter_experience_title">Experience title</string>
+    <string name="ajouter_experience_entreprise">Enterprise</string>
+    <string name="ajouter_experience_location">Location</string>
+    <string name="ajouter_experience_link">Link</string>
+    <string name="ajouter_experience_description">Description</string>
+    <string name="ajouter_experience_btnajouter">Add</string>
+    
+    <string name="ajoutereducation_main_title">Add education</string>
+    <string name="ajoutereducation_title">Education title</string>
+	<string name="ajoutereducation_deploma">Diploma</string>
+	<string name="ajoutereducation_university">University</string>
+	<string name="ajoutereducation_location">Location</string>
+	<string name="ajoutereducation_btnajouter">Add</string>
+	
+	<string name="ajouterlangage_main_title">Add language</string>
+	<string name="ajouterlangage_langage">Language</string>
+    <string name="ajouterlangage_btnajouter">Add</string>
+    
+    <string name="modifiercontact_jobseeker_main_title">Edit Contact</string>
+    <string name="modifiercontact_jobseeker_address">Address</string>
+    <string name="modifiercontact_jobseeker_city">City</string>
+    <string name="modifiercontact_jobseeker_telephone">Phone number</string>
+    <string name="modifiercontact_jobseeker_website">Web site</string>
+    <string name="modifiercontact_jobseeker_btnmodifier">Edit</string>
+    
+    <string name="ajoutercv_title">Add CV</string>
+    <string name="ajoutercv_name">Name</string>
+    <string name="ajoutercv_btnbrowse">Browse CV</string>
+    <string name="ajoutercv_btnajouter">Send</string>
+    
+    <string name="ajouterlm_title">Add Cover Letter</string>
+    <string name="ajouterlm_name">Name</string>
+    <string name="ajouterlm_btnbrowse">Browse letter</string>
+    <string name="ajouterlm_btnajouter">Send</string>
+    
+    <string name="ajoutervideo_title">Add video</string>
+    <string name="ajoutervideo_name">Name</string>
+    <string name="ajoutervideo_btnbrowse">Browse video</string>
+    <string name="ajoutervideo_btnajouter">Send</string>
     
 </resources>

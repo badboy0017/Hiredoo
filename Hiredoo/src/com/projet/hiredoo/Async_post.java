@@ -154,7 +154,7 @@ public class Async_post extends AsyncTask<String, Void, String> {
 			else if(this.next_activity == null) { //Activité suivante null dans le cas d'inscription, on va nulle part
 				
 				if(result.equals("ok")) {
-					Toast.makeText(this.context, "Registration succeeded", Toast.LENGTH_LONG).show();
+					Toast.makeText(this.context, "Operation succeeded", Toast.LENGTH_LONG).show();
 				}
 				else {
 					AlertDialog.Builder builder = new AlertDialog.Builder(this.context);

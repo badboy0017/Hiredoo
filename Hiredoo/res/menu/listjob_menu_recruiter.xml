@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item
+    	android:id="@+id/listjobmenu_recuiter_refresh"
+        android:orderInCategory="100"
+        android:showAsAction="always"
+        android:title="@string/listjobmenu_recruiter_refresh"
+        android:icon="@drawable/actualiser" />
+
+</menu>

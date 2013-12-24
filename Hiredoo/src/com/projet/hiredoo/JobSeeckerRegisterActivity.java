@@ -98,6 +98,7 @@ public class JobSeeckerRegisterActivity extends Activity implements OnClickListe
 			builder.setTitle("JSON Exception");
 			builder.setMessage("Cause:\n" + ex.getCause() + "\n\nMessage:\n" + ex.getMessage());
 			builder.create().show();
+			return;
 		}
 		            
 		// Appel du web service POST

@@ -20,12 +20,24 @@ public class Video_activity extends Activity implements OnCompletionListener, On
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.video_view);
 		
+		//String SrcPath ="rtsp://197.8.99.239:1935/hiredo/mp4:aaa.mp4";//marche
+		//String SrcPath ="http://197.8.99.239:1935/hiredo/mp4:aaa.mp4/playlist.m3u8";//marche pas
+		String SrcPath = "rtsp://197.9.1.26/videochat/testing";
+		
+		// Code Ala
+		/*vv = (VideoView)findViewById(R.id.video_player);
+		vv.setVideoURI(Uri.parse(SrcPath));
+		vv.setMediaController(new MediaController(this));
+	    vv.requestFocus();
+	    vv.start();*/
+		
 		this.pd = new ProgressDialog(this);
 		
 		vv = (VideoView)findViewById(R.id.video_player);
 		MediaController mc = new MediaController(this);
 		mc.setAnchorView(vv);
-		Uri video = Uri.parse("http://stagemt.orgfree.com/assets/a.mp4");
+		//Uri video = Uri.parse("http://stagemt.orgfree.com/assets/a.mp4");
+		Uri video = Uri.parse(SrcPath);
 		vv.setVideoURI(video);
 		vv.setMediaController(mc);
 		vv.requestFocus();

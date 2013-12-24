@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/gris_background" >
+    
+    <LinearLayout 
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:background="@layout/header"
+	    android:orientation="vertical" >
+	
+	    <ImageView 
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:src="@drawable/logo"
+	        android:scaleType="fitStart"
+	        android:layout_marginLeft="10sp"
+	        android:contentDescription="@string/logo_description" />
+	    
+	    <View 
+			android:layout_width="fill_parent"
+			android:layout_height="@dimen/separator"
+			android:background="@color/noir" />
+    
+    </LinearLayout>
+    
+    <LinearLayout 
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+	    
+        <TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="@string/ajoutercv_title"
+			android:textSize="@dimen/main_title"
+			android:textAppearance="?android:attr/textAppearanceMedium"
+			android:textColor="@color/rouge_bordeau"
+			android:layout_margin="@dimen/margin_medium"
+			android:layout_gravity="center" />
+        
+        <EditText 
+            android:id="@+id/ajoutercv_name"
+            android:layout_width="fill_parent"
+            android:layout_height="40dp"
+            android:inputType="text"
+            android:background="@color/blanc"
+            android:layout_margin="@dimen/margin_small"
+            android:hint="@string/ajoutercv_name" />
+        
+        <TextView
+            android:id="@+id/ajoutercv_path"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/noir"
+            android:layout_margin="@dimen/margin_small" />
+        
+        <Button 
+		    android:id="@+id/ajoutercv_btnbrowse"
+		    android:layout_width="fill_parent"
+		    android:layout_height="wrap_content"
+		    android:layout_marginRight="@dimen/margin_small"
+		    android:text="@string/ajoutercv_btnbrowse" />
+        
+    </LinearLayout>
+    
+    <Button 
+	    android:id="@+id/ajoutercv_btnajouter"
+	    android:layout_width="100dp"
+	    android:layout_height="wrap_content"
+	    android:layout_gravity="right"
+	    android:layout_marginRight="@dimen/margin_small"
+	    android:text="@string/ajoutercv_btnajouter" />
+   
+</LinearLayout>

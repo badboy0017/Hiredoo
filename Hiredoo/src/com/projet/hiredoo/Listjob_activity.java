@@ -6,6 +6,7 @@ import java.util.HashMap;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.R.drawable;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.ActivityNotFoundException;
@@ -50,10 +51,23 @@ public class Listjob_activity extends Activity implements OnItemClickListener, O
 		// Liste des jobs
 		job_listview = (ListView)findViewById(R.id.list_job);
 	    job_listview.setOnItemClickListener(this);
-		
-		// Appel du web service
-		Async_jobs aj = new Async_jobs(this, Constante.http_get, this.job_listview, null);
-		aj.execute(new String[] { Constante.url + Constante.getAllJobs });
+	    
+	    // Test du user connecté
+	    if(Constante.getINIvalue(this, Constante.ini_type).equals(Constante.ini_type_jobseeker)) {
+			Async_jobs aj = new Async_jobs(this, Constante.http_get, this.job_listview, null);
+			aj.execute(new String[] { Constante.url + Constante.getAllJobs });
+	    }
+	    else if(Constante.getINIvalue(this, Constante.ini_type).equals(Constante.ini_type_recruiter)) {
+			Async_jobs aj = new Async_jobs(this, Constante.http_get, this.job_listview, null);
+			aj.execute(new String[] { Constante.url + Constante.getAllJobs + Constante.getINIvalue(this, Constante.ini_id) });
+	    }
+	    else {
+	    	AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        	builder.setTitle("Internal Exception");
+        	builder.setMessage("Error finding user type");
+        	builder.create().show();
+        	return;
+	    }
 		
 		// Ajout du Sliding Menu
         slidingMenu = new SlidingMenu(this);
@@ -75,25 +89,42 @@ public class Listjob_activity extends Activity implements OnItemClickListener, O
     	hash_map = new HashMap<String, String>();
     	hash_map.put("titre", "My Profile");
     	hash_map.put("description", "Click to edit profile");
-    	hash_map.put("img", String.valueOf(R.drawable.ic_launcher));
+    	hash_map.put("img", String.valueOf(R.drawable.profil));
         listItem.add(hash_map);
         
-        hash_map = new HashMap<String, String>();
-    	hash_map.put("titre", "Search jobs");
-    	hash_map.put("description", "Click search jobs");
-    	hash_map.put("img", String.valueOf(R.drawable.ic_launcher));
-        listItem.add(hash_map);
+        // Test du user connecté
+	    if(Constante.getINIvalue(this, Constante.ini_type).equals(Constante.ini_type_jobseeker)) {
+	    	hash_map = new HashMap<String, String>();
+	    	hash_map.put("titre", "My postules");
+	    	hash_map.put("description", "Click to show your postules");
+	    	hash_map.put("img", String.valueOf(R.drawable.apply));
+	        listItem.add(hash_map);
+	    }
+	    else if(Constante.getINIvalue(this, Constante.ini_type).equals(Constante.ini_type_recruiter)) {
+	    	hash_map = new HashMap<String, String>();
+	    	hash_map.put("titre", "Add new job");
+	    	hash_map.put("description", "Click to add new job");
+	    	hash_map.put("img", String.valueOf(drawable.ic_input_add));
+	        listItem.add(hash_map);
+	    }
+	    else {
+	    	AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        	builder.setTitle("Internal Exception");
+        	builder.setMessage("Error finding user type");
+        	builder.create().show();
+        	return;
+	    }
         
         hash_map = new HashMap<String, String>();
-    	hash_map.put("titre", "Search Profile");
-    	hash_map.put("description", "Search profile or enterprise");
-    	hash_map.put("img", String.valueOf(R.drawable.ic_launcher));
+    	hash_map.put("titre", "Search");
+    	hash_map.put("description", "Click to search");
+    	hash_map.put("img", String.valueOf(drawable.ic_search_category_default));
         listItem.add(hash_map);
         
         hash_map = new HashMap<String, String>();
     	hash_map.put("titre", "Disconnect");
     	hash_map.put("description", "Click to disconnect");
-    	hash_map.put("img", String.valueOf(R.drawable.ic_launcher));
+    	hash_map.put("img", String.valueOf(R.drawable.disconnect));
         listItem.add(hash_map);
         
         SimpleAdapter mSchedule = new SimpleAdapter (this.getBaseContext(), listItem, R.layout.affichageitem,
@@ -105,8 +136,15 @@ public class Listjob_activity extends Activity implements OnItemClickListener, O
 	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		getMenuInflater().inflate(R.menu.listjob_menu, menu);
-		return true;
+		if(Constante.getINIvalue(this, Constante.ini_type).equals(Constante.ini_type_jobseeker)) {
+			getMenuInflater().inflate(R.menu.listjob_menu, menu);
+			return true;
+		}
+		else if(Constante.getINIvalue(this, Constante.ini_type).equals(Constante.ini_type_recruiter)) {
+			getMenuInflater().inflate(R.menu.listjob_menu_recruiter, menu);
+			return true;
+		}
+		return super.onCreateOptionsMenu(menu);
 	}
 	
 	@Override
@@ -125,6 +163,7 @@ public class Listjob_activity extends Activity implements OnItemClickListener, O
 	        			}
 	        			catch (JSONException ex) {
 	        				Toast.makeText(getApplicationContext(), "Erreur JSON\n" + ex.getMessage(), Toast.LENGTH_LONG).show();
+	        				return;
 	        			}
 	        			
 	        			// Appel du web service
@@ -146,6 +185,7 @@ public class Listjob_activity extends Activity implements OnItemClickListener, O
 	        	return true;
 	        	
 	        case R.id.listjobmenu_showAll:
+	        case R.id.listjobmenu_recuiter_refresh:
 	        	this.recreate();
 	        	return true;
 	        	
@@ -187,42 +227,119 @@ public class Listjob_activity extends Activity implements OnItemClickListener, O
 	
 	// Fonction de traitement des clicks sur la liste des jobs
 	private void traitement_joblist(int position) {
-		Intent detail_intent = new Intent(this, Applyjob_activity.class);
-		try {
-			detail_intent.putExtra("id", Constante.ja.getJSONObject(position).getString("id"));
-			detail_intent.putExtra("idEntreprise", Constante.ja.getJSONObject(position).getString("idEntreprise"));
-			detail_intent.putExtra("title", Constante.ja.getJSONObject(position).getString("title"));
-			detail_intent.putExtra("type", Constante.ja.getJSONObject(position).getString("type"));
-			detail_intent.putExtra("description", Constante.ja.getJSONObject(position).getString("description"));
-			detail_intent.putExtra("city", Constante.ja.getJSONObject(position).getString("city"));
-			detail_intent.putExtra("datecreation", Constante.ja.getJSONObject(position).getString("datecreation"));
-			detail_intent.putExtra("domaine", Constante.ja.getJSONObject(position).getString("domaine"));
-			
-			startActivity(detail_intent);
-		}
-		catch(JSONException ex) {
-			Toast.makeText(this, "JSONException\nCannot convert data: " + ex.getMessage(), Toast.LENGTH_LONG).show();
-		}
-		catch(ActivityNotFoundException ex) {
-			Toast.makeText(this, "Activity introuvable.\n" + ex.getMessage(), Toast.LENGTH_LONG).show();
-		}
+	    // Test du user connecté
+	    if(Constante.getINIvalue(this, Constante.ini_type).equals(Constante.ini_type_jobseeker)) {
+	    	// Show apply activity
+	    	Intent detail_intent = new Intent(this, Applyjob_activity.class);
+			try {
+				detail_intent.putExtra("id", Constante.ja.getJSONObject(position).getString("id"));
+				detail_intent.putExtra("idEntreprise", Constante.ja.getJSONObject(position).getString("idEntreprise"));
+				detail_intent.putExtra("title", Constante.ja.getJSONObject(position).getString("title"));
+				detail_intent.putExtra("type", Constante.ja.getJSONObject(position).getString("type"));
+				detail_intent.putExtra("description", Constante.ja.getJSONObject(position).getString("description"));
+				detail_intent.putExtra("city", Constante.ja.getJSONObject(position).getString("city"));
+				detail_intent.putExtra("datecreation", Constante.ja.getJSONObject(position).getString("datecreation"));
+				detail_intent.putExtra("domaine", Constante.ja.getJSONObject(position).getString("domaine"));
+				
+				startActivity(detail_intent);
+			}
+			catch(JSONException ex) {
+				Toast.makeText(this, "JSONException\nCannot convert data: " + ex.getMessage(), Toast.LENGTH_LONG).show();
+			}
+			catch(ActivityNotFoundException ex) {
+				Toast.makeText(this, "Activity introuvable.\n" + ex.getMessage(), Toast.LENGTH_LONG).show();
+			}
+	    }
+	    else if(Constante.getINIvalue(this, Constante.ini_type).equals(Constante.ini_type_recruiter)) {
+	    	// Show detail activity
+	    	Intent detail_intent = new Intent(this, Detailoffre_activity.class);
+			try {
+				detail_intent.putExtra("id", Constante.ja.getJSONObject(position).getString("id"));
+				detail_intent.putExtra("title", Constante.ja.getJSONObject(position).getString("title"));
+				detail_intent.putExtra("datecreation", Constante.ja.getJSONObject(position).getString("datecreation"));
+				detail_intent.putExtra("type", Constante.ja.getJSONObject(position).getString("type"));
+				detail_intent.putExtra("domaine", Constante.ja.getJSONObject(position).getString("domaine"));
+				detail_intent.putExtra("city", Constante.ja.getJSONObject(position).getString("city"));
+				detail_intent.putExtra("description", Constante.ja.getJSONObject(position).getString("description"));
+				
+				startActivity(detail_intent);
+			}
+			catch(JSONException ex) {
+				Toast.makeText(this, "JSONException\nCannot convert data: " + ex.getMessage(), Toast.LENGTH_LONG).show();
+			}
+			catch(ActivityNotFoundException ex) {
+				Toast.makeText(this, "Activity introuvable.\n" + ex.getMessage(), Toast.LENGTH_LONG).show();
+			}
+	    }
+	    else {
+	    	AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        	builder.setTitle("Internal Exception");
+        	builder.setMessage("Error finding user type");
+        	builder.create().show();
+        	return;
+	    }
 	}
 	
 	// Fonction de traitement des clicks sur la liste du slide menu
 	private void traitement_slidingmenu_list(int position) {
 		switch(position) {
 		case 0: // mon profil
-			// Actualisation de this.next_activity
-			this.next_activity = Profilcandidate_activity.class;
+		    // Test du user connecté
+		    if(Constante.getINIvalue(this, Constante.ini_type).equals(Constante.ini_type_jobseeker)) {
+				// Actualisation de this.next_activity
+				this.next_activity = Profilcandidate_activity.class;
+				
+				// Appel du web service
+				Async_get ag = new Async_get(this, this.next_activity);
+				ag.execute(new String[] { Constante.url + Constante.getUserProfile + Constante.getINIvalue(this, Constante.ini_id) });
+		    }
+		    else if(Constante.getINIvalue(this, Constante.ini_type).equals(Constante.ini_type_recruiter)) {
+				// Actualisation de this.next_activity
+				this.next_activity = Profilenterprise_activity.class;
+				
+				// Appel du web service
+				Async_get ag = new Async_get(this, this.next_activity);
+				ag.execute(new String[] { Constante.url + Constante.enterprise + Constante.getINIvalue(this, Constante.ini_id) });
+		    }
+		    else {
+		    	AlertDialog.Builder builder = new AlertDialog.Builder(this);
+	        	builder.setTitle("Internal Exception");
+	        	builder.setMessage("Error finding user type");
+	        	builder.create().show();
+	        	return;
+		    }
+		    
+
+			slidingMenu.toggle();
+			break;
 			
-			// Appel du web service
-			Async_get ag = new Async_get(this, this.next_activity);
-			ag.execute(new String[] { Constante.url + Constante.getUserProfile + Constante.getINIvalue(this, Constante.ini_id) });
+		case 1: // Addjob for recruiter ; My postules for jobseeker
+	        // Test du user connecté
+		    if(Constante.getINIvalue(this, Constante.ini_type).equals(Constante.ini_type_jobseeker)) {
+		    	Toast.makeText(this, "En cours de dev...", Toast.LENGTH_LONG).show();
+		    }
+		    else if(Constante.getINIvalue(this, Constante.ini_type).equals(Constante.ini_type_recruiter)) {
+				// Appel de l'activité
+				Intent ajouter_intent = new Intent(this, Ajouteroffre_activity.class);
+				try {
+					startActivity(ajouter_intent);
+				}
+				catch(ActivityNotFoundException ex) {
+					Toast.makeText(this, "Activity introuvable.\n" + ex.getMessage(), Toast.LENGTH_LONG).show();
+				}
+		    }
+		    else {
+		    	AlertDialog.Builder builder = new AlertDialog.Builder(this);
+	        	builder.setTitle("Internal Exception");
+	        	builder.setMessage("Error finding user type");
+	        	builder.create().show();
+	        	return;
+		    }
 			
 			slidingMenu.toggle();
 			break;
 			
-		case 1: // rechercher job
+		case 2: // Rechercher
 			Intent job_intent = new Intent(this, Rechercher_activity.class);
 			try {
 				startActivity(job_intent);
@@ -230,17 +347,7 @@ public class Listjob_activity extends Activity implements OnItemClickListener, O
 			catch(ActivityNotFoundException ex) {
 				Toast.makeText(this, "Activity introuvable.\n" + ex.getMessage(), Toast.LENGTH_LONG).show();
 			}
-			slidingMenu.toggle();
-			break;
 			
-		case 2: // rechercher profil
-			Intent rech_intent = new Intent(this, Rechercher_activity.class);
-			try {
-				startActivity(rech_intent);
-			}
-			catch(ActivityNotFoundException ex) {
-				Toast.makeText(this, "Activity introuvable.\n" + ex.getMessage(), Toast.LENGTH_LONG).show();
-			}
 			slidingMenu.toggle();
 			break;
 			

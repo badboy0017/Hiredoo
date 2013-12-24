@@ -1,14 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>  
 <resources>
-	<string-array name="ajouteroffre_array_type">  
+	<string-array name="ajouteroffre_array_type">
 		<item>CDD</item>
 		<item>CDI</item>
 		<item>Stage</item>
 	</string-array>
 	
-	<string-array name="ajouteroffre_array_domaine">  
+	<string-array name="ajouteroffre_array_domaine">
 		<item>Computer Science</item>
-		<item>Mecanic</item>
+		<item>Mechanic</item>
+		<item>Electronic</item>
+		<item>Telecom</item>
+		<item>Transport</item>
+		<item>Manufacturing</item>
+		<item>Managment</item>
+		<item>Aeronautics</item>
+		<item>Finance</item>
+		<item>Audiovisual</item>
+		<item>Teaching</item>
+		<item>Journalisme</item>
+		<item>Marketing</item>
+		<item>Medical</item>
+		<item>Tourisme</item>
 		<item>Other</item>
+	</string-array>
+	
+	<string-array name="rechercher_type">
+		<item>Job</item>
+		<item>Candidate profile</item>
+		<item>Enterprise profile</item>
+	</string-array>
+	
+	<string-array name="rechercher_type_rectuiter">
+		<item>Candidate profile</item>
+		<item>Enterprise profile</item>
 	</string-array>
 </resources>

@@ -138,7 +138,7 @@
 			
 			<Button 
 			    android:id="@+id/applyjob_btnpostuler"
-			    android:layout_width="wrap_content"
+			    android:layout_width="100dp"
 			    android:layout_height="wrap_content"
 			    android:text="@string/applyjob_btnApply"
 			    android:layout_gravity="right" />
