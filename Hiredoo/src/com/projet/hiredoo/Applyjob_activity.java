@@ -1,14 +1,11 @@
 package com.projet.hiredoo;
 
 import android.app.Activity;
-import android.content.ActivityNotFoundException;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class Applyjob_activity extends Activity implements OnClickListener {
 	
@@ -46,13 +43,12 @@ public class Applyjob_activity extends Activity implements OnClickListener {
 
 	@Override
 	public void onClick(View v) {
-		Intent postuler_intent = new Intent(this, Postulerjob_activity.class);
-		try {
-			startActivity(postuler_intent);
-		}
-		catch (ActivityNotFoundException ex) {
-			Toast.makeText(this, "Activity introuvable.\n" + ex.getMessage(), Toast.LENGTH_LONG).show();
-		}
+		// Sauvegarde de l'ID du job
+		Constante.job_id = getIntent().getExtras().getString("id");
+		
+		// Appel du web service GET
+		Async_get ag = new Async_get(this, Postulerjob_activity.class);
+		ag.execute(new String[] { Constante.url + Constante.user_getCvLmVideo + Constante.getINIvalue(this, Constante.ini_id) });
 	}
 
 }

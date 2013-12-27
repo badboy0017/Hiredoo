@@ -160,11 +160,12 @@
 			
 			<Button 
 			    android:id="@+id/detailoffre_btnsupp"
-			    android:layout_width="wrap_content"
+			    android:layout_width="100dp"
 			    android:layout_height="wrap_content"
-			    android:text="@string/detailoffre_btnSupprimer"
-			    android:layout_gravity="right" />
-	        
+			    android:layout_gravity="right"
+			    android:layout_marginRight="@dimen/margin_small"
+			    android:text="@string/detailoffre_btnSupprimer"/>
+			
 	    </LinearLayout>
 	    
 	

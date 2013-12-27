@@ -118,9 +118,9 @@ public class Profilcandidate_activity extends Activity implements OnClickListene
         listItem.add(hash_map);
         
         hash_map = new HashMap<String, String>();
-    	hash_map.put("titre", "My contacts");
-    	hash_map.put("description", "Click to change contact");
-    	hash_map.put("img", String.valueOf(R.drawable.contact));
+    	hash_map.put("titre", "Edit profile");
+    	hash_map.put("description", "Click to edit profile");
+    	hash_map.put("img", String.valueOf(R.drawable.profil));
         listItem.add(hash_map);
         
         hash_map = new HashMap<String, String>();
@@ -193,6 +193,7 @@ public class Profilcandidate_activity extends Activity implements OnClickListene
 			Intent exp_intent = new Intent(this, Ajouter_experience_activity.class);
 			try {
 				startActivity(exp_intent);
+				finish();
 			}
 			catch(ActivityNotFoundException ex) {
 				Toast.makeText(this, "Activity introuvable.\n" + ex.getMessage(), Toast.LENGTH_LONG).show();
@@ -219,6 +220,7 @@ public class Profilcandidate_activity extends Activity implements OnClickListene
 			Intent lan_intent = new Intent(this, Ajouter_langage_activity.class);
 			try {
 				startActivity(lan_intent);
+				finish();
 			}
 			catch(ActivityNotFoundException ex) {
 				Toast.makeText(this, "Activity introuvable.\n" + ex.getMessage(), Toast.LENGTH_LONG).show();
@@ -227,11 +229,12 @@ public class Profilcandidate_activity extends Activity implements OnClickListene
 			slidingMenu.toggle();
 			break;
 			
-		case 6: // My contact
+		case 6: // Edit profile
 			// Appel de l'activité
-			Intent con_intent = new Intent(this, Modifier_contact_jobseeker_activity.class);
+			Intent con_intent = new Intent(this, Modifier_jobseeker_activity.class);
 			try {
 				startActivity(con_intent);
+				finish();
 			}
 			catch(ActivityNotFoundException ex) {
 				Toast.makeText(this, "Activity introuvable.\n" + ex.getMessage(), Toast.LENGTH_LONG).show();
@@ -279,12 +282,12 @@ public class Profilcandidate_activity extends Activity implements OnClickListene
 		
 		try {
 			// Name
-			name = this.jo.getJSONObject("user").getString("name") + "\n" + (this.jo.getJSONObject("user").has("titleprofile") ? this.jo.getJSONObject("user").getString("titleprofile") : "");
-			
+			name = this.jo.getJSONObject("user").getString("name") + this.jo.getJSONObject("user").getString("lastname") + "\n" + (this.jo.getJSONObject("user").has("titleprofile") ? this.jo.getJSONObject("user").getString("titleprofile") : "");
+
 			// About me
 			aboutme = "";
-			aboutme += (this.jo.getJSONObject("user").has("resume") ? "Resume\n" + this.jo.getJSONObject("user").getString("resume") : "No resume");
-			aboutme += (this.jo.getJSONObject("user").has("socialsituation") ? "\nSocial Situation: " + this.jo.getJSONObject("user").getString("socialsituation") : "");
+			aboutme += (this.jo.getJSONObject("user").has("resume") ? this.jo.getJSONObject("user").getString("resume") : "No resume");
+			aboutme += (this.jo.getJSONObject("user").has("socialsituation") ? "\n\nSocial Situation: " + this.jo.getJSONObject("user").getString("socialsituation") : "");
 			
 			// Experience
 			if(this.jo.getJSONArray("experience").length() != 0) {
@@ -326,7 +329,8 @@ public class Profilcandidate_activity extends Activity implements OnClickListene
 				JSONArray ja = this.jo.getJSONArray("language");
 				language = "";
 				for(int i=0 ; i<ja.length() ; i++) {
-					language += ja.getJSONObject(i).getString("language") + ", ";
+					language += (i == 0) ? "" : ", ";
+					language += ja.getJSONObject(i).getString("language");
 				}
 			}
 			else {

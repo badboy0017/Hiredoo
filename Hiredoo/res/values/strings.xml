@@ -48,15 +48,28 @@
     <string name="profilenterprise_about">About</string>
     
     <string name="modifierProfilEnterprise_title">Edit Profile</string>
-    <string name="modifierProfilEnterprise_name">New name</string>
+    <string name="modifierProfilEnterprise_name">New enterprise name</string>
     <string name="modifierProfilEnterprise_activitySector">Activity Sector</string>
+    <string name="modifierProfilEnterprise_nbreemployee">Employees number</string>
     <string name="modifierProfilEnterprise_resume">New resume</string>
     <string name="modifierProfilEnterprise_address">New address</string>
+    <string name="modifierProfilEnterprise_city">New City</string>
     <string name="modifierProfilEnterprise_website">New website</string>
     <string name="modifierProfilEnterprise_email">New email</string>
     <string name="modifierProfilEnterprise_telephone">New phone number</string>
     <string name="modifierProfilEnterprise_fax">New fax number</string>
     <string name="modifierProfilEnterprise_btnModifier">Save</string>
+    
+    <string name="modifierProfilJobseeker_main_title">Edit Profile</string>
+    <string name="modifierProfilJobseeker_name">Name</string>
+    <string name="modifierProfilJobseeker_lastname">Last name</string>
+    <string name="modifierProfilJobseeker_profil_title">Profile title</string>
+    <string name="modifierProfilJobseeker_address">Address</string>
+    <string name="modifierProfilJobseeker_city">City</string>
+    <string name="modifierProfilJobseeker_telephone">Phone number</string>
+    <string name="modifierProfilJobseeker_resume">Resume</string>
+    <string name="modifierProfilJobseeker_website">Web site</string>
+    <string name="modifierProfilJobseeker_btnmodifier">Save</string>
     
     <string name="applyjob_title">Job Details</string>
     <string name="applyjob_jobTitle">Title</string>
@@ -108,6 +121,7 @@
     <string name="ajouter_experience_location">Location</string>
     <string name="ajouter_experience_link">Link</string>
     <string name="ajouter_experience_description">Description</string>
+    <string name="ajouter_experience_date">Select date</string>
     <string name="ajouter_experience_btnajouter">Add</string>
     
     <string name="ajoutereducation_main_title">Add education</string>
@@ -120,13 +134,6 @@
 	<string name="ajouterlangage_main_title">Add language</string>
 	<string name="ajouterlangage_langage">Language</string>
     <string name="ajouterlangage_btnajouter">Add</string>
-    
-    <string name="modifiercontact_jobseeker_main_title">Edit Contact</string>
-    <string name="modifiercontact_jobseeker_address">Address</string>
-    <string name="modifiercontact_jobseeker_city">City</string>
-    <string name="modifiercontact_jobseeker_telephone">Phone number</string>
-    <string name="modifiercontact_jobseeker_website">Web site</string>
-    <string name="modifiercontact_jobseeker_btnmodifier">Edit</string>
     
     <string name="ajoutercv_title">Add CV</string>
     <string name="ajoutercv_name">Name</string>

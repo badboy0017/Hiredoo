@@ -55,11 +55,11 @@ public class Listjob_activity extends Activity implements OnItemClickListener, O
 	    // Test du user connecté
 	    if(Constante.getINIvalue(this, Constante.ini_type).equals(Constante.ini_type_jobseeker)) {
 			Async_jobs aj = new Async_jobs(this, Constante.http_get, this.job_listview, null);
-			aj.execute(new String[] { Constante.url + Constante.getAllJobs });
+			aj.execute(new String[] { Constante.url + Constante.job_getAllJobs });
 	    }
 	    else if(Constante.getINIvalue(this, Constante.ini_type).equals(Constante.ini_type_recruiter)) {
 			Async_jobs aj = new Async_jobs(this, Constante.http_get, this.job_listview, null);
-			aj.execute(new String[] { Constante.url + Constante.getAllJobs + Constante.getINIvalue(this, Constante.ini_id) });
+			aj.execute(new String[] { Constante.url + Constante.job_getAllJobs + Constante.getINIvalue(this, Constante.ini_id) });
 	    }
 	    else {
 	    	AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -168,7 +168,7 @@ public class Listjob_activity extends Activity implements OnItemClickListener, O
 	        			
 	        			// Appel du web service
 	        			Async_jobs aj = new Async_jobs(Listjob_activity.this, Constante.http_post, job_listview, obj);
-	        			aj.execute(new String[] { Constante.url + Constante.getJobsByDomaine });
+	        			aj.execute(new String[] { Constante.url + Constante.job_getJobsByDomaine });
 	        	    }
 	        	});
 	        	builder.create().show();
@@ -185,10 +185,33 @@ public class Listjob_activity extends Activity implements OnItemClickListener, O
 	        	return true;
 	        	
 	        case R.id.listjobmenu_showAll:
-	        case R.id.listjobmenu_recuiter_refresh:
-	        	this.recreate();
+    			// Appel du web service
+    			Async_jobs aj = new Async_jobs(this, Constante.http_get, job_listview, null);
+    			aj.execute(new String[] { Constante.url + Constante.job_getAllJobs });
 	        	return true;
 	        	
+	        case R.id.listjobmenu_recuiter_refresh:
+	    	    // Test du user connecté
+	    	    if(Constante.getINIvalue(this, Constante.ini_type).equals(Constante.ini_type_jobseeker)) {
+	    			// Appel du web service
+	    	    	Async_jobs aj2 = new Async_jobs(this, Constante.http_get, job_listview, null);
+	    			aj2.execute(new String[] { Constante.url + Constante.job_getAllJobs });
+		        	return true;
+	    	    }
+	    	    else if(Constante.getINIvalue(this, Constante.ini_type).equals(Constante.ini_type_recruiter)) {
+	    			// Appel du web service
+	    	    	Async_jobs aj3 = new Async_jobs(this, Constante.http_get, this.job_listview, null);
+	    			aj3.execute(new String[] { Constante.url + Constante.job_getAllJobs + Constante.getINIvalue(this, Constante.ini_id) });
+		        	return true;
+	    	    }
+	    	    else {
+	    	    	AlertDialog.Builder alert = new AlertDialog.Builder(this);
+	    	    	alert.setTitle("Internal Exception");
+	    	    	alert.setMessage("Error finding user type");
+	    	    	alert.create().show();
+	            	return false;
+	    	    }
+	    	    
 	        default:
 	            return super.onOptionsItemSelected(item);
 	    }
@@ -291,7 +314,7 @@ public class Listjob_activity extends Activity implements OnItemClickListener, O
 				
 				// Appel du web service
 				Async_get ag = new Async_get(this, this.next_activity);
-				ag.execute(new String[] { Constante.url + Constante.getUserProfile + Constante.getINIvalue(this, Constante.ini_id) });
+				ag.execute(new String[] { Constante.url + Constante.user_getUserProfile + Constante.getINIvalue(this, Constante.ini_id) });
 		    }
 		    else if(Constante.getINIvalue(this, Constante.ini_type).equals(Constante.ini_type_recruiter)) {
 				// Actualisation de this.next_activity
@@ -309,14 +332,17 @@ public class Listjob_activity extends Activity implements OnItemClickListener, O
 	        	return;
 		    }
 		    
-
 			slidingMenu.toggle();
 			break;
 			
 		case 1: // Addjob for recruiter ; My postules for jobseeker
 	        // Test du user connecté
 		    if(Constante.getINIvalue(this, Constante.ini_type).equals(Constante.ini_type_jobseeker)) {
-		    	Toast.makeText(this, "En cours de dev...", Toast.LENGTH_LONG).show();
+		    	//Toast.makeText(this, "En cours de dev...", Toast.LENGTH_LONG).show();
+		    	
+    			// Appel du web service
+    			Async_jobs aj = new Async_jobs(this, Constante.http_get, job_listview, null);
+    			aj.execute(new String[] { Constante.url + Constante.user_getMypostules + Constante.getINIvalue(this, Constante.ini_id) });
 		    }
 		    else if(Constante.getINIvalue(this, Constante.ini_type).equals(Constante.ini_type_recruiter)) {
 				// Appel de l'activité

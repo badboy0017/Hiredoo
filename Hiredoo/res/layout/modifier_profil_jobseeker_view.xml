@@ -7,7 +7,7 @@
 	android:fillViewport="true" >
 	
 	<LinearLayout 
-	    android:layout_width="match_parent"
+	    android:layout_width="fill_parent"
 	    android:layout_height="wrap_content"
 	    android:orientation="vertical"
 	    android:background="@color/gris_background" >
@@ -41,7 +41,7 @@
 	        <TextView
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-				android:text="@string/ajouter_experience_main_title"
+				android:text="@string/modifierProfilJobseeker_main_title"
 				android:textSize="@dimen/main_title"
 				android:textAppearance="?android:attr/textAppearanceMedium"
 				android:textColor="@color/rouge_bordeau"
@@ -49,97 +49,95 @@
 				android:layout_gravity="center" />
 	        
 	        <EditText 
-	            android:id="@+id/ajouter_experience_title"
+	            android:id="@+id/modifierprofil_jobseeker_name"
 	            android:layout_width="fill_parent"
 	            android:layout_height="40dp"
-	            android:inputType="text"
+	            android:inputType="textPersonName"
 	            android:background="@color/blanc"
 	            android:layout_margin="@dimen/margin_small"
-	            android:hint="@string/ajouter_experience_title" />
+	            android:hint="@string/modifierProfilJobseeker_name" />
 	        
 	        <EditText 
-	            android:id="@+id/ajouter_experience_entreprise"
+	            android:id="@+id/modifierprofil_jobseeker_lastname"
 	            android:layout_width="fill_parent"
 	            android:layout_height="40dp"
-	            android:inputType="text"
+	            android:inputType="textPersonName"
 	            android:background="@color/blanc"
 	            android:layout_margin="@dimen/margin_small"
-	            android:hint="@string/ajouter_experience_entreprise" />
+	            android:hint="@string/modifierProfilJobseeker_lastname" />
 	        
 	        <EditText 
-	            android:id="@+id/ajouter_experience_location"
+	            android:id="@+id/modifierprofil_jobseeker_profiltitle"
 	            android:layout_width="fill_parent"
 	            android:layout_height="40dp"
 	            android:inputType="text"
 	            android:background="@color/blanc"
 	            android:layout_margin="@dimen/margin_small"
-	            android:hint="@string/ajouter_experience_location" />
+	            android:hint="@string/modifierProfilJobseeker_profil_title" />
 	        
-	        <LinearLayout 
+	        <Spinner   
+				android:id="@+id/modifierprofil_jobseeker_socialsituation"
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:layout_margin="@dimen/margin_small"
+				android:entries="@array/social_situation" >
+			</Spinner>
+	        
+	        <EditText 
+	            android:id="@+id/modifierprofil_jobseeker_address"
 	            android:layout_width="fill_parent"
-	            android:layout_height="wrap_content"
-	            android:orientation="horizontal"
-	            android:layout_margin="@dimen/margin_small" >
-	            
-	            <TextView 
-	                android:id="@+id/ajouter_experience_datefrom"
-					android:layout_width="fill_parent"
-					android:layout_height="40dp"
-					android:layout_weight="1"
-					android:text="@string/ajouter_experience_date"
-					android:textSize="@dimen/content"
-					android:textAppearance="?android:attr/textAppearanceMedium"
-					android:textColor="@color/noir"
-					android:background="@color/blanc"
-					android:gravity="center_vertical" />
-	            
-	            <View 
-					android:layout_width="@dimen/margin_small"
-					android:layout_height="fill_parent"
-					android:background="@color/gris_background" />
-	            
-	            <TextView 
-	                android:id="@+id/ajouter_experience_dateto"
-					android:layout_width="fill_parent"
-					android:layout_height="40dp"
-					android:layout_weight="1"
-					android:text="@string/ajouter_experience_date"
-					android:textSize="@dimen/content"
-					android:textAppearance="?android:attr/textAppearanceMedium"
-					android:textColor="@color/noir"
-					android:background="@color/blanc"
-					android:gravity="center_vertical" />
-	            
-	        </LinearLayout>
+	            android:layout_height="40dp"
+	            android:inputType="textPostalAddress"
+	            android:background="@color/blanc"
+	            android:layout_margin="@dimen/margin_small"
+	            android:hint="@string/modifierProfilJobseeker_address" />
 	        
-			<EditText 
-	            android:id="@+id/ajouter_experience_link"
+	        <EditText 
+	            android:id="@+id/modifierprofil_jobseeker_city"
+	            android:layout_width="fill_parent"
+	            android:layout_height="40dp"
+	            android:inputType="text"
+	            android:background="@color/blanc"
+	            android:layout_margin="@dimen/margin_small"
+	            android:hint="@string/modifierProfilJobseeker_city" />
+	        
+	        <EditText 
+	            android:id="@+id/modifierprofil_jobseeker_telephone"
+	            android:layout_width="fill_parent"
+	            android:layout_height="40dp"
+	            android:inputType="phone"
+	            android:background="@color/blanc"
+	            android:layout_margin="@dimen/margin_small"
+	            android:hint="@string/modifierProfilJobseeker_telephone" />
+	        
+	        <EditText 
+	            android:id="@+id/modifierprofil_jobseeker_website"
 	            android:layout_width="fill_parent"
 	            android:layout_height="40dp"
 	            android:inputType="textUri"
 	            android:background="@color/blanc"
 	            android:layout_margin="@dimen/margin_small"
-	            android:hint="@string/ajouter_experience_link" />
-			
-			<EditText 
-	            android:id="@+id/ajouter_experience_description"
+	            android:hint="@string/modifierProfilJobseeker_website" />
+	        
+	        <EditText 
+	            android:id="@+id/modifierprofil_jobseeker_resume"
 	            android:layout_width="fill_parent"
 	            android:layout_height="40dp"
 	            android:inputType="textMultiLine"
 	            android:lines="5"
 	            android:background="@color/blanc"
 	            android:layout_margin="@dimen/margin_small"
-	            android:hint="@string/ajouter_experience_description" />
-	
+	            android:hint="@string/modifierProfilJobseeker_resume" />
+	        
 	    </LinearLayout>
 	    
 	    <Button 
-		    android:id="@+id/ajouter_experience_btnajouter"
+		    android:id="@+id/modifierprofil_jobseeker_btnmodifier"
 		    android:layout_width="100dp"
 		    android:layout_height="wrap_content"
 		    android:layout_gravity="right"
 		    android:layout_marginRight="@dimen/margin_small"
-		    android:text="@string/ajouter_experience_btnajouter"/>
-   
-</LinearLayout>
+		    android:text="@string/modifierProfilJobseeker_btnmodifier"/>
+	   
+	</LinearLayout>
 </ScrollView>

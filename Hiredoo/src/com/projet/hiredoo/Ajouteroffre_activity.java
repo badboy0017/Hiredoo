@@ -71,7 +71,6 @@ public class Ajouteroffre_activity extends Activity implements OnClickListener {
 		// Appel du web service POST
 		Async_post ap = new Async_post(this, obj, null);
 		ap.execute(new String[] { Constante.url + Constante.job });
-		
 	}
 
 }

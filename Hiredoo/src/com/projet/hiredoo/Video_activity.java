@@ -20,9 +20,9 @@ public class Video_activity extends Activity implements OnCompletionListener, On
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.video_view);
 		
-		//String SrcPath ="rtsp://197.8.99.239:1935/hiredo/mp4:aaa.mp4";//marche
+		String SrcPath ="rtsp://197.8.119.26:1935/hiredo/mp4:aaa.mp4";//marche
 		//String SrcPath ="http://197.8.99.239:1935/hiredo/mp4:aaa.mp4/playlist.m3u8";//marche pas
-		String SrcPath = "rtsp://197.9.1.26/videochat/testing";
+		//String SrcPath ="rtsp://197.8.119.26:1935/live/work";
 		
 		// Code Ala
 		/*vv = (VideoView)findViewById(R.id.video_player);
@@ -63,7 +63,7 @@ public class Video_activity extends Activity implements OnCompletionListener, On
 	private void showDialog() {
 		
 		this.pd.setCancelable(false);
-		this.pd.setMessage("Chargement... Attendez SVP");
+		this.pd.setMessage("Loading... Please wait");
 		this.pd.setProgressStyle(ProgressDialog.STYLE_SPINNER);
 		this.pd.show();
 	}

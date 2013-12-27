@@ -144,9 +144,10 @@ public class Profilenterprise_activity extends Activity implements OnItemClickLi
 			
 		case 2: // Modifier profil
 			// Appel de l'activité
-			Intent mod_intent = new Intent(this, Modifierentreprise_activity.class);
+			Intent mod_intent = new Intent(this, Modifier_entreprise_activity.class);
 			try {
 				startActivity(mod_intent);
+				finish();
 			}
 			catch(ActivityNotFoundException ex) {
 				Toast.makeText(this, "Activity introuvable.\n" + ex.getMessage(), Toast.LENGTH_LONG).show();
@@ -179,19 +180,19 @@ public class Profilenterprise_activity extends Activity implements OnItemClickLi
 			
 			// About me
 			about = "";
-			about += (this.jo.has("resume") ? "Resume\n" + this.jo.getString("resume") : "No resume");
-			about += (this.jo.has("nbemplyee") ? "\nNumber Emplyees: " + this.jo.getString("nbemplyee") : "");
+			about += (this.jo.has("resume") ? this.jo.getString("resume") : "No resume");
+			about += (this.jo.has("nbemplyee") ? "\n\nEmplyees number: " + this.jo.getString("nbemplyee") : "");
 			
 			// Contact
 			contact = "";
 			contact += (this.jo.has("address") ? this.jo.getString("address") : "No Address");
 			contact += " - ";
 			contact += (this.jo.has("city") ? this.jo.getString("city") : "No City");
-			contact += "\n";
+			contact += "\n\n";
 			contact += (this.jo.has("email") ? this.jo.getString("email") : "No Email");
-			contact += "\n";
+			contact += "\n\n";
 			contact += (this.jo.has("website") ? this.jo.getString("website") : "No Web site");
-			contact += "\n";
+			contact += "\n\n";
 			contact += (this.jo.has("tel") ? this.jo.getString("tel") : "No phone number");
 			contact += "\n";
 			contact += (this.jo.has("fax") ? this.jo.getString("fax") : "No fax number");

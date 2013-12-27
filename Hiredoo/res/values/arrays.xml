@@ -35,4 +35,13 @@
 		<item>Candidate profile</item>
 		<item>Enterprise profile</item>
 	</string-array>
+	
+	<string-array name="social_situation">
+		<item>Single</item>
+		<item>Engaged</item>
+		<item>Maried</item>
+		<item>Divorced</item>
+		<item>Other</item>
+	</string-array>
+	
 </resources>

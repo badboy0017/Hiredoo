@@ -33,17 +33,25 @@ public class Constante {
 	
 	public static final String url = "http://192.168.1.2:8080/Hiredo/";
 	
-	public static final String user           = "user/";
-	public static final String user_login     = "user/login/";
-	public static final String getUserProfile = "user/profile/";
+	public static final String user                = "user/";
+	public static final String user_login          = "user/login/";
+	public static final String user_getUserProfile = "user/profile/";
+	public static final String user_getCvLmVideo   = "user/getcvresumevideo/";
+	public static final String user_getMypostules  = "user/listejobpostule/";
 	
 	public static final String enterprise       = "entreprise/";
 	public static final String enterprise_login = "entreprise/login/";
 	
-	public static final String job              = "job/";
-	public static final String getAllJobs       = "job/findall/";
-	public static final String getJobsByDomaine = "job/domaine/";
-	public static final String getMyJobs        = "job/myjobs/";
+	public static final String job                  = "job/";
+	public static final String job_getAllJobs       = "job/findall/";
+	public static final String job_getJobsByDomaine = "job/domaine/";
+	public static final String job_getMyJobs        = "job/myjobs/";
+	
+	public static final String language = "language/";
+	
+	public static final String postule = "postule/";
+	
+	public static final String experience = "experience/";
 	
 	public static final CharSequence[] job_domaine = {"Computer Science", "Mechanic", "Electronic", "Telecom", "Transport", "Manufacturing", "Managment", "Aeronautics", "Finance", "Audiovisual", "Teaching", "Journalisme", "Marketing", "Medical", "Tourisme", "Others"};
 	public static final CharSequence[] job_type = {"CDD", "CDI", "Stage"};
@@ -51,11 +59,17 @@ public class Constante {
 	public static final String http_get = "GET";
 	public static final String http_post = "POST";
 	
+	public static final String date_from_type = "from";
+	public static final String date_to_type = "to";
+	
 	public static final String path_static = "/mnt";
 	
 	// Variables Globales
 	public static JSONArray ja = new JSONArray();
 	public static String path = "/mnt";
+	public static String job_id = "0";
+	public static String date_from = "";
+	public static String date_to   = "";
 	
 	/* Format fichier INI:
 	[application]

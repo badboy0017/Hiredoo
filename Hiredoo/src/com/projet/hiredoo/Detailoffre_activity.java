@@ -2,6 +2,7 @@ package com.projet.hiredoo;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -45,11 +46,26 @@ public class Detailoffre_activity extends Activity implements OnClickListener {
 	}
 
 	@Override
-	public void onClick(View v) {
+	public void onClick(View v) {		
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
-    	builder.setTitle("!!");
-    	builder.setMessage("Fonction pas encore implémenter");
+    	builder.setTitle("Warning");
+    	builder.setMessage("You are about to delete this offer");
+    	builder.setNegativeButton("Cancel", null);
+    	builder.setPositiveButton("Continue", new DialogInterface.OnClickListener() {
+			
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				// Appel du web service
+				Async_delete ad = new Async_delete(Detailoffre_activity.this);
+				ad.execute(new String[] { Constante.url + Constante.job + getIntent().getExtras().getString("id") });
+			}
+    	});
+
     	builder.create().show();
 	}
+	
+	/*public static void hamza(Activity context) {
+		context.finish();
+	}*/
 
 }
