@@ -64,8 +64,26 @@ public class Profilcandidate_activity extends Activity implements OnClickListene
 		// Affichage des données
 		this.remplirProfil();
 		
+		// Instantiation du sliding menu
+		slidingMenu = new SlidingMenu(this);
+		
+		// Test qui consulte le profil
+		String id;
+		try {
+			id = this.jo.getJSONObject("user").getString("id");
+		}
+		catch(JSONException ex) {
+			AlertDialog.Builder builder = new AlertDialog.Builder(this);
+			builder.setTitle("OnCreate JSONException");
+			builder.setMessage("Cause: " + ex.getCause() + "\n\nMessage: " + ex.getMessage());
+			builder.create().show();
+			return;
+		}
+		
+		if(!Constante.getINIvalue(this, Constante.ini_id).equals(id))
+			return; // Pour ne pas afficher le sliding menu pour un consulteur de profil
+		
 		// Ajout du Sliding Menu
-        slidingMenu = new SlidingMenu(this);
         slidingMenu.setMode(SlidingMenu.LEFT);
         slidingMenu.setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
         slidingMenu.setShadowWidthRes(R.dimen.slidingmenu_shadow_width);
@@ -282,7 +300,7 @@ public class Profilcandidate_activity extends Activity implements OnClickListene
 		
 		try {
 			// Name
-			name = this.jo.getJSONObject("user").getString("name") + this.jo.getJSONObject("user").getString("lastname") + "\n" + (this.jo.getJSONObject("user").has("titleprofile") ? this.jo.getJSONObject("user").getString("titleprofile") : "");
+			name = this.jo.getJSONObject("user").getString("name") + " " + this.jo.getJSONObject("user").getString("lastname") + "\n" + (this.jo.getJSONObject("user").has("titleprofile") ? this.jo.getJSONObject("user").getString("titleprofile") : "");
 
 			// About me
 			aboutme = "";
@@ -297,8 +315,8 @@ public class Profilcandidate_activity extends Activity implements OnClickListene
 					experience += (i == 0) ? "" : "\n\n";
 					experience += ja.getJSONObject(i).getString("title") + "\n";
 					experience += "Enterprise: " + ja.getJSONObject(i).getString("entreprise") + " at " + ja.getJSONObject(i).getString("location") + "\n";
-					experience += "Date from: " + ja.getJSONObject(i).getString("dateFrom") + "\n";
-					experience += "Date to: " + ja.getJSONObject(i).getString("dateTo") + "\n";
+					experience += "Date from: " + Constante.transformDate(ja.getJSONObject(i).getString("dateFrom")) + "\n";
+					experience += "Date to: " + Constante.transformDate(ja.getJSONObject(i).getString("dateTo")) + "\n";
 					experience += (ja.getJSONObject(i).has("link") ? "Link: " + ja.getJSONObject(i).getString("link") : "") + "\n";
 					experience += ja.getJSONObject(i).getString("description");
 				}
@@ -315,8 +333,8 @@ public class Profilcandidate_activity extends Activity implements OnClickListene
 					education += (i == 0) ? "" : "\n\n";
 					education += ja.getJSONObject(i).getString("title") + "\n";
 					education += "University: " + ja.getJSONObject(i).getString("university") + " at " + ja.getJSONObject(i).getString("location") + "\n";
-					education += "Date from: " + ja.getJSONObject(i).getString("dateFrom") + "\n";
-					education += "Date to: " + ja.getJSONObject(i).getString("dateTo") + "\n";
+					education += "Date from: " + Constante.transformDate(ja.getJSONObject(i).getString("dateFrom")) + "\n";
+					education += "Date to: " + Constante.transformDate(ja.getJSONObject(i).getString("dateTo")) + "\n";
 					education += ja.getJSONObject(i).getString("deploma");
 				}
 			}

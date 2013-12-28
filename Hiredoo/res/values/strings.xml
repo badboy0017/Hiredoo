@@ -93,6 +93,14 @@
     <string name="detailoffre_click">Click to see candidates on this job</string>
     <string name="detailoffre_btnSupprimer">Delete</string>
     
+    <string name="detailpostule_title">Postule Details</string>
+    <string name="detailpostule_user">Who postulate</string>
+    <string name="detailpostule_date">When postulate</string>
+    <string name="detailpostule_detail">Details</string>
+    <string name="detailpostule_cv">Click to open candidate CV</string>
+    <string name="detailpostule_lm">Click to open candidate Cover letter</string>
+    <string name="detailpostule_video">Click to open candidate presentation video</string>
+    
     <string name="postulerjob_title">Apply on this job</string>
     <string name="postulerjob_apply">Apply</string>
     

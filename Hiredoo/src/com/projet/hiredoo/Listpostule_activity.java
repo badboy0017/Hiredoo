@@ -71,7 +71,7 @@ public class Listpostule_activity extends Activity implements OnItemClickListene
         }
 		
         ListAdapter adapter = new SimpleAdapter(this, postuleItem, android.R.layout.simple_list_item_2, new String[] {"text1", "text2"}, new int[] {android.R.id.text1, android.R.id.text2 });
-        this.postule_list.setAdapter(adapter);		
+        this.postule_list.setAdapter(adapter);
 	}
 	
 	@Override
@@ -81,7 +81,22 @@ public class Listpostule_activity extends Activity implements OnItemClickListene
 	
 	@Override
 	public void onItemClick(AdapterView<?> adapter, View v, int position, long id) {
+		// Recuperation de l'ID
+		String id_pos;
+		try {
+        	id_pos = this.ja.getJSONObject(position).getString("id");
+        }
+        catch(JSONException ex) {
+        	AlertDialog.Builder builder = new AlertDialog.Builder(this);
+			builder.setTitle("JSONException");
+			builder.setMessage("Cause: " + ex.getCause() + "\n\nMessage: " + ex.getMessage());
+			builder.create().show();
+			return;
+        }
 		
+		// Appel du web service
+		Async_get ag = new Async_get(this, Detailpostule_activity.class);
+		ag.execute(new String[] { Constante.url + Constante.postule_getPostuleDetail + id_pos });
 	}
 	
 }

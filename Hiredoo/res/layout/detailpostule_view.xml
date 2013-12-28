@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	android:scrollbars="none"
+	android:fillViewport="true" >
+	
+	<LinearLayout 
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:orientation="vertical"
+	    android:background="@color/gris_background" >
+	    
+	    <LinearLayout 
+		    android:layout_width="match_parent"
+		    android:layout_height="wrap_content"
+		    android:background="@layout/header"
+		    android:orientation="vertical" >
+		    
+		    <ImageView 
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:src="@drawable/logo"
+		        android:scaleType="fitStart"
+		        android:layout_marginLeft="@dimen/margin_medium"
+		        android:contentDescription="@string/logo_description" />
+		    
+		    <View 
+				android:layout_width="fill_parent"
+				android:layout_height="@dimen/separator"
+				android:background="@color/noir" />
+		    
+	    </LinearLayout>
+	    
+	    <LinearLayout 
+	        android:layout_width="fill_parent"
+	        android:layout_height="fill_parent"
+	        android:layout_margin="@dimen/margin_small"
+	        android:orientation="vertical" >
+		    
+	        <TextView 
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:text="@string/detailpostule_title"
+				android:textSize="@dimen/main_title"
+				android:layout_margin="@dimen/margin_medium"
+				android:gravity="center"
+				android:textColor="@color/rouge_bordeau" />
+		    
+	        <TextView 
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:text="@string/detailpostule_user"
+				android:textSize="@dimen/title"
+				android:textColor="@color/bleu_ciel" />
+		        
+			<View 
+				android:layout_width="fill_parent"
+				android:layout_height="@dimen/separator"
+				android:background="@color/bleu_ciel" />
+			
+			<TextView
+				android:id="@+id/detailpostule_user"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_margin="@dimen/margin_small"
+				android:textColor="@color/bleu_origin"
+				android:textSize="@dimen/content" />
+			
+			<TextView 
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:text="@string/detailpostule_date"
+				android:textSize="@dimen/title"
+				android:textColor="@color/bleu_ciel" />
+		        
+			<View 
+				android:layout_width="fill_parent"
+				android:layout_height="@dimen/separator"
+				android:background="@color/bleu_ciel" />
+			
+			<TextView
+				android:id="@+id/detailpostule_date"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_margin="@dimen/margin_small"
+				android:textColor="@color/noir"
+				android:textSize="@dimen/content"
+				android:text="@string/detailoffre_offerDate" />
+			
+			<TextView 
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:text="@string/detailpostule_detail"
+				android:textSize="@dimen/title"
+				android:textColor="@color/bleu_ciel" />
+		        
+			<View 
+				android:layout_width="fill_parent"
+				android:layout_height="@dimen/separator"
+				android:background="@color/bleu_ciel" />
+			
+			<TextView
+				android:id="@+id/detailpostule_cv"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_margin="@dimen/margin_small"
+				android:text="@string/detailpostule_cv"
+				android:textColor="@color/bleu_origin"
+				android:textSize="@dimen/content" />
+			
+			<TextView
+				android:id="@+id/detailpostule_lm"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_margin="@dimen/margin_small"
+				android:text="@string/detailpostule_lm"
+				android:textColor="@color/bleu_origin"
+				android:textSize="@dimen/content" />
+			
+			<TextView
+				android:id="@+id/detailpostule_video"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_margin="@dimen/margin_small"
+				android:text="@string/detailpostule_video"
+				android:textColor="@color/bleu_origin"
+				android:textSize="@dimen/content" />
+			
+	    </LinearLayout>
+	    
+	
+	</LinearLayout>
+</ScrollView>

@@ -113,7 +113,7 @@ public class Async_get extends AsyncTask<String, Void, String> {
 				catch(JSONException ex) {
 					AlertDialog.Builder builder = new AlertDialog.Builder(this.context);
 					builder.setTitle("Server Exception");
-					builder.setMessage("Impossible de formater les données");
+					builder.setMessage("Impossible de formater les données.\n\n" + this.res);
 					builder.create().show();
 					return;
 				}
