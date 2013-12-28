@@ -8,11 +8,11 @@ import org.apache.http.client.methods.HttpDelete;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.util.EntityUtils;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
+import android.widget.Button;
 import android.widget.Toast;
 
 public class Async_delete extends AsyncTask<String, Void, String> {
@@ -21,12 +21,14 @@ public class Async_delete extends AsyncTask<String, Void, String> {
 	private ProgressDialog pd;
 	private Boolean exception = false;
 	private String res;
+	private Button btn_del;
 	
-	public Async_delete(Context context) {
+	public Async_delete(Context context, Button btn_del) {
 		
 		this.context = context;
 		this.res = "";
 		this.pd = new ProgressDialog(this.context);
+		this.btn_del = btn_del;
 	}
 	
 	@Override
@@ -97,8 +99,8 @@ public class Async_delete extends AsyncTask<String, Void, String> {
 			this.stopDialog();
 				
 			if(result.equals("ok")) {
-				Toast.makeText(this.context, "Object deleted", Toast.LENGTH_LONG).show();
-				//Detailoffre_activity.hamza((Activity) this.context);
+				Toast.makeText(this.context, "Object deleted", Toast.LENGTH_SHORT).show();
+				this.btn_del.setEnabled(false);
 			}
 			else {
 				AlertDialog.Builder builder = new AlertDialog.Builder(this.context);

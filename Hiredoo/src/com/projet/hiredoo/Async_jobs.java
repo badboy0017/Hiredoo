@@ -128,7 +128,7 @@ public class Async_jobs extends AsyncTask<String, Void, String> {
 	        
 	        // Message d'avertissement si la liste est vide
 	        if(this.ja.length() == 0) {
-	        	Toast.makeText(this.context, "There is no job in this section", Toast.LENGTH_LONG).show();
+	        	Toast.makeText(this.context, "There is no jobs in this section", Toast.LENGTH_LONG).show();
 	        }
 	        
 	        // Passage du resultat (pour le rendre global)

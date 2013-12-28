@@ -51,23 +51,6 @@ public class Listjob_activity extends Activity implements OnItemClickListener, O
 		// Liste des jobs
 		job_listview = (ListView)findViewById(R.id.list_job);
 	    job_listview.setOnItemClickListener(this);
-	    
-	    // Test du user connecté
-	    if(Constante.getINIvalue(this, Constante.ini_type).equals(Constante.ini_type_jobseeker)) {
-			Async_jobs aj = new Async_jobs(this, Constante.http_get, this.job_listview, null);
-			aj.execute(new String[] { Constante.url + Constante.job_getAllJobs });
-	    }
-	    else if(Constante.getINIvalue(this, Constante.ini_type).equals(Constante.ini_type_recruiter)) {
-			Async_jobs aj = new Async_jobs(this, Constante.http_get, this.job_listview, null);
-			aj.execute(new String[] { Constante.url + Constante.job_getAllJobs + Constante.getINIvalue(this, Constante.ini_id) });
-	    }
-	    else {
-	    	AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        	builder.setTitle("Internal Exception");
-        	builder.setMessage("Error finding user type");
-        	builder.create().show();
-        	return;
-	    }
 		
 		// Ajout du Sliding Menu
         slidingMenu = new SlidingMenu(this);
@@ -133,6 +116,27 @@ public class Listjob_activity extends Activity implements OnItemClickListener, O
         menu_listview.setAdapter(mSchedule);
         menu_listview.setOnItemClickListener(this);
 	}
+	
+	@Override
+    protected void onResume() {
+        super.onResume();
+	    // Test du user connecté
+	    if(Constante.getINIvalue(this, Constante.ini_type).equals(Constante.ini_type_jobseeker)) {
+			Async_jobs aj = new Async_jobs(this, Constante.http_get, this.job_listview, null);
+			aj.execute(new String[] { Constante.url + Constante.job_getAllJobs });
+	    }
+	    else if(Constante.getINIvalue(this, Constante.ini_type).equals(Constante.ini_type_recruiter)) {
+			Async_jobs aj = new Async_jobs(this, Constante.http_get, this.job_listview, null);
+			aj.execute(new String[] { Constante.url + Constante.job_getAllJobs + Constante.getINIvalue(this, Constante.ini_id) });
+	    }
+	    else {
+	    	AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        	builder.setTitle("Internal Exception");
+        	builder.setMessage("Error finding user type");
+        	builder.create().show();
+        	return;
+	    }
+    }
 	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -234,7 +238,6 @@ public class Listjob_activity extends Activity implements OnItemClickListener, O
 		case R.id.list_job:
 			this.traitement_joblist(position);
 			break;
-			
 		case R.id.slidingmenu_list:
 			this.traitement_slidingmenu_list(position);
 			break;

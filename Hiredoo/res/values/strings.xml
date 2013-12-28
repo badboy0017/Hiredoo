@@ -90,6 +90,7 @@
     <string name="detailoffre_offerDomaine">Domain:</string>
     <string name="detailoffre_offerPostule">Postule</string>
     <string name="detailoffre_offerDate">Date:</string>
+    <string name="detailoffre_click">Click to see candidates on this job</string>
     <string name="detailoffre_btnSupprimer">Delete</string>
     
     <string name="postulerjob_title">Apply on this job</string>

@@ -153,10 +153,10 @@
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:layout_margin="5sp"
-				android:textColor="@color/noir"
+				android:textColor="@color/bleu_origin"
 				android:clickable="true"
 				android:textSize="@dimen/content"
-				android:text="13 candidates have applied on this offer" />
+				android:text="@string/detailoffre_click" />
 			
 			<Button 
 			    android:id="@+id/detailoffre_btnsupp"

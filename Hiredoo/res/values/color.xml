@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- General colors -->
+    <color name="bleu_origin">#0000FF</color>
     <color name="bleu">#4CCBFF</color>
     <color name="bleu_ciel">#24B2EB</color>
     <color name="blanc">#FFFFFF</color>

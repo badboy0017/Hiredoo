@@ -49,7 +49,9 @@ public class Constante {
 	
 	public static final String language = "language/";
 	
-	public static final String postule = "postule/";
+	public static final String postule                   = "postule/";
+	public static final String postule_getUsersByPostule = "postule/users/";
+	public static final String postule_getPostuleDetail  = "postule/detail/";
 	
 	public static final String experience = "experience/";
 	
@@ -251,6 +253,78 @@ public class Constante {
 		
 		String now = year + "-" + mois + "-" + day + "T00:00:00";
 		return now;
+	}
+	
+	// Retourne une chaine de caracteres qui affiche un date lisible
+	public static String transformDate(String date) { // Format actuel: 2013-12-24T00:00:00
+		// Getting values
+		String aa = date.substring(0, 4);
+		String mm = date.substring(5, 7);
+		String dd = date.substring(8, 10);
+		int mois;
+		
+		// Transformation de la valeur du mois
+		try {
+			mois = Integer.parseInt(mm);
+		}
+		catch(NumberFormatException ex) {
+			mois = 0;
+		}
+		
+		// Transformation de la date
+		switch(mois) {
+		case 1:
+			mm = "Jan.";
+			break;
+			
+		case 2:
+			mm = "Feb.";
+			break;
+			
+		case 3:
+			mm = "Mars";
+			break;
+			
+		case 4:
+			mm = "Avr.";
+			break;
+			
+		case 5:
+			mm = "Mai";
+			break;
+		case 6:
+			mm = "Juin";
+			break;
+			
+		case 7:
+			mm = "Jui.";
+			break;
+			
+		case 8:
+			mm = "Aout";
+			break;
+			
+		case 9:
+			mm = "Sep.";
+			break;
+			
+		case 10:
+			mm = "Oct.";
+			break;
+			
+		case 11:
+			mm = "Nov.";
+			break;
+			
+		case 12:
+			mm = "Dec.";
+			break;
+			
+		default:
+			// Ne rien faire, mm garde sa valeur numerique
+		}
+		
+		return dd + " " + mm + " " + aa;
 	}
 
 }
