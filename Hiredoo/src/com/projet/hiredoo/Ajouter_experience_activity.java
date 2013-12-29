@@ -11,7 +11,6 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 
 public class Ajouter_experience_activity extends Activity implements OnClickListener {
@@ -75,10 +74,6 @@ public class Ajouter_experience_activity extends Activity implements OnClickList
 		}
 	}
 	
-	public void populateSetDate(int year, int month, int day) {
-		Toast.makeText(this, day + "/" + month + "/" + year, Toast.LENGTH_LONG).show();
-    }
-	
 	private void traitement_ajouter() {
 		// Verification des champs
 		if(this.exp_title.getText().toString().isEmpty() ||
@@ -118,7 +113,7 @@ public class Ajouter_experience_activity extends Activity implements OnClickList
 			return;
 		}
 		
-		// Appel du web service PUT
+		// Appel du web service POST
 		Async_post ap = new Async_post(this, obj, null);
 		ap.execute(new String[] { Constante.url + Constante.experience });
 	}

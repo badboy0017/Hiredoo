@@ -38,14 +38,17 @@ public class Constante {
 	public static final String user_getUserProfile = "user/profile/";
 	public static final String user_getCvLmVideo   = "user/getcvresumevideo/";
 	public static final String user_getMypostules  = "user/listejobpostule/";
+	public static final String user_search         = "user/search/";
 	
-	public static final String enterprise       = "entreprise/";
-	public static final String enterprise_login = "entreprise/login/";
+	public static final String enterprise        = "entreprise/";
+	public static final String enterprise_login  = "entreprise/login/";
+	public static final String enterprise_search = "entreprise/search/";
 	
 	public static final String job                  = "job/";
 	public static final String job_getAllJobs       = "job/findall/";
 	public static final String job_getJobsByDomaine = "job/domaine/";
 	public static final String job_getMyJobs        = "job/myjobs/";
+	public static final String job_search           = "job/search/";
 	
 	public static final String language = "language/";
 	
@@ -54,6 +57,10 @@ public class Constante {
 	public static final String postule_getPostuleDetail  = "postule/detail/";
 	
 	public static final String experience = "experience/";
+	
+	public static final String education = "education/";
+	
+	public static final String upload = "upload/";
 	
 	public static final CharSequence[] job_domaine = {"Computer Science", "Mechanic", "Electronic", "Telecom", "Transport", "Manufacturing", "Managment", "Aeronautics", "Finance", "Audiovisual", "Teaching", "Journalisme", "Marketing", "Medical", "Tourisme", "Others"};
 	public static final CharSequence[] job_type = {"CDD", "CDI", "Stage"};
@@ -64,6 +71,9 @@ public class Constante {
 	public static final String date_from_type = "from";
 	public static final String date_to_type = "to";
 	
+	public static final String listjob_type_all   = "all";
+	public static final String listjob_type_seach = "search";
+	
 	public static final String path_static = "/mnt";
 	
 	// Variables Globales
@@ -72,6 +82,7 @@ public class Constante {
 	public static String job_id = "0";
 	public static String date_from = "";
 	public static String date_to   = "";
+	public static String listjob_type = "";
 	
 	/* Format fichier INI:
 	[application]

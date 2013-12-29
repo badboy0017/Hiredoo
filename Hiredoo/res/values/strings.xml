@@ -138,6 +138,7 @@
 	<string name="ajoutereducation_deploma">Diploma</string>
 	<string name="ajoutereducation_university">University</string>
 	<string name="ajoutereducation_location">Location</string>
+	<string name="ajoutereducation_date">Select date</string>
 	<string name="ajoutereducation_btnajouter">Add</string>
 	
 	<string name="ajouterlangage_main_title">Add language</string>

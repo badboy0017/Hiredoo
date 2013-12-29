@@ -48,15 +48,33 @@ public class Profilenterprise_activity extends Activity implements OnItemClickLi
 			this.jo = new JSONObject(this.json);
 		}
 		catch (JSONException je) {
-			Toast.makeText(this, "Impossible de formater les données", Toast.LENGTH_LONG).show();
+			Toast.makeText(this, "Profilenterprise\nImpossible de formater les données", Toast.LENGTH_LONG).show();
 			return;
 		}
 		
 		// Affichage des données
 		this.remplirProfil();
 		
+		// Instantiation du sliding menu
+		slidingMenu = new SlidingMenu(this);
+		
+		// Test qui consulte le profil
+		String id;
+		try {
+			id = this.jo.getString("id");
+		}
+		catch(JSONException ex) {
+			AlertDialog.Builder builder = new AlertDialog.Builder(this);
+			builder.setTitle("OnCreate JSONException");
+			builder.setMessage("Cause: " + ex.getCause() + "\n\nMessage: " + ex.getMessage());
+			builder.create().show();
+			return;
+		}
+		
+		if(!Constante.getINIvalue(this, Constante.ini_id).equals(id))
+			return; // Pour ne pas afficher le sliding menu pour un consulteur de profil
+		
 		// Ajout du Sliding Menu
-        slidingMenu = new SlidingMenu(this);
         slidingMenu.setMode(SlidingMenu.LEFT);
         slidingMenu.setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
         slidingMenu.setShadowWidthRes(R.dimen.slidingmenu_shadow_width);

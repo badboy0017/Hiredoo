@@ -77,6 +77,43 @@
             android:layout_margin="@dimen/margin_small"
             android:hint="@string/ajoutereducation_location" />
         
+        <LinearLayout 
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:orientation="horizontal"
+			android:layout_margin="@dimen/margin_small" >
+        
+        	<TextView 
+            	android:id="@+id/ajoutereducation_datefrom"
+				android:layout_width="fill_parent"
+				android:layout_height="40dp"
+				android:layout_weight="1"
+				android:text="@string/ajoutereducation_date"
+				android:textSize="@dimen/content"
+				android:textAppearance="?android:attr/textAppearanceMedium"
+				android:textColor="@color/noir"
+				android:background="@color/blanc"
+				android:gravity="center_vertical" />
+        
+        	<View 
+				android:layout_width="@dimen/margin_small"
+				android:layout_height="fill_parent"
+				android:background="@color/gris_background" />
+        
+        	<TextView 
+            	android:id="@+id/ajoutereducation_dateto"
+				android:layout_width="fill_parent"
+				android:layout_height="40dp"
+				android:layout_weight="1"
+				android:text="@string/ajoutereducation_date"
+				android:textSize="@dimen/content"
+				android:textAppearance="?android:attr/textAppearanceMedium"
+				android:textColor="@color/noir"
+				android:background="@color/blanc"
+				android:gravity="center_vertical" />
+	            
+        </LinearLayout>
+        
     </LinearLayout>
     
     <Button 

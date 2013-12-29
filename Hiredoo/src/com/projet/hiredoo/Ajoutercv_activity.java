@@ -118,7 +118,32 @@ public class Ajoutercv_activity extends Activity implements OnClickListener, and
 	}
 	
 	private void upload() {
-		Toast.makeText(this, "En cours...", Toast.LENGTH_SHORT).show();
+		// Verification des champs
+		/*if(this.cv_name.getText().toString().isEmpty()) {
+			AlertDialog.Builder builder = new AlertDialog.Builder(this);
+			builder.setTitle("Warning");
+			builder.setMessage("Please fill all the fields");
+			builder.create().show();
+			return;
+		}*/
+		
+		// Préparation de l'objet JSON
+		/*JSONObject obj = new JSONObject();
+		try {
+			obj.put("iduser", Constante.getINIvalue(this, Constante.ini_id));
+			//obj.put("file", this.cv_path.getText().toString());
+		}
+		catch (JSONException ex) {
+			AlertDialog.Builder builder = new AlertDialog.Builder(this);
+			builder.setTitle("AjouterCV JSON Exception");
+			builder.setMessage("Cause:\n" + ex.getCause() + "\n\nMessage:\n" + ex.getMessage());
+			builder.create().show();
+			return;
+		}*/
+		
+		// Appel du web service POST
+		//Async_post ap = new Async_post(this, obj, null);
+		//ap.execute(new String[] { Constante.url + Constante.upload });
 	}
-
+	
 }

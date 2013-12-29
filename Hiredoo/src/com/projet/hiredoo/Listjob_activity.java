@@ -122,6 +122,12 @@ public class Listjob_activity extends Activity implements OnItemClickListener, O
         super.onResume();
 	    // Test du user connecté
 	    if(Constante.getINIvalue(this, Constante.ini_type).equals(Constante.ini_type_jobseeker)) {
+	    	if(Constante.listjob_type.equals(Constante.listjob_type_seach)) {
+	    		// Appel du web service
+	    		Async_jobs aj = new Async_jobs(this, Constante.http_get, this.job_listview, null);
+				aj.execute(new String[] { Constante.url + Constante.job_search + getIntent().getExtras().getString("text") + "/" + getIntent().getExtras().getString("city") });
+	    		return;
+	    	}
 			Async_jobs aj = new Async_jobs(this, Constante.http_get, this.job_listview, null);
 			aj.execute(new String[] { Constante.url + Constante.job_getAllJobs });
 	    }
@@ -171,6 +177,7 @@ public class Listjob_activity extends Activity implements OnItemClickListener, O
 	        			}
 	        			
 	        			// Appel du web service
+	        			Constante.listjob_type = Constante.listjob_type_all; // pour dire que c'est pas une recherche
 	        			Async_jobs aj = new Async_jobs(Listjob_activity.this, Constante.http_post, job_listview, obj);
 	        			aj.execute(new String[] { Constante.url + Constante.job_getJobsByDomaine });
 	        	    }
@@ -190,6 +197,7 @@ public class Listjob_activity extends Activity implements OnItemClickListener, O
 	        	
 	        case R.id.listjobmenu_showAll:
     			// Appel du web service
+	        	Constante.listjob_type = Constante.listjob_type_all; // pour dire que c'est pas une recherche
     			Async_jobs aj = new Async_jobs(this, Constante.http_get, job_listview, null);
     			aj.execute(new String[] { Constante.url + Constante.job_getAllJobs });
 	        	return true;
