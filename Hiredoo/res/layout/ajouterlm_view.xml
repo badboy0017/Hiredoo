@@ -41,14 +41,12 @@
 			android:layout_margin="@dimen/margin_medium"
 			android:layout_gravity="center" />
         
-        <EditText 
-            android:id="@+id/ajouterlm_name"
-            android:layout_width="fill_parent"
-            android:layout_height="40dp"
-            android:inputType="text"
-            android:background="@color/blanc"
-            android:layout_margin="@dimen/margin_small"
-            android:hint="@string/ajouterlm_name" />
+        <Button 
+		    android:id="@+id/ajouterlm_btnbrowse"
+		    android:layout_width="fill_parent"
+		    android:layout_height="wrap_content"
+		    android:layout_margin="@dimen/margin_small"
+		    android:text="@string/ajouterlm_btnbrowse" />
         
         <TextView
             android:id="@+id/ajouterlm_path"
@@ -58,13 +56,6 @@
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="@color/noir"
             android:layout_margin="@dimen/margin_small" />
-        
-        <Button 
-		    android:id="@+id/ajouterlm_btnbrowse"
-		    android:layout_width="fill_parent"
-		    android:layout_height="wrap_content"
-		    android:layout_marginRight="@dimen/margin_small"
-		    android:text="@string/ajouterlm_btnbrowse" />
         
     </LinearLayout>
     

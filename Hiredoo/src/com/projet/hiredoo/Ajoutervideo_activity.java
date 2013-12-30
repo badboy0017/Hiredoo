@@ -9,13 +9,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class Ajoutervideo_activity extends Activity implements OnClickListener, android.content.DialogInterface.OnClickListener {
 	
-	private EditText video_name;
 	private TextView video_path;
 	private Button video_browse, video_ajouter;
 	private File current_path;
@@ -28,7 +26,6 @@ public class Ajoutervideo_activity extends Activity implements OnClickListener, 
 		setContentView(R.layout.ajoutervideo_view);
 		
 		// Récuperation des views
-		video_name    = (EditText)findViewById(R.id.ajoutervideo_name);
 		video_path    = (TextView)findViewById(R.id.ajoutervideo_path);
 		video_browse  = (Button)findViewById(R.id.ajoutervideo_btnbrowse);
 		video_ajouter = (Button)findViewById(R.id.ajoutervideo_btnajouter);
@@ -118,7 +115,18 @@ public class Ajoutervideo_activity extends Activity implements OnClickListener, 
 	}
 	
 	private void upload() {
-		Toast.makeText(this, "En cours...", Toast.LENGTH_SHORT).show();
+		// Verification des champs
+		if(this.video_path.getText().toString().isEmpty()) {
+			AlertDialog.Builder builder = new AlertDialog.Builder(this);
+			builder.setTitle("Warning");
+			builder.setMessage("Please choose a Video");
+			builder.create().show();
+			return;
+		}
+		
+		// Appel du web service POST
+		Async_upload au = new Async_upload(this, Constante.getINIvalue(this, Constante.ini_id), null);
+		au.execute(new String[] { Constante.php_prehttp + Constante.url_php + Constante.php_upload, this.video_path.getText().toString() });
 	}
 
 }

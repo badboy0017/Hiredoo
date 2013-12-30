@@ -6,9 +6,10 @@ import java.io.InputStreamReader;
 import java.util.Hashtable;
 import java.util.StringTokenizer; 
 
+@SuppressWarnings("rawtypes")
 public class ProfileReader {
 
-  private Hashtable _sections; 
+private Hashtable _sections; 
 
   /** 
    * Creates a new ProfileReader 
@@ -28,7 +29,7 @@ public class ProfileReader {
     if (null == aStream) 
     { 
       return; 
-    } 
+    }
 
     BufferedReader reader = new BufferedReader(new InputStreamReader(aStream)); 
     String line = null; 
@@ -86,7 +87,9 @@ public class ProfileReader {
     return (String) section.get(aKey); 
   } 
 
-  private void addLineToSection(String aLine, Hashtable aSection) throws Exception 
+  
+@SuppressWarnings("unchecked")
+private void addLineToSection(String aLine, Hashtable aSection) throws Exception 
   { 
     if (null == aLine) 
     { 
@@ -134,7 +137,8 @@ public class ProfileReader {
     aSection.put(key, value); 
   } 
 
-  private void addSection(String aSectionName) 
+  @SuppressWarnings("unchecked")
+private void addSection(String aSectionName) 
   { 
     if (null == aSectionName) 
     { 

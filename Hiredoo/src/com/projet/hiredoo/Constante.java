@@ -32,6 +32,13 @@ public class Constante {
 	public static final String secret_key = "c3265jVeW69A49g";
 	
 	public static final String url = "http://192.168.1.2:8080/Hiredo/";
+	public static final String url_php = "197.8.192.247";
+	
+	public static final String php_prehttp = "http://";
+	public static final String php_prertsp = "rtsp://";
+	public static final String php_streaming = ":1935/hiredo/mp4:";
+	public static final String php_live      = ":1935/live/work";
+	public static final String php_upload    = "/wowza/upload.php";
 	
 	public static final String user                = "user/";
 	public static final String user_login          = "user/login/";
@@ -60,7 +67,8 @@ public class Constante {
 	
 	public static final String education = "education/";
 	
-	public static final String upload = "upload/";
+	public static final String upload = "upload"; // Attention: Cette url ne comporte pas de / à la fin
+	public static final String upload_folder = "uploads/";
 	
 	public static final CharSequence[] job_domaine = {"Computer Science", "Mechanic", "Electronic", "Telecom", "Transport", "Manufacturing", "Managment", "Aeronautics", "Finance", "Audiovisual", "Teaching", "Journalisme", "Marketing", "Medical", "Tourisme", "Others"};
 	public static final CharSequence[] job_type = {"CDD", "CDI", "Stage"};
@@ -75,6 +83,9 @@ public class Constante {
 	public static final String listjob_type_seach = "search";
 	
 	public static final String path_static = "/mnt";
+	
+	public static final String type_cv = "cv";
+	public static final String type_lm = "resume";
 	
 	// Variables Globales
 	public static JSONArray ja = new JSONArray();

@@ -5,6 +5,9 @@ import org.json.JSONObject;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.ActivityNotFoundException;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -16,7 +19,7 @@ public class Detailpostule_activity extends Activity implements OnClickListener 
 	private TextView postule_user, postule_date, postule_cv, postule_lm, postule_video;
 	private String json;
 	private JSONObject jo;
-	private String cv_path, lm_path, video_path, user_id;
+	private String cv_name, lm_name, video_name, user_id;
         
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,7 +68,15 @@ public class Detailpostule_activity extends Activity implements OnClickListener 
     		break;
     		
     	case R.id.detailpostule_cv:
-    		Toast.makeText(this, "CV path: " + this.cv_path, Toast.LENGTH_LONG).show();
+    		Intent i = new Intent(Intent.ACTION_VIEW);
+    		String link="http://192.168.1.2:8093/assets/uploads/cdd.pdf";
+    		i.setData(Uri.parse(link));
+    	    try  {
+    	        startActivity(i);
+    	    } 
+    	    catch (ActivityNotFoundException ex)  {
+    	         Toast.makeText(this, "No Pdf Viewer", Toast.LENGTH_SHORT).show();
+    	    }
     		
     		// Appel du web service
     		//Async_get ag = new Async_get(this, Listpostule_activity.class);
@@ -73,11 +84,11 @@ public class Detailpostule_activity extends Activity implements OnClickListener 
     		break;
     		
     	case R.id.detailpostule_lm:
-    		Toast.makeText(this, "LM path: " + this.lm_path, Toast.LENGTH_LONG).show();
+    		Toast.makeText(this, "LM name: " + this.lm_name, Toast.LENGTH_LONG).show();
     		break;
     		
     	case R.id.detailpostule_video:
-    		Toast.makeText(this, "Video path: " + this.video_path, Toast.LENGTH_LONG).show();
+    		Toast.makeText(this, "Video name: " + this.video_name, Toast.LENGTH_LONG).show();
     		break;
     		
 		default:
@@ -114,9 +125,9 @@ public class Detailpostule_activity extends Activity implements OnClickListener 
     		this.user_id = user.get("id").toString();
     		this.postule_user.setText(((user.has("name")) ? user.get("name").toString() : "") + " " + ((user.has("lastname")) ? user.get("lastname").toString() : ""));
     		this.postule_date.setText(Constante.transformDate(date));
-    		this.cv_path = cv.get("path").toString();
-    		this.lm_path = lm.get("path").toString();
-    		this.video_path = vid.get("path").toString();
+    		this.cv_name = cv.get("name").toString();
+    		this.lm_name = lm.get("name").toString();
+    		this.video_name = vid.get("name").toString();
 		}
 		catch (JSONException ex) {
 			AlertDialog.Builder builder = new AlertDialog.Builder(this);

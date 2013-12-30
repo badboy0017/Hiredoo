@@ -9,13 +9,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class Ajouterlm_activity extends Activity implements OnClickListener, android.content.DialogInterface.OnClickListener {
 	
-	private EditText lm_name;
 	private TextView lm_path;
 	private Button lm_browse, lm_ajouter;
 	private File current_path;
@@ -28,7 +26,6 @@ public class Ajouterlm_activity extends Activity implements OnClickListener, and
 		setContentView(R.layout.ajouterlm_view);
 		
 		// Récuperation des views
-		lm_name    = (EditText)findViewById(R.id.ajouterlm_name);
 		lm_path    = (TextView)findViewById(R.id.ajouterlm_path);
 		lm_browse  = (Button)findViewById(R.id.ajouterlm_btnbrowse);
 		lm_ajouter = (Button)findViewById(R.id.ajouterlm_btnajouter);
@@ -118,7 +115,18 @@ public class Ajouterlm_activity extends Activity implements OnClickListener, and
 	}
 	
 	private void upload() {
-		Toast.makeText(this, "En cours...", Toast.LENGTH_SHORT).show();
+		// Verification des champs
+		if(this.lm_path.getText().toString().isEmpty()) {
+			AlertDialog.Builder builder = new AlertDialog.Builder(this);
+			builder.setTitle("Warning");
+			builder.setMessage("Please choose a Cover Letter");
+			builder.create().show();
+			return;
+		}
+		
+		// Appel du web service POST
+		Async_upload au = new Async_upload(this, Constante.getINIvalue(this, Constante.ini_id), Constante.type_lm);
+		au.execute(new String[] { Constante.url + Constante.upload, this.lm_path.getText().toString() });
 	}
 
 }

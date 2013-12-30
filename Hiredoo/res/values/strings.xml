@@ -146,17 +146,14 @@
     <string name="ajouterlangage_btnajouter">Add</string>
     
     <string name="ajoutercv_title">Add CV</string>
-    <string name="ajoutercv_name">Name</string>
     <string name="ajoutercv_btnbrowse">Browse CV</string>
     <string name="ajoutercv_btnajouter">Send</string>
     
     <string name="ajouterlm_title">Add Cover Letter</string>
-    <string name="ajouterlm_name">Name</string>
     <string name="ajouterlm_btnbrowse">Browse letter</string>
     <string name="ajouterlm_btnajouter">Send</string>
     
     <string name="ajoutervideo_title">Add video</string>
-    <string name="ajoutervideo_name">Name</string>
     <string name="ajoutervideo_btnbrowse">Browse video</string>
     <string name="ajoutervideo_btnajouter">Send</string>
     
