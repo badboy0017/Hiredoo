@@ -12,6 +12,7 @@ import android.app.AlertDialog;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
@@ -46,11 +47,18 @@ public class Profilcandidate_activity extends Activity implements OnClickListene
 		profil_langage    = (TextView)findViewById(R.id.profil_langue);
 		profil_contact    = (TextView)findViewById(R.id.profil_contact);
 		
+		profil_contact.setOnClickListener(this);
+		
 		video_link = (ImageView)findViewById(R.id.profil_videolink);
 		video_link.setOnClickListener(this);
 		
 		// Recuperation des donnees
 		this.json = getIntent().getExtras().getString("data");
+		
+		AlertDialog.Builder builde = new AlertDialog.Builder(this);
+		builde.setTitle("Data");
+		builde.setMessage(this.json);
+		builde.create().show();
 		
 		// Formatage du resultat
 		try {
@@ -118,6 +126,12 @@ public class Profilcandidate_activity extends Activity implements OnClickListene
         listItem.add(hash_map);
         
         hash_map = new HashMap<String, String>();
+    	hash_map.put("titre", "Profile video");
+    	hash_map.put("description", "Click to choose video");
+    	hash_map.put("img", String.valueOf(R.drawable.video));
+        listItem.add(hash_map);
+        
+        hash_map = new HashMap<String, String>();
     	hash_map.put("titre", "My experiences");
     	hash_map.put("description", "Click to add experience");
     	hash_map.put("img", String.valueOf(R.drawable.experience));
@@ -163,6 +177,16 @@ public class Profilcandidate_activity extends Activity implements OnClickListene
             finish();
         }
     }
+	
+	@Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+		//Quand on clique sur le bouton physique MENU, on ouvre le menu
+        if(keyCode == KeyEvent.KEYCODE_MENU ) {
+            this.slidingMenu.toggle();
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
+    }
 
 	@Override
 	public void onItemClick(AdapterView<?> adapter, View v, int position, long id) {
@@ -206,7 +230,15 @@ public class Profilcandidate_activity extends Activity implements OnClickListene
 			slidingMenu.toggle();
 			break;
 			
-		case 3: // My experiences
+		case 3: // Choose video
+			// Appel du web service GET
+			Async_get ag = new Async_get(this, Changervideo_activity.class);
+			ag.execute(new String[] { Constante.url + Constante.video_getMyVideos + Constante.getINIvalue(this, Constante.ini_id) });
+			
+			slidingMenu.toggle();
+			break;
+			
+		case 4: // My experiences
 			// Appel de l'activité
 			Intent exp_intent = new Intent(this, Ajouter_experience_activity.class);
 			try {
@@ -220,7 +252,7 @@ public class Profilcandidate_activity extends Activity implements OnClickListene
 			slidingMenu.toggle();
 			break;
 			
-		case 4: // My education
+		case 5: // My education
 			// Appel de l'activité
 			Intent edu_intent = new Intent(this, Ajouter_education_activity.class);
 			try {
@@ -233,7 +265,7 @@ public class Profilcandidate_activity extends Activity implements OnClickListene
 			slidingMenu.toggle();
 			break;
 			
-		case 5: // My languages
+		case 6: // My languages
 			// Appel de l'activité
 			Intent lan_intent = new Intent(this, Ajouter_langage_activity.class);
 			try {
@@ -247,7 +279,7 @@ public class Profilcandidate_activity extends Activity implements OnClickListene
 			slidingMenu.toggle();
 			break;
 			
-		case 6: // Edit profile
+		case 7: // Edit profile
 			// Appel de l'activité
 			Intent con_intent = new Intent(this, Modifier_jobseeker_activity.class);
 			try {
@@ -261,7 +293,7 @@ public class Profilcandidate_activity extends Activity implements OnClickListene
 			slidingMenu.toggle();
 			break;
 			
-		case 7: // Disconnect
+		case 8: // Disconnect
 			Intent login_intent = new Intent(this, MainActivity.class);
 			try {
 				slidingMenu.toggle();
@@ -280,18 +312,44 @@ public class Profilcandidate_activity extends Activity implements OnClickListene
 
 	@Override
 	public void onClick(View v) {
-		// Test de la connexion internet
-		if(!Constante.isInternetAvailable(this)) {
-			Toast.makeText(this, "Pas de connexion Internet", Toast.LENGTH_LONG).show();
-			return;
-		}
+		switch(v.getId()) {
 		
-		Intent video_intent = new Intent(this, Video_activity.class);
-		try {
-			startActivity(video_intent);
-		}
-		catch(ActivityNotFoundException ex) {
-			Toast.makeText(this, "Activity introuvable.\n" + ex.getMessage(), Toast.LENGTH_LONG).show();
+		case R.id.profil_videolink:
+			// Test de la connexion internet
+			if(!Constante.isInternetAvailable(this)) {
+				Toast.makeText(this, "Pas de connexion Internet", Toast.LENGTH_LONG).show();
+				return;
+			}
+			
+			Intent video_intent = new Intent(this, Video_activity.class);
+			try {
+				startActivity(video_intent);
+			}
+			catch(ActivityNotFoundException ex) {
+				Toast.makeText(this, "Activity introuvable.\n" + ex.getMessage(), Toast.LENGTH_LONG).show();
+			}
+			break;
+			
+		case R.id.profil_contact:
+			Intent map_intent = new Intent(this, Map_activity.class);
+			try {
+				map_intent.putExtra("address", this.jo.getJSONObject("user").has("address") ? this.jo.getJSONObject("user").getString("address") : "");
+				startActivity(map_intent);
+			}
+			catch(ActivityNotFoundException ex) {
+				Toast.makeText(this, ex.getMessage(), Toast.LENGTH_LONG).show();
+			}
+			catch (JSONException ex) {
+				AlertDialog.Builder builder = new AlertDialog.Builder(this);
+				builder.setTitle("JSONException - No address found");
+				builder.setMessage("Cause: " + ex.getCause() + "\n\nMessage: " + ex.getMessage());
+				builder.create().show();
+			}
+			break;
+			
+		default:
+			Toast.makeText(this, "View not found", Toast.LENGTH_LONG).show();
+			return;
 		}
 	}
 	

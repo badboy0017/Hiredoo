@@ -36,18 +36,6 @@ public class Listjob_activity extends Activity implements OnItemClickListener, O
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.listjob_view);
 		
-		// Test de la connexion internet
-		if(!Constante.isInternetAvailable(this)) {
-			AlertDialog.Builder buider = new AlertDialog.Builder(this);
-			buider.setTitle("Warning");
-			buider.setMessage("Internet connection not available");
-			buider.setCancelable(false);
-			buider.setPositiveButton("Reload", this);
-			buider.setNegativeButton("Exit", this);
-			buider.create().show();
-			return;
-		}
-		
 		// Liste des jobs
 		job_listview = (ListView)findViewById(R.id.list_job);
 	    job_listview.setOnItemClickListener(this);
@@ -120,6 +108,18 @@ public class Listjob_activity extends Activity implements OnItemClickListener, O
 	@Override
     protected void onResume() {
         super.onResume();
+		// Test de la connexion internet
+		if(!Constante.isInternetAvailable(this)) {
+			AlertDialog.Builder buider = new AlertDialog.Builder(this);
+			buider.setTitle("Warning");
+			buider.setMessage("Internet connection not available");
+			buider.setCancelable(false);
+			buider.setPositiveButton("Reload", this);
+			buider.setNegativeButton("Exit", this);
+			buider.create().show();
+			return;
+		}
+		
 	    // Test du user connecté
 	    if(Constante.getINIvalue(this, Constante.ini_type).equals(Constante.ini_type_jobseeker)) {
 	    	if(Constante.listjob_type.equals(Constante.listjob_type_seach)) {

@@ -157,4 +157,8 @@
     <string name="ajoutervideo_btnbrowse">Browse video</string>
     <string name="ajoutervideo_btnajouter">Send</string>
     
+    <string name="changervideo_title">Choose video</string>
+    <string name="changervideo_description">This video is the principal video that will posted on your profile. In this video, you should present yourself and describe who you are. A recruiter can so know you better through this video</string>
+    <string name="changervideo_btnmodifier">Apply</string>
+    
 </resources>

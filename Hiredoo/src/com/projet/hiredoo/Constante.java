@@ -67,6 +67,9 @@ public class Constante {
 	
 	public static final String education = "education/";
 	
+	public static final String video = "video/";
+	public static final String video_getMyVideos = "video/myvideos/";
+	
 	public static final String upload = "upload"; // Attention: Cette url ne comporte pas de / à la fin
 	public static final String upload_folder = "uploads/";
 	
@@ -86,6 +89,9 @@ public class Constante {
 	
 	public static final String type_cv = "cv";
 	public static final String type_lm = "resume";
+	
+	public static final String video_streaming = "streaming";
+	public static final String video_live      = "live";
 	
 	// Variables Globales
 	public static JSONArray ja = new JSONArray();
