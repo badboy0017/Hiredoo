@@ -10,9 +10,12 @@ import android.R.drawable;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.ActivityNotFoundException;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
@@ -22,23 +25,37 @@ import android.widget.Toast;
 
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 
-public class Profilenterprise_activity extends Activity implements OnItemClickListener {
+public class Profilenterprise_activity extends Activity implements OnClickListener, OnItemClickListener {
 	
-	private TextView profile_name, profile_about, profile_contact;
+	private TextView profile_name, profile_about, profile_address, profile_web, profile_tel, profile_mail;
 	private SlidingMenu slidingMenu;
 	private ListView menu_listview;
 	private String json;
 	private JSONObject jo;
+	private String [] list_tel;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.profilenterprise_view);
 		
+		// Initialisation
+		list_tel = new String [2];
+		list_tel[0] = "";
+		list_tel[1] = "";
+		
 		// Recuperation des views
 		profile_name    = (TextView)findViewById(R.id.profilenterprise_name);
 		profile_about   = (TextView)findViewById(R.id.profilenterprise_about);
-		profile_contact = (TextView)findViewById(R.id.profilenterprise_contact);
+		profile_address = (TextView)findViewById(R.id.profilenterprise_address);
+		profile_mail    = (TextView)findViewById(R.id.profilenterprise_email);
+		profile_tel     = (TextView)findViewById(R.id.profilenterprise_tel);
+		profile_web     = (TextView)findViewById(R.id.profilenterprise_web);
+		
+		profile_address.setOnClickListener(this);
+		profile_mail.setOnClickListener(this);
+		profile_tel.setOnClickListener(this);
+		profile_web.setOnClickListener(this);
 		
 		// Recuperation des donnees
 		this.json = getIntent().getExtras().getString("data");
@@ -189,8 +206,71 @@ public class Profilenterprise_activity extends Activity implements OnItemClickLi
 		}
 	}
 	
+	@Override
+	public void onClick(View v) {
+		switch(v.getId()) {
+		case R.id.profilenterprise_address:
+			Intent map_intent = new Intent(this, Map_activity.class);
+			try {
+				map_intent.putExtra("address", this.jo.has("address") ? this.jo.getString("address") : "");
+				startActivity(map_intent);
+			}
+			catch(ActivityNotFoundException ex) {
+				Toast.makeText(this, ex.getMessage(), Toast.LENGTH_LONG).show();
+			}
+			catch (JSONException ex) {
+				AlertDialog.Builder builder = new AlertDialog.Builder(this);
+				builder.setTitle("JSONException - No address found");
+				builder.setMessage("Cause: " + ex.getCause() + "\n\nMessage: " + ex.getMessage());
+				builder.create().show();
+			}
+			break;
+			
+		case R.id.profilenterprise_email:
+			Intent email_intent = new Intent(Intent.ACTION_SENDTO, Uri.parse("mailto:" + this.profile_mail.getText().toString()));
+			try {
+				startActivity(email_intent);
+			}
+			catch (ActivityNotFoundException ex) {
+				Toast.makeText(this, ex.getMessage(), Toast.LENGTH_LONG).show();
+			}
+			break;
+			
+		case R.id.profilenterprise_tel:
+			AlertDialog.Builder bui = new AlertDialog.Builder(this);
+			bui.setTitle("Choisir numéro à appeler");
+			bui.setItems(this.list_tel, new DialogInterface.OnClickListener() {
+				@Override
+				public void onClick(DialogInterface dialog, int which) {
+					Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + list_tel[which]));
+					try {
+						startActivity(intent);
+					}
+					catch(ActivityNotFoundException ex) {
+						Toast.makeText(Profilenterprise_activity.this, ex.getMessage(), Toast.LENGTH_LONG).show();
+					}
+				}
+			});
+			bui.create().show();
+			break;
+			
+		case R.id.profilenterprise_web:
+			Intent web_intent = new Intent(Intent.ACTION_VIEW, Uri.parse(this.profile_web.getText().toString()));
+			try {
+				startActivity(web_intent);
+			}
+			catch(ActivityNotFoundException ex) {
+				//Toast.makeText(this, ex.getMessage(), Toast.LENGTH_LONG).show();
+				Toast.makeText(this, "Incorrect web address", Toast.LENGTH_LONG).show();
+			}
+			break;
+			
+		default:
+		}
+	}
+	
 	private void remplirProfil() {
-		String name, about, contact;
+		String name, about, address, mail, tel, web;
 		
 		try {
 			// Name
@@ -202,18 +282,24 @@ public class Profilenterprise_activity extends Activity implements OnItemClickLi
 			about += (this.jo.has("nbemplyee") ? "\n\nEmplyees number: " + this.jo.getString("nbemplyee") : "");
 			
 			// Contact
-			contact = "";
-			contact += (this.jo.has("address") ? this.jo.getString("address") : "No Address");
-			contact += " - ";
-			contact += (this.jo.has("city") ? this.jo.getString("city") : "No City");
-			contact += "\n\n";
-			contact += (this.jo.has("email") ? this.jo.getString("email") : "No Email");
-			contact += "\n\n";
-			contact += (this.jo.has("website") ? this.jo.getString("website") : "No Web site");
-			contact += "\n\n";
-			contact += (this.jo.has("tel") ? this.jo.getString("tel") : "No phone number");
-			contact += "\n";
-			contact += (this.jo.has("fax") ? this.jo.getString("fax") : "No fax number");
+			address = "";
+			address += (this.jo.has("address") ? this.jo.getString("address") : "No Address");
+			address += " - ";
+			address += (this.jo.has("city") ? this.jo.getString("city") : "No City");
+			
+			mail = "";
+			mail += (this.jo.has("email") ? this.jo.getString("email") : "No Email");
+			
+			web = "";
+			web += (this.jo.has("website") ? this.jo.getString("website") : "No Web site");
+			
+			tel = "";
+			tel += (this.jo.has("tel") ? this.jo.getString("tel") : "No phone number");
+			tel += "\n";
+			tel += (this.jo.has("fax") ? this.jo.getString("fax") : "No fax number");
+			
+			this.list_tel[0] = (this.jo.has("tel") ? this.jo.getString("tel") : "");
+			this.list_tel[1] = (this.jo.has("fax") ? this.jo.getString("fax") : "");
 		}
 		catch(JSONException ex) {
 			AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -226,7 +312,10 @@ public class Profilenterprise_activity extends Activity implements OnItemClickLi
 		// Remplir le profil
 		this.profile_name.setText(name);
 		this.profile_about.setText(about);
-		this.profile_contact.setText(contact);
+		this.profile_address.setText(address);
+		this.profile_mail.setText(mail);
+		this.profile_web.setText(web);
+		this.profile_tel.setText(tel);
 	}
 	
 }

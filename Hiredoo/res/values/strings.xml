@@ -42,6 +42,7 @@
     <string name="profilcandidate_contact">Contact</string>
     <string name="profilcandidate_video_description">Video</string>
     <string name="profilcandidate_aboutme">About me</string>
+    <string name="profilcandidate_videocall">Video call</string>
     
     <string name="profilenterprise_contact">Contact</string>
     <string name="profilenterprise_telephone">Phones</string>
@@ -100,6 +101,8 @@
     <string name="detailpostule_cv">Click to open candidate CV</string>
     <string name="detailpostule_lm">Click to open candidate Cover letter</string>
     <string name="detailpostule_video">Click to open candidate presentation video</string>
+    <string name="detailpostule_btnaccept">Accept</string>
+    <string name="detailpostule_btnreject">Reject</string>
     
     <string name="postulerjob_title">Apply on this job</string>
     <string name="postulerjob_apply">Apply</string>

@@ -11,6 +11,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
@@ -27,7 +28,7 @@ import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 
 public class Profilcandidate_activity extends Activity implements OnClickListener, OnItemClickListener {
 	
-	private TextView profil_name, profil_aboutme, profil_experience, profil_education, profil_langage, profil_contact;
+	private TextView profil_name, profil_aboutme, profil_experience, profil_education, profil_langage, profil_address, profil_web, profil_mail, profil_tel, profil_videocall;
 	private SlidingMenu slidingMenu;
 	private ListView menu_listview;
 	private ImageView video_link;
@@ -45,20 +46,22 @@ public class Profilcandidate_activity extends Activity implements OnClickListene
 		profil_experience = (TextView)findViewById(R.id.profil_experience);
 		profil_education  = (TextView)findViewById(R.id.profil_education);
 		profil_langage    = (TextView)findViewById(R.id.profil_langue);
-		profil_contact    = (TextView)findViewById(R.id.profil_contact);
+		profil_address    = (TextView)findViewById(R.id.profil_address);
+		profil_web        = (TextView)findViewById(R.id.profil_web);
+		profil_mail       = (TextView)findViewById(R.id.profil_email);
+		profil_tel        = (TextView)findViewById(R.id.profil_tel);
+		profil_videocall  = (TextView)findViewById(R.id.profil_videocall);
 		
-		profil_contact.setOnClickListener(this);
+		profil_address.setOnClickListener(this);
+		profil_web.setOnClickListener(this);
+		profil_mail.setOnClickListener(this);
+		profil_tel.setOnClickListener(this);
 		
 		video_link = (ImageView)findViewById(R.id.profil_videolink);
 		video_link.setOnClickListener(this);
 		
 		// Recuperation des donnees
 		this.json = getIntent().getExtras().getString("data");
-		
-		AlertDialog.Builder builde = new AlertDialog.Builder(this);
-		builde.setTitle("Data");
-		builde.setMessage(this.json);
-		builde.create().show();
 		
 		// Formatage du resultat
 		try {
@@ -88,8 +91,14 @@ public class Profilcandidate_activity extends Activity implements OnClickListene
 			return;
 		}
 		
-		if(!Constante.getINIvalue(this, Constante.ini_id).equals(id))
+		// Affichage / masquage de video call
+		if(Constante.getINIvalue(this, Constante.ini_id).equals(id)){
+			this.profil_videocall.setVisibility(View.GONE);
+		}
+		else {
+			this.profil_videocall.setOnClickListener(this);
 			return; // Pour ne pas afficher le sliding menu pour un consulteur de profil
+		}
 		
 		// Ajout du Sliding Menu
         slidingMenu.setMode(SlidingMenu.LEFT);
@@ -317,12 +326,17 @@ public class Profilcandidate_activity extends Activity implements OnClickListene
 		case R.id.profil_videolink:
 			// Test de la connexion internet
 			if(!Constante.isInternetAvailable(this)) {
-				Toast.makeText(this, "Pas de connexion Internet", Toast.LENGTH_LONG).show();
+				Toast.makeText(this, "Internet connection not available", Toast.LENGTH_LONG).show();
 				return;
 			}
 			
+			String video_name = this.getVideoPrincipaleName();
+			if(video_name == null) return;
+			
 			Intent video_intent = new Intent(this, Video_activity.class);
 			try {
+				video_intent.putExtra("type", Constante.video_streaming);
+				video_intent.putExtra("name", video_name);
 				startActivity(video_intent);
 			}
 			catch(ActivityNotFoundException ex) {
@@ -330,7 +344,7 @@ public class Profilcandidate_activity extends Activity implements OnClickListene
 			}
 			break;
 			
-		case R.id.profil_contact:
+		case R.id.profil_address:
 			Intent map_intent = new Intent(this, Map_activity.class);
 			try {
 				map_intent.putExtra("address", this.jo.getJSONObject("user").has("address") ? this.jo.getJSONObject("user").getString("address") : "");
@@ -347,6 +361,55 @@ public class Profilcandidate_activity extends Activity implements OnClickListene
 			}
 			break;
 			
+		case R.id.profil_email:
+			Intent email_intent = new Intent(Intent.ACTION_SENDTO, Uri.parse("mailto:" + this.profil_mail.getText().toString()));
+			try {
+				startActivity(email_intent);
+			}
+			catch (ActivityNotFoundException ex) {
+				Toast.makeText(this, ex.getMessage(), Toast.LENGTH_LONG).show();
+			}
+			break;
+			
+		case R.id.profil_web:
+			Intent web_intent = new Intent(Intent.ACTION_VIEW, Uri.parse(this.profil_web.getText().toString()));
+			try {
+				startActivity(web_intent);
+			}
+			catch(ActivityNotFoundException ex) {
+				//Toast.makeText(this, ex.getMessage(), Toast.LENGTH_LONG).show();
+				Toast.makeText(this, "Incorrect web address", Toast.LENGTH_LONG).show();
+			}
+			break;
+			
+		case R.id.profil_tel:
+			Intent tel_intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + this.profil_tel.getText().toString()));
+			try {
+				startActivity(tel_intent);
+			}
+			catch(ActivityNotFoundException ex) {
+				Toast.makeText(this, ex.getMessage(), Toast.LENGTH_LONG).show();
+			}
+			break;
+			
+		case R.id.profil_videocall:
+			// Test de la connexion internet
+			if(!Constante.isInternetAvailable(this)) {
+				Toast.makeText(this, "Internet connection not available", Toast.LENGTH_LONG).show();
+				return;
+			}
+			
+			Intent live_intent = new Intent(this, Video_activity.class);
+			try {
+				live_intent.putExtra("type", Constante.video_live);
+				live_intent.putExtra("name", "");
+				startActivity(live_intent);
+			}
+			catch(ActivityNotFoundException ex) {
+				Toast.makeText(this, "Activity introuvable.\n" + ex.getMessage(), Toast.LENGTH_LONG).show();
+			}
+			break;
+			
 		default:
 			Toast.makeText(this, "View not found", Toast.LENGTH_LONG).show();
 			return;
@@ -354,7 +417,7 @@ public class Profilcandidate_activity extends Activity implements OnClickListene
 	}
 	
 	private void remplirProfil() {
-		String name, aboutme, experience, education, language, contact;
+		String name, aboutme, experience, education, language, address, mail, tel ,web;;
 		
 		try {
 			// Name
@@ -414,16 +477,19 @@ public class Profilcandidate_activity extends Activity implements OnClickListene
 			}
 			
 			// Contact
-			contact = "";
-			contact += (this.jo.getJSONObject("user").has("address") ? this.jo.getJSONObject("user").getString("address") : "No Address");
-			contact += " - ";
-			contact += (this.jo.getJSONObject("user").has("city") ? this.jo.getJSONObject("user").getString("city") : "No City");
-			contact += "\n";
-			contact += (this.jo.getJSONObject("user").has("email") ? this.jo.getJSONObject("user").getString("email") : "No Email");
-			contact += "\n";
-			contact += (this.jo.getJSONObject("user").has("website") ? this.jo.getJSONObject("user").getString("website") : "No Web site");
-			contact += "\n";
-			contact += (this.jo.getJSONObject("user").has("tel") ? this.jo.getJSONObject("user").getString("tel") : "No phone number");
+			address = "";
+			address += (this.jo.getJSONObject("user").has("address") ? this.jo.getJSONObject("user").getString("address") : "No Address");
+			address += " - ";
+			address += (this.jo.getJSONObject("user").has("city") ? this.jo.getJSONObject("user").getString("city") : "No City");
+			
+			mail = "";
+			mail += (this.jo.getJSONObject("user").has("email") ? this.jo.getJSONObject("user").getString("email") : "No Email");
+			
+			web = "";
+			web += (this.jo.getJSONObject("user").has("website") ? this.jo.getJSONObject("user").getString("website") : "No Web site");
+			
+			tel = "";
+			tel += (this.jo.getJSONObject("user").has("tel") ? this.jo.getJSONObject("user").getString("tel") : "No phone number");
 		}
 		catch(JSONException ex) {
 			AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -439,7 +505,41 @@ public class Profilcandidate_activity extends Activity implements OnClickListene
 		this.profil_experience.setText(experience);
 		this.profil_education.setText(education);
 		this.profil_langage.setText(language);
-		this.profil_contact.setText(contact);
+		this.profil_address.setText(address);
+		this.profil_mail.setText(mail);
+		this.profil_tel.setText(tel);
+		this.profil_web.setText(web);
+	}
+	
+	private String getVideoPrincipaleName() {
+		// Récuperation du nom de la video
+		String video_principale_id;
+		JSONArray video_list;
+		try {
+			video_principale_id = this.jo.getJSONObject("user").has("videoPrincipalId") ? this.jo.getJSONObject("user").getString("videoPrincipalId") : "0";
+			video_list = this.jo.getJSONArray("video");
+			
+			if("0".equals(video_principale_id)) {
+				Toast.makeText(this, "This candidate doesn't specify a video yet", Toast.LENGTH_LONG).show();
+				return null;
+			}
+			
+			for(int i=0 ; i<video_list.length() ; i++) {
+				if(video_list.getJSONObject(i).get("id").toString().equals(video_principale_id)) {
+					return video_list.getJSONObject(i).get("name").toString();
+				}
+			}
+			
+			Toast.makeText(this, "Video not found", Toast.LENGTH_LONG).show();
+			return null;
+		}
+		catch(JSONException ex) {
+			AlertDialog.Builder builder = new AlertDialog.Builder(this);
+			builder.setTitle("JSONException");
+			builder.setMessage("Cause: " + ex.getCause() + "\n\nMessage: " + ex.getMessage());
+			builder.create().show();
+			return null;
+		}
 	}
 
 }

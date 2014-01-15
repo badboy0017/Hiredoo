@@ -163,11 +163,50 @@
 				android:background="@color/bleu_ciel" />
 				
 			<TextView 
-				android:id="@+id/profil_contact"
+				android:id="@+id/profil_address"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:layout_margin="@dimen/margin_small"
+				android:textColor="@color/bleu_origin"
+				android:drawableLeft="@drawable/marker"
 				android:textSize="@dimen/content" />
+			
+			<TextView 
+				android:id="@+id/profil_web"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_margin="@dimen/margin_small"
+				android:textColor="@color/bleu_origin"
+				android:drawableLeft="@drawable/language"
+				android:textSize="@dimen/content" />
+			
+			<TextView 
+				android:id="@+id/profil_email"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_margin="@dimen/margin_small"
+				android:textColor="@color/bleu_origin"
+				android:drawableLeft="@drawable/show_all"
+				android:textSize="@dimen/content" />
+			
+			<TextView 
+				android:id="@+id/profil_tel"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_margin="@dimen/margin_small"
+				android:textColor="@color/bleu_origin"
+				android:drawableLeft="@drawable/add"
+				android:textSize="@dimen/content" />
+			
+			<TextView 
+				android:id="@+id/profil_videocall"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_margin="@dimen/margin_small"
+				android:textColor="@color/bleu_origin"
+				android:drawableLeft="@drawable/video"
+				android:textSize="@dimen/content"
+				android:text="@string/profilcandidate_videocall" />
 	        
 	    </LinearLayout>
 	    

@@ -11,12 +11,14 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class Detailpostule_activity extends Activity implements OnClickListener {
         
 	private TextView postule_user, postule_date, postule_cv, postule_lm, postule_video;
+	private Button postule_accept, postule_reject;
 	private String json;
 	private JSONObject jo;
 	private String cv_name, lm_name, video_name, user_id;
@@ -27,16 +29,20 @@ public class Detailpostule_activity extends Activity implements OnClickListener 
             setContentView(R.layout.detailpostule_view);
             
             // Récupération des views
-            postule_user = (TextView)findViewById(R.id.detailpostule_user);
-            postule_date = (TextView)findViewById(R.id.detailpostule_date);
-            postule_cv   = (TextView)findViewById(R.id.detailpostule_cv);
-            postule_lm   = (TextView)findViewById(R.id.detailpostule_lm);
-            postule_video = (TextView)findViewById(R.id.detailpostule_video);
+            postule_user   = (TextView)findViewById(R.id.detailpostule_user);
+            postule_date   = (TextView)findViewById(R.id.detailpostule_date);
+            postule_cv     = (TextView)findViewById(R.id.detailpostule_cv);
+            postule_lm     = (TextView)findViewById(R.id.detailpostule_lm);
+            postule_video  = (TextView)findViewById(R.id.detailpostule_video);
+            postule_accept = (Button)findViewById(R.id.detailpostule_btnaccept);
+            postule_reject = (Button)findViewById(R.id.detailpostule_btnreject);
             
             postule_user.setOnClickListener(this);
             postule_cv.setOnClickListener(this);
             postule_lm.setOnClickListener(this);
             postule_video.setOnClickListener(this);
+            postule_accept.setOnClickListener(this);
+            postule_reject.setOnClickListener(this);
             
     		// Recuperation des donnees
     		this.json = getIntent().getExtras().getString("data");
@@ -89,6 +95,48 @@ public class Detailpostule_activity extends Activity implements OnClickListener 
     		
     	case R.id.detailpostule_video:
     		Toast.makeText(this, "Video name: " + this.video_name, Toast.LENGTH_LONG).show();
+    		break;
+    		
+    	case R.id.detailpostule_btnaccept:
+    		String id;
+    		String jobName;
+        	
+        	try {
+        		id = this.jo.getJSONObject("user").get("id").toString();
+        		jobName = this.jo.getJSONObject("job").get("title").toString();
+    		}
+    		catch (JSONException ex) {
+    			AlertDialog.Builder builder = new AlertDialog.Builder(this);
+    			builder.setTitle("JSONException");
+    			builder.setMessage("Cause: " + ex.getCause() + "\n\nMessage: " + ex.getMessage());
+    			builder.create().show();
+    			return;
+    		}
+        	
+    		// Appel du web service GET
+    		Async_get ag1 = new Async_get(this, null);
+    		ag1.execute(new String[] { Constante.url + Constante.user_setNotif + id + "/" + Constante.application_accepted + "/" + jobName });
+    		break;
+    		
+    	case R.id.detailpostule_btnreject:
+    		String id2;
+    		String jobName2;
+        	
+        	try {
+        		id2 = this.jo.getJSONObject("user").get("id").toString();
+        		jobName2 = this.jo.getJSONObject("job").get("title").toString();
+    		}
+    		catch (JSONException ex) {
+    			AlertDialog.Builder builder = new AlertDialog.Builder(this);
+    			builder.setTitle("JSONException");
+    			builder.setMessage("Cause: " + ex.getCause() + "\n\nMessage: " + ex.getMessage());
+    			builder.create().show();
+    			return;
+    		}
+        	
+    		// Appel du web service GET
+    		Async_get ag2 = new Async_get(this, null);
+    		ag2.execute(new String[] { Constante.url + Constante.user_setNotif + id2 + "/" + Constante.application_rejected + "/" + jobName2 });
     		break;
     		
 		default:

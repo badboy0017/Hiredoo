@@ -1,101 +1,114 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-	xmlns:android="http://schemas.android.com/apk/res/android"
-	android:layout_width="fill_parent"
-	android:layout_height="fill_parent"
-	android:scrollbars="none"
-	android:fillViewport="true" >
-	
-    <LinearLayout 
-	    android:layout_width="match_parent"
-	    android:layout_height="wrap_content"
-	    android:orientation="vertical" >
-	    
-        <LinearLayout 
-		    android:layout_width="match_parent"
-		    android:layout_height="wrap_content"
-		    android:background="@layout/header"
-		    android:orientation="horizontal" >
-		    
-		    <ImageView 
-		        android:layout_width="wrap_content"
-		        android:layout_height="wrap_content"
-		        android:src="@drawable/logo"
-		        android:scaleType="fitStart"
-		        android:layout_marginLeft="10sp"
-		        android:contentDescription="@string/logo_description" />
-	    
-	    </LinearLayout>
-	    
-        <LinearLayout 
-	        android:layout_width="fill_parent"
-	        android:layout_height="wrap_content"
-	        android:layout_margin="5sp"
-  			android:background="@color/gris_background"
-	        android:orientation="vertical" >
-		    
-            <LinearLayout 
-		        android:layout_width="fill_parent"
-		        android:layout_height="wrap_content"
-		        android:layout_marginBottom="@dimen/margin_small"
-		        android:orientation="horizontal" >
-	    
-	        <ImageView 
-		        android:layout_width="wrap_content"
-		        android:layout_height="wrap_content"
-		        android:src="@drawable/profileimage"
-		        android:layout_marginRight="5sp"
-		        android:contentDescription="@string/image_description" />
-	        
-	        <TextView 
-	            android:id="@+id/profilenterprise_name"
-	            android:layout_width="fill_parent"
-	            android:layout_height="wrap_content"
-	            android:textIsSelectable="true" />
-	        
-	    	</LinearLayout>
-	    	
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:fillViewport="true"
+    android:scrollbars="none" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@layout/header"
+            android:orientation="horizontal" >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10sp"
+                android:contentDescription="@string/logo_description"
+                android:scaleType="fitStart"
+                android:src="@drawable/logo" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5sp"
+            android:background="@color/gris_background"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/profilenterprise_name"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_small"
+                android:drawableLeft="@drawable/profileimage"
+                android:drawablePadding="5sp"
+                android:textIsSelectable="true" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/profilenterprise_about"
+                android:textColor="@color/bleu_ciel"
+                android:textSize="@dimen/title" />
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="2dp"
+                android:background="@color/bleu_ciel" />
+
+            <TextView
+                android:id="@+id/profilenterprise_about"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_small"
+                android:textSize="@dimen/content" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/profilenterprise_contact"
+                android:textColor="@color/bleu_ciel"
+                android:textSize="@dimen/title" />
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="2dp"
+                android:background="@color/bleu_ciel" />
+
             <TextView 
-				android:layout_width="fill_parent"
-				android:layout_height="wrap_content"
-				android:text="@string/profilenterprise_about"
-				android:textSize="@dimen/title"
-				android:textColor="@color/bleu_ciel" />
-	        
-			<View 
-				android:layout_width="fill_parent"
-				android:layout_height="2dp"       
-				android:background="@color/bleu_ciel" />
-			
-			<TextView
-				android:id="@+id/profilenterprise_about"
-				android:layout_width="fill_parent"
+				android:id="@+id/profilenterprise_address"
+				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:layout_margin="@dimen/margin_small"
+				android:textColor="@color/bleu_origin"
+				android:drawableLeft="@drawable/marker"
+				android:textSize="@dimen/content" />
+			
+			<TextView 
+				android:id="@+id/profilenterprise_web"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_margin="@dimen/margin_small"
+				android:textColor="@color/bleu_origin"
+				android:drawableLeft="@drawable/language"
+				android:textSize="@dimen/content" />
+			
+			<TextView 
+				android:id="@+id/profilenterprise_email"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_margin="@dimen/margin_small"
+				android:textColor="@color/bleu_origin"
+				android:drawableLeft="@drawable/show_all"
+				android:textSize="@dimen/content" />
+			
+			<TextView 
+				android:id="@+id/profilenterprise_tel"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_margin="@dimen/margin_small"
+				android:textColor="@color/bleu_origin"
+				android:drawableLeft="@drawable/add"
 				android:textSize="@dimen/content" />
             
-            <TextView 
-				android:layout_width="fill_parent"
-				android:layout_height="wrap_content"
-				android:text="@string/profilenterprise_contact"
-				android:textSize="@dimen/title"
-				android:textColor="@color/bleu_ciel" />
-	        
-			<View 
-				android:layout_width="fill_parent"
-				android:layout_height="2dp"       
-				android:background="@color/bleu_ciel" />
-			
-			<TextView
-				android:id="@+id/profilenterprise_contact"
-				android:layout_width="fill_parent"
-				android:layout_height="wrap_content"
-				android:layout_margin="@dimen/margin_small"
-				android:textSize="@dimen/content" />
-	    
-		</LinearLayout>
-	    
-	</LinearLayout>
-    
-    
+        </LinearLayout>
+    </LinearLayout>
+
 </ScrollView>

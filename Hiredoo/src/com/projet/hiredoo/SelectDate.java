@@ -30,12 +30,20 @@ public class SelectDate extends DialogFragment implements DatePickerDialog.OnDat
 	}
 	
 	public void onDateSet(DatePicker view, int yy, int mm, int dd) {
-		this.date.setText(dd + "/" + mm + "/" + yy);
+		mm = mm + 1;
+		
+		String ch_mois = mm + "";
+		
+		if(ch_mois.length() == 1) {
+			ch_mois = "0" + ch_mois;
+		}
+		
+		this.date.setText(dd + "/" + ch_mois + "/" + yy);
 		
 		if(this.type.equals(Constante.date_from_type))
-			Constante.date_from = yy + "-" + mm + "-" + dd + "T00:00:00";
+			Constante.date_from = yy + "-" + ch_mois + "-" + dd + "T00:00:00";
 		else if(this.type.equals(Constante.date_to_type))
-			Constante.date_to = yy + "-" + mm + "-" + dd + "T00:00:00";
+			Constante.date_to = yy + "-" + ch_mois + "-" + dd + "T00:00:00";
 		else
 			Toast.makeText(getActivity().getApplicationContext(), "", Toast.LENGTH_LONG).show();
 	}

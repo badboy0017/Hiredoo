@@ -2,7 +2,6 @@ package com.projet.hiredoo;
 
 import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -96,31 +95,9 @@ public class Changervideo_activity extends Activity implements OnClickListener {
 			builder.create().show();
 		}
 		
-		AlertDialog.Builder builder = new AlertDialog.Builder(this);
-		builder.setTitle("Video ID");
-		builder.setMessage(id_video);
-		builder.create().show();
-		
-		/*
-		// Préparation de l'objet JSON
-		JSONObject obj = new JSONObject();
-		try {
-			obj.put("idJob", Constante.job_id);
-			obj.put("idUser", Constante.getINIvalue(this, Constante.ini_id));
-	        obj.put("datePostule", Constante.getCurrentDate());
-	        obj.put("video", id_video);
-		}
-		catch (JSONException ex) {
-			AlertDialog.Builder builder = new AlertDialog.Builder(this);
-			builder.setTitle("JSON Exception3");
-			builder.setMessage("Cause:\n" + ex.getCause() + "\n\nMessage:\n" + ex.getMessage());
-			builder.create().show();
-			return;
-		}
-		
-		// Appel du web service POST
-		Async_post ap = new Async_post(this, obj, null);
-		ap.execute(new String[] { Constante.url + Constante.postule });*/
+		// Appel du web service GET
+		Async_get ag = new Async_get(this, null);
+		ag.execute(new String[] { Constante.url + Constante.user_chooseVideo + Constante.getINIvalue(this, Constante.ini_id) + "/" + id_video });
 	}
 
 }

@@ -181,6 +181,10 @@ public class Postulerjob_activity extends Activity implements OnClickListener {
 		// Appel du web service POST
 		Async_post ap = new Async_post(this, obj, null);
 		ap.execute(new String[] { Constante.url + Constante.postule });
+		
+		// Envoie notification WS GET
+		Async_get ag = new Async_get(this, null);
+		ag.execute(new String[] { Constante.url + Constante.enterprise_setNotif + Constante.job_id });
 	}
 
 }

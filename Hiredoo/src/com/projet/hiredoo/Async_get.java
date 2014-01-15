@@ -102,6 +102,21 @@ public class Async_get extends AsyncTask<String, Void, String> {
 			// Stop the dialog
 			this.stopDialog();
 			
+			// Verification du next activity
+			if(this.next_activity == null) {
+				
+				if(result.equals("ok")) {
+					Toast.makeText(this.context, "Operation succeeded", Toast.LENGTH_SHORT).show();
+				}
+				else {
+					AlertDialog.Builder builder = new AlertDialog.Builder(this.context);
+					builder.setTitle("Server Exception");
+					builder.setMessage(result);
+					builder.create().show();
+				}
+				return;
+			}
+			
 			// Formatage du resultat
 			try {
 				new JSONObject(this.res);

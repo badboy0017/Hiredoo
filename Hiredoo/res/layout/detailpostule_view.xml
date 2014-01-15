@@ -4,7 +4,7 @@
 	android:layout_width="fill_parent"
 	android:layout_height="fill_parent"
 	android:scrollbars="none"
-	android:fillViewport="true" >
+	android:fillViewport="true" xmlns:tools="http://schemas.android.com/tools">
 	
 	<LinearLayout 
 	    android:layout_width="fill_parent"
@@ -127,6 +127,30 @@
 				android:text="@string/detailpostule_video"
 				android:textColor="@color/bleu_origin"
 				android:textSize="@dimen/content" />
+			
+			<LinearLayout 
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_marginTop="@dimen/margin_medium"
+		        android:orientation="horizontal" >
+			    
+			    <Button
+			        android:id="@+id/detailpostule_btnaccept"
+			        android:layout_width="fill_parent"
+			        android:layout_height="wrap_content"
+			        android:layout_weight="1"
+			        android:text="@string/detailpostule_btnaccept"
+			        tools:ignore="ButtonStyle" />
+			    
+			    <Button
+			        android:id="@+id/detailpostule_btnreject"
+			        android:layout_width="fill_parent"
+			        android:layout_height="wrap_content"
+			        android:layout_weight="1"
+			        android:text="@string/detailpostule_btnreject"
+			        tools:ignore="ButtonStyle" />
+			    
+			</LinearLayout>
 			
 	    </LinearLayout>
 	    

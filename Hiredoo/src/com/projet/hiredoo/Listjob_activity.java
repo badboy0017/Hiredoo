@@ -126,14 +126,22 @@ public class Listjob_activity extends Activity implements OnItemClickListener, O
 	    		// Appel du web service
 	    		Async_jobs aj = new Async_jobs(this, Constante.http_get, this.job_listview, null);
 				aj.execute(new String[] { Constante.url + Constante.job_search + getIntent().getExtras().getString("text") + "/" + getIntent().getExtras().getString("city") });
-	    		return;
+				return;
 	    	}
 			Async_jobs aj = new Async_jobs(this, Constante.http_get, this.job_listview, null);
 			aj.execute(new String[] { Constante.url + Constante.job_getAllJobs });
+			
+		    // Verification des notifications
+			Async_notif an1 = new Async_notif(this, Constante.ini_type_jobseeker);
+			an1.execute(new String[] { Constante.url + Constante.user_getNotif + Constante.getINIvalue(this, Constante.ini_id) });
 	    }
 	    else if(Constante.getINIvalue(this, Constante.ini_type).equals(Constante.ini_type_recruiter)) {
 			Async_jobs aj = new Async_jobs(this, Constante.http_get, this.job_listview, null);
 			aj.execute(new String[] { Constante.url + Constante.job_getAllJobs + Constante.getINIvalue(this, Constante.ini_id) });
+			
+		    // Verification des notifications
+			Async_notif an2 = new Async_notif(this, Constante.ini_type_recruiter);
+			an2.execute(new String[] { Constante.url + Constante.enterprise_getNotif + Constante.getINIvalue(this, Constante.ini_id) });
 	    }
 	    else {
 	    	AlertDialog.Builder builder = new AlertDialog.Builder(this);

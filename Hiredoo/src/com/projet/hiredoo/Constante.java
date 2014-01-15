@@ -46,10 +46,15 @@ public class Constante {
 	public static final String user_getCvLmVideo   = "user/getcvresumevideo/";
 	public static final String user_getMypostules  = "user/listejobpostule/";
 	public static final String user_search         = "user/search/";
+	public static final String user_setNotif       = "user/setnotif/";
+	public static final String user_getNotif       = "user/getnotif/";
+	public static final String user_chooseVideo    = "user/choose/";
 	
-	public static final String enterprise        = "entreprise/";
-	public static final String enterprise_login  = "entreprise/login/";
-	public static final String enterprise_search = "entreprise/search/";
+	public static final String enterprise          = "entreprise/";
+	public static final String enterprise_login    = "entreprise/login/";
+	public static final String enterprise_search   = "entreprise/search/";
+	public static final String enterprise_setNotif = "entreprise/setnotif/";
+	public static final String enterprise_getNotif = "entreprise/getnotif/";
 	
 	public static final String job                  = "job/";
 	public static final String job_getAllJobs       = "job/findall/";
@@ -92,6 +97,9 @@ public class Constante {
 	
 	public static final String video_streaming = "streaming";
 	public static final String video_live      = "live";
+	
+	public static final String application_accepted = "A";
+	public static final String application_rejected = "R";
 	
 	// Variables Globales
 	public static JSONArray ja = new JSONArray();
@@ -278,8 +286,13 @@ public class Constante {
 		int year = cal.get(Calendar.YEAR);
 		int mois = cal.get(Calendar.MONTH) + 1;
 		int day  = cal.get(Calendar.DAY_OF_MONTH);
+		String ch_mois = mois + "";
 		
-		String now = year + "-" + mois + "-" + day + "T00:00:00";
+		if(ch_mois.length() == 1) {
+			ch_mois = "0" + ch_mois;
+		}
+		
+		String now = year + "-" + ch_mois + "-" + day + "T00:00:00";
 		return now;
 	}
 	
