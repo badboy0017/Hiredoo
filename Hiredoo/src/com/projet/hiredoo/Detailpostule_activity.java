@@ -74,27 +74,45 @@ public class Detailpostule_activity extends Activity implements OnClickListener 
     		break;
     		
     	case R.id.detailpostule_cv:
-    		Intent i = new Intent(Intent.ACTION_VIEW);
-    		String link="http://192.168.1.2:8093/assets/uploads/cdd.pdf";
-    		i.setData(Uri.parse(link));
+    		Intent cv_intent = new Intent(Intent.ACTION_VIEW);
+    		String cv_link = Constante.url_files + this.cv_name;
+    		cv_intent.setData(Uri.parse(cv_link));
     	    try  {
-    	        startActivity(i);
-    	    } 
+    	        startActivity(cv_intent);
+    	    }
     	    catch (ActivityNotFoundException ex)  {
     	         Toast.makeText(this, "No Pdf Viewer", Toast.LENGTH_SHORT).show();
     	    }
-    		
-    		// Appel du web service
-    		//Async_get ag = new Async_get(this, Listpostule_activity.class);
-    		//ag.execute(new String[] { Constante.url + Constante.postule_getUsersByPostule + getIntent().getExtras().getString("id") });
     		break;
     		
     	case R.id.detailpostule_lm:
-    		Toast.makeText(this, "LM name: " + this.lm_name, Toast.LENGTH_LONG).show();
+    		Intent lm_intent = new Intent(Intent.ACTION_VIEW);
+    		String lm_link = Constante.url_files + this.lm_name;
+    		lm_intent.setData(Uri.parse(lm_link));
+    	    try  {
+    	        startActivity(lm_intent);
+    	    }
+    	    catch (ActivityNotFoundException ex)  {
+    	         Toast.makeText(this, "No Pdf Viewer", Toast.LENGTH_SHORT).show();
+    	    }
     		break;
     		
     	case R.id.detailpostule_video:
-    		Toast.makeText(this, "Video name: " + this.video_name, Toast.LENGTH_LONG).show();
+			// Test de la connexion internet
+			if(!Constante.isInternetAvailable(this)) {
+				Toast.makeText(this, "Internet connection not available", Toast.LENGTH_LONG).show();
+				return;
+			}
+			
+			Intent video_intent = new Intent(this, Video_activity.class);
+			try {
+				video_intent.putExtra("type", Constante.video_streaming);
+				video_intent.putExtra("name", this.video_name);
+				startActivity(video_intent);
+			}
+			catch(ActivityNotFoundException ex) {
+				Toast.makeText(this, "Activity introuvable.\n" + ex.getMessage(), Toast.LENGTH_LONG).show();
+			}
     		break;
     		
     	case R.id.detailpostule_btnaccept:

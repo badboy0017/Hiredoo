@@ -78,7 +78,7 @@
 				android:layout_height="wrap_content"
 				android:layout_margin="@dimen/margin_small"
 				android:textColor="@color/bleu_origin"
-				android:drawableLeft="@drawable/marker"
+				android:drawableLeft="@drawable/maps"
 				android:textSize="@dimen/content" />
 			
 			<TextView 
@@ -87,7 +87,7 @@
 				android:layout_height="wrap_content"
 				android:layout_margin="@dimen/margin_small"
 				android:textColor="@color/bleu_origin"
-				android:drawableLeft="@drawable/language"
+				android:drawableLeft="@drawable/web"
 				android:textSize="@dimen/content" />
 			
 			<TextView 
@@ -96,7 +96,7 @@
 				android:layout_height="wrap_content"
 				android:layout_margin="@dimen/margin_small"
 				android:textColor="@color/bleu_origin"
-				android:drawableLeft="@drawable/show_all"
+				android:drawableLeft="@drawable/mail"
 				android:textSize="@dimen/content" />
 			
 			<TextView 
@@ -105,7 +105,7 @@
 				android:layout_height="wrap_content"
 				android:layout_margin="@dimen/margin_small"
 				android:textColor="@color/bleu_origin"
-				android:drawableLeft="@drawable/add"
+				android:drawableLeft="@drawable/tel"
 				android:textSize="@dimen/content" />
             
         </LinearLayout>

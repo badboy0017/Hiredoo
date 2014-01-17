@@ -35,11 +35,11 @@
 	        android:orientation="horizontal" >
 	    
 	        <ImageView 
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:src="@drawable/profileimage"
-	        android:layout_marginRight="@dimen/margin_small"
-	        android:contentDescription="@string/image_description" />
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:src="@drawable/profileimage"
+		        android:layout_marginRight="@dimen/margin_small"
+		        android:contentDescription="@string/image_description" />
 	        
 	        <TextView 
 	            android:id="@+id/profil_name"
@@ -168,7 +168,7 @@
 				android:layout_height="wrap_content"
 				android:layout_margin="@dimen/margin_small"
 				android:textColor="@color/bleu_origin"
-				android:drawableLeft="@drawable/marker"
+				android:drawableLeft="@drawable/maps"
 				android:textSize="@dimen/content" />
 			
 			<TextView 
@@ -177,7 +177,7 @@
 				android:layout_height="wrap_content"
 				android:layout_margin="@dimen/margin_small"
 				android:textColor="@color/bleu_origin"
-				android:drawableLeft="@drawable/language"
+				android:drawableLeft="@drawable/web"
 				android:textSize="@dimen/content" />
 			
 			<TextView 
@@ -186,7 +186,7 @@
 				android:layout_height="wrap_content"
 				android:layout_margin="@dimen/margin_small"
 				android:textColor="@color/bleu_origin"
-				android:drawableLeft="@drawable/show_all"
+				android:drawableLeft="@drawable/mail"
 				android:textSize="@dimen/content" />
 			
 			<TextView 
@@ -195,7 +195,7 @@
 				android:layout_height="wrap_content"
 				android:layout_margin="@dimen/margin_small"
 				android:textColor="@color/bleu_origin"
-				android:drawableLeft="@drawable/add"
+				android:drawableLeft="@drawable/tel"
 				android:textSize="@dimen/content" />
 			
 			<TextView 
